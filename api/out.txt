@@ -1,0 +1,7 @@
+yarn run v1.22.15
+$ dotenv -e .env.dev -- node ./tinker.js 
+ArrayBuffer {
+  [Uint8Contents]: <40 61 25 50 44 46 2d 31 2e 34 0a 25 d3 eb e9 e1 0a 31 20 30 20 6f 62 6a 0a 3c 3c 2f 43 72 65 61 74 6f 72 20 28 43 68 72 6f 6d 69 75 6d 29 0a 2f 50 72 6f 64 75 63 65 72 20 28 53 6b 69 61 2f 50 44 46 20 6d 31 30 37 29 0a 2f 43 72 65 61 74 69 6f 6e 44 61 74 65 20 28 44 3a 32 30 32 32 31 30 32 34 31 34 ... 38066 more bytes>,
+  byteLength: 38166
+}
+Done in 0.29s.

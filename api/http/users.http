@@ -1,0 +1,21 @@
+
+
+###
+
+http://localhost:3001/v1/users/638ace6b4e868015f092fd97
+Accept: application/json
+Authorization: Bearer -
+
+###
+
+http://localhost:3001/v1/users/roles/163500c4eaa6e4529e0bdcbac
+Accept: application/json
+Authorization: Bearer -
+
+###
+
+http://localhost:3001/v1/users/role/can-comment-message-board
+Accept: application/json
+Authorization: Bearer -
+
+###

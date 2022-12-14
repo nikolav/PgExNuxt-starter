@@ -1,0 +1,56 @@
+version: "3"
+
+services:
+
+  nuxtapp:
+    container_name: nuxtapp
+    build: ./nuxtapp
+    ports:
+      - 8082:3000
+    volumes:
+      - ./nuxtapp:/home/app
+    env_file:
+      - ./nuxtapp/.env
+    depends_on:
+      - redis
+      - pg
+      - api
+  
+  api:
+    container_name: api
+    build: ./api
+    ports:
+      - 8081:3001
+    volumes:
+      - ./api:/home/app
+    depends_on:
+      - pg
+      - redis
+    env_file:
+      - ./api/.env
+
+  pg:
+    container_name: pg
+    image: postgres:14.5
+    restart: always
+    ports:
+      - 5544:5432
+    env_file:
+      - ./api/.env
+    volumes:
+      - vol_pg:/var/lib/postgresql/
+    depends_on:
+      - redis
+
+  redis:
+    container_name: redis
+    image: redis
+    ports:
+      - 6879:6379
+    restart: always
+    volumes:
+      - ./api/redis.conf:/etc/redis/redis.conf
+    command: ["redis-server", "/etc/redis/redis.conf"]
+
+volumes:
+  vol_pg:

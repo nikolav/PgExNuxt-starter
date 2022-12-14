@@ -1,0 +1,54 @@
+/**
+ * This injects Tailwind's base styles and any base styles registered by
+ * plugins.
+ */
+@tailwind base;
+
+/**
+     * This injects Tailwind's component classes and any component classes
+     * registered by plugins.
+     */
+@tailwind components;
+
+/**
+     * This injects Tailwind's utility classes and any utility classes registered
+     * by plugins.
+     */
+@tailwind utilities;
+
+/**
+     * Use this directive to control where Tailwind injects the hover, focus,
+     * responsive, dark mode, and other variants of each class.
+     *
+     * If omitted, Tailwind will append these classes to the very end of
+     * your stylesheet by default.
+     */
+@tailwind variants;
+
+@layer components {
+  .link {
+    @apply cursor-pointer hover:underline active:text-red-600;
+  }
+  .link-preview {
+    @apply cursor-zoom-in decoration-dashed hover:underline;
+  }
+  /* default button; dark grey; small padding; white text; rounded */
+  .button {
+    @apply p-2 px-4 text-white uppercase transition-colors border-none rounded-full outline-none cursor-pointer bg-slate-500 hover:bg-slate-900 active:bg-black;
+  }
+  .button-primary {
+    @apply button bg-slate-800;
+  }
+  .icon-close {
+    @apply absolute z-[1] top-4 right-4 text-4xl opacity-40 hover:scale-110 hover:opacity-80 cursor-pointer;
+  }
+  .input-underline {
+    @apply w-full px-0.5 border-0 border-b-2 border-gray-50 focus:ring-0 focus:border-gray-200 placeholder:italic placeholder:opacity-40 !bg-transparent;
+  }
+  .input-styled {
+    @apply block w-full border-gray-300 rounded-md focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50;
+  }
+  .place-viewport-center {
+    @apply fixed top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2;
+  }
+}

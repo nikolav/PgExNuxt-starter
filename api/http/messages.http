@@ -1,0 +1,46 @@
+
+
+POST http://localhost:3001/v1/graphql
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer -
+
+{
+  "query": "query { messages { id, content } }"
+}
+
+###
+
+POST http://localhost:3001/v1/graphql
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer -
+
+{
+  "query": "query { message(id: \"2784a062-4648-464f-ab53-c26ff5105214\") { id, content } }"
+}
+
+###
+
+POST http://localhost:3001/v1/graphql
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer -
+
+{
+  "query": "mutation { addMessage(content: \"223\") { id, content } }"
+}
+
+###
+
+POST http://localhost:3001/v1/graphql
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer -
+
+{
+  "query": "mutation { removeMessage(id: \"2784a062-4648-464f-ab53-c26ff5105214\") }"
+}
+
+###
+

@@ -1,0 +1,36 @@
+  /**
+   * @api             {get} v1/users List Users
+   * @apiName         ListUsers
+   * @apiGroup        User
+   * @apiDescription  Get a list of users
+   * @apiVersion      1.0.0
+   * @apiPermission   public|token|user|admin
+   *
+   * @apiHeader {String}  Authorization User's access token
+   *
+   * @apiParam  {Number}  [page=1]    List page
+   * @apiParam  {Number}  [perPage=1] Users per page
+   * @apiParam  {String}  name      User's name
+   * @apiParam  {String}  email     User's email
+   * @apiParam  {String}  role=user      User's role
+   *
+   * @apiSuccess {String} title       Post title
+   * @apiSuccess {String} description Post description
+   *
+   * @apiSuccessExample Success-Response:
+   *     HTTP/1.1 200 OK
+   *     {
+   *       "firstname": "John",
+   *       "lastname": "Doe"
+   *     }
+   *
+   * @apiError  BadRequest 400    BadRequest -- Fails if no input provided
+   * @apiError  Unauthorized 401  Unauthorized -- Only authenticated users can access the data
+   * @apiError  Forbidden 403     Forbidden -- Only admins can access the data
+   *
+   * @apiErrorExample Error-Response:
+   *     HTTP/1.1 404 Not Found
+   *     {
+   *       "error": "UserNotFound"
+   *     }
+   */

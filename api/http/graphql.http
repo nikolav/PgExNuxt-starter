@@ -1,0 +1,36 @@
+
+###
+
+POST http://localhost:3001/v1/graphql
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer -
+
+{
+  "query": "query { status }"
+}
+
+###
+
+POST http://localhost:3001/v1/graphql
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer -
+
+{
+  "query": "query { fakePosts { id, title, body } }"
+}
+
+###
+
+POST http://localhost:3001/v1/graphql
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer -
+
+{
+  "query": "query { fakeUsers { id } }"
+}
+
+###
+

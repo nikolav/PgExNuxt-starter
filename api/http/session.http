@@ -1,0 +1,37 @@
+
+###
+
+POST http://localhost:3001/v1/session/638ace6b4e868015f092fd97
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer -
+
+{
+  "sessionToken": "-"
+}
+
+###
+
+POST http://localhost:3001/v1/session
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer -
+
+{
+  "sessionToken": "-",
+  "data": "{ \"x\": 122 }"
+}
+
+###
+
+DELETE http://localhost:3001/v1/session/63500c4eaa6e4529e0bdcbac
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer -
+
+{
+  "sessionToken": "-"
+}
+
+###
+

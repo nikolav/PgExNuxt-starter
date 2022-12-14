@@ -1,0 +1,16 @@
+
+###
+
+POST http://localhost:3001/v1/mail/text-message
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer -
+
+{
+  "to": "admin@nikolav.rs", 
+  "subject": "subject --07",  
+  "message": "message --07",  
+  "text": "hello --07"
+}
+
+###

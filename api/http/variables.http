@@ -1,0 +1,38 @@
+
+
+###
+
+http://localhost:3001/v1/variables
+Accept: application/json
+Authorization: Bearer -
+
+###
+
+http://localhost:3001/v1/variables/x2
+Accept: application/json
+Authorization: Bearer -
+
+###
+
+POST http://localhost:3001/v1/variables
+Accept: application/json
+Authorization: Bearer -
+Content-Type: application/json
+
+{
+  "name": "x2",
+  "value": 24
+}
+
+###
+
+DELETE http://localhost:3001/v1/variables
+Accept: application/json
+Authorization: Bearer -
+Content-Type: application/json
+
+{
+  "id": 21
+}
+
+###
