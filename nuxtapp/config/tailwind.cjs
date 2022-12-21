@@ -15,6 +15,7 @@ module.exports = {
     "../error.{js,ts,vue}",
     "../content/**/*.md"
   ],
+  darkMode: "class",
   theme: {
     extend: {
       // colors: {
@@ -30,7 +31,6 @@ module.exports = {
       },
     },
   },
-  darkMode: "class",
   plugins: [
     require("@tailwindcss/typography"),
     require("@tailwindcss/forms"),

@@ -34,10 +34,10 @@
   }
   /* default button; dark grey; small padding; white text; rounded */
   .button {
-    @apply p-2 px-4 text-white uppercase transition-colors border-none rounded-full outline-none cursor-pointer bg-slate-500 hover:bg-slate-900 active:bg-black;
+    @apply p-2 px-4 text-white uppercase transition-colors border-none rounded-full outline-none cursor-pointer;
   }
   .button-primary {
-    @apply button bg-slate-800;
+    @apply button bg-slate-800 hover:bg-slate-900 active:bg-black;
   }
   .icon-close {
     @apply absolute z-[1] top-4 right-4 text-4xl opacity-40 hover:scale-110 hover:opacity-80 cursor-pointer;

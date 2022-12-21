@@ -1,2 +1,2 @@
 #!/bin/bash
-yarn --cwd ./restapi--express run dev
+yarn --cwd ./api run dev
