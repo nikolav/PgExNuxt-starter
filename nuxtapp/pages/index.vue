@@ -4,15 +4,18 @@ import { useDisplay } from "vuetify";
 import { useStoreAuth } from "@/store";
 import { find, get } from "@/utils";
 import { IVariable } from "@/types";
+
 // @@
 const { name: screenSizeName } = useDisplay();
 const icon = ref(mdiAccount);
 
+// @@auth
 const auth = useStoreAuth();
 const login = () =>
   auth.authenticate({ email: "admin@nikolav.rs", password: "122333" });
 const logout = () => auth.logout();
 
+// @@variables
 const variables = useApiVariables();
 const putVar = () => variables.put("x", Math.random());
 const dropVar = () => {
@@ -20,7 +23,7 @@ const dropVar = () => {
   const v = find(variables.ls.value, (node: IVariable) => "x" === node.name);
   if (!v) return;
   variables.drop(get(v, "id"));
-}
+};
 const varX = computed(() => {
   let x;
   if (variables.ls.value?.length) {
@@ -31,6 +34,12 @@ const varX = computed(() => {
   }
   return x;
 });
+
+// @@session
+const session = useApiSession();
+const putSession = () => session.put({x: Math.random()});
+const clearSession = () => session.clear();
+
 </script>
 
 <template>
@@ -48,7 +57,6 @@ const varX = computed(() => {
       </v-btn>
       <v-btn
         size="small"
-        :prepend-icon="icon"
         color="secondary"
         variant="outlined"
         @click="logout"
@@ -61,6 +69,12 @@ const varX = computed(() => {
       <v-btn size="small" color="secondary" variant="outlined" @click="dropVar">
         drop var
       </v-btn>
+      <v-btn size="small" color="secondary" variant="outlined" @click="putSession">
+        sess.put
+      </v-btn>
+      <v-btn size="small" color="secondary" variant="outlined" @click="clearSession">
+        sess clear
+      </v-btn>
     </v-btn-group>
     <v-sheet>
       <pre>
@@ -72,8 +86,9 @@ const varX = computed(() => {
               user: auth.user,
               token: auth.token,
               session: auth.session,
+              "session.data": session.data.value,
               x: varX,
-              variables: variables.ls.value
+              variables: variables.ls.value,
             },
             null,
             2
