@@ -8,7 +8,7 @@ Authorization: Bearer -
 
 ###
 
-http://localhost:3001/v1/variables/x2
+http://localhost:3001/v1/variables/x1
 Accept: application/json
 Authorization: Bearer -
 
@@ -20,8 +20,8 @@ Authorization: Bearer -
 Content-Type: application/json
 
 {
-  "name": "x2",
-  "value": 24
+  "name": "x1",
+  "value": 1
 }
 
 ###

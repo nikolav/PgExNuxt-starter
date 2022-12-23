@@ -51,3 +51,12 @@ export interface IAuthCredentials {
   email: string;
   password: string;
 }
+
+export type TVariableValue = OrNull<TPrimitive>;
+export interface IVariable {
+  id: TPrimitive;
+  name: string;
+  value: TVariableValue;
+  createdAt: string;
+  updatedAt: string;
+}

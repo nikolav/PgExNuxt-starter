@@ -2,14 +2,35 @@
 import { mdiAccount } from "@mdi/js";
 import { useDisplay } from "vuetify";
 import { useStoreAuth } from "@/store";
+import { find, get } from "@/utils";
+import { IVariable } from "@/types";
 // @@
 const { name: screenSizeName } = useDisplay();
 const icon = ref(mdiAccount);
 
 const auth = useStoreAuth();
-const login = () => auth.authenticate({ email: "admin@nikolav.rs", password: "122333" });
+const login = () =>
+  auth.authenticate({ email: "admin@nikolav.rs", password: "122333" });
 const logout = () => auth.logout();
 
+const variables = useApiVariables();
+const putVar = () => variables.put("x", Math.random());
+const dropVar = () => {
+  if (!variables.ls.value?.length) return;
+  const v = find(variables.ls.value, (node: IVariable) => "x" === node.name);
+  if (!v) return;
+  variables.drop(get(v, "id"));
+}
+const varX = computed(() => {
+  let x;
+  if (variables.ls.value?.length) {
+    const v = find(variables.ls.value, (node: IVariable) => "x" === node.name);
+    if (v) {
+      x = get(v, "value");
+    }
+  }
+  return x;
+});
 </script>
 
 <template>
@@ -34,23 +55,33 @@ const logout = () => auth.logout();
       >
         logout
       </v-btn>
+      <v-btn size="small" color="secondary" variant="outlined" @click="putVar">
+        put var
+      </v-btn>
+      <v-btn size="small" color="secondary" variant="outlined" @click="dropVar">
+        drop var
+      </v-btn>
     </v-btn-group>
     <v-sheet>
       <pre>
-        {{ 
-          JSON.stringify({
-            error: auth.error, 
-            processing: auth.processing, 
-            user: auth.user, 
-            token: auth.token, 
-            session: auth.session, 
-          }, null, 2)
+        {{
+          JSON.stringify(
+            {
+              error: auth.error,
+              processing: auth.processing,
+              user: auth.user,
+              token: auth.token,
+              session: auth.session,
+              x: varX,
+              variables: variables.ls.value
+            },
+            null,
+            2
+          )
         }}
       </pre>
     </v-sheet>
   </v-container>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>

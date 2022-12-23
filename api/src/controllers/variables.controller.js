@@ -1,5 +1,11 @@
-const model = require('../models/sequelize');
+
 const httpStatus = require('http-status');
+
+const model = require('../models/sequelize');
+const { useIO } = require('../config/io');
+const { IOEVENT_VARIABLES_CHANGE } = require('../config/vars');
+
+const ioNotifyChange = () => useIO((io) => io.emit(IOEVENT_VARIABLES_CHANGE));
 //
 module.exports = {
   // eslint-disable-next-line no-unused-vars
@@ -30,6 +36,7 @@ module.exports = {
     }
     //
     res.status(httpStatus.CREATED).json(node);
+    ioNotifyChange();
   },
   // eslint-disable-next-line no-unused-vars
   destroy: async (req, res, next) => {
@@ -38,6 +45,8 @@ module.exports = {
     const { Main } = await model;
     const rowsDeleted = await Main.destroy({ where: { id } });
 
-    return res.json({ rowsDeleted });
+    res.json({ rowsDeleted });
+    if (0 < rowsDeleted)
+      ioNotifyChange();
   },
 };

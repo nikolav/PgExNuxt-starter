@@ -79,4 +79,7 @@ module.exports = {
   CONFIG_IO: {
     public_channel: 'public',
   },
+
+  // @io-events
+  IOEVENT_VARIABLES_CHANGE: "change:variables",
 };
