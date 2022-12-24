@@ -8,3 +8,9 @@ export const QM__MESSAGES_POST = gql`
     }
   }
 `;
+
+export const QM__MESSAGES_DELETE = gql`
+  mutation messagesDelete($id: ID!) {
+    removeMessage(id: $id)
+  }
+`;
