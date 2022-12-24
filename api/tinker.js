@@ -16,9 +16,12 @@
 // const { createWriteStream } = require('fs')
 // const { Readable } = require("node:stream");
 
-const model = require('./src/models/sequelize')
+
 // 
 // const { hashSync } = require('bcryptjs')
+
+const { cached } = require('./src/utils');
+// const model = require('./src/models/sequelize')
 ; (async () => {
   // db.connect();
   // const { Tokens } = await model;
@@ -82,7 +85,12 @@ const model = require('./src/models/sequelize')
 
   // const b = Buffer.from([65]);
   // createWriteStream(path.join(__dirname, 'out')).write(b);
-  const { Message } = await model;  
-  const res = await Message.destroy({ where: { id: "11152b54-8493-4b9c-8f5d-47ec68343d46" } });
-  console.log({ res });
+
+  const cachedData = await cached({
+    key: "admin", 
+    data: () => Promise.resolve({name: "nikolav", email: "admin@nikolav.rs"})
+  });
+
+  console.log({ cachedData });
+
 })();

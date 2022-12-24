@@ -4,7 +4,7 @@ const logger = require('../../logger');
 
 let client = null;
 
-module.exports = () =>
+module.exports =
   new Promise(async (resolve, reject) => {
     if (client) return resolve(client);
 

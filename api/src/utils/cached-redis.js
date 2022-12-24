@@ -1,21 +1,21 @@
-const { redis: connectRedis } = require('../config/caching');
+const { redis: redisConnection } = require('../config/caching');
 const { redis } = require('../config/vars');
 
 module.exports = async ({
   key,
-  data = () => null,
+  data = () => Promise.resolve(null),
   decode = JSON.parse.bind(JSON),
   encode = JSON.stringify.bind(JSON),
 }) => {
-  const client = await connectRedis();
+  const client = await redisConnection;
   const cache = await client.get(key);
 
   // cache exists, parse/return
   if (null != cache) return decode(cache);
 
-  // get new string.cache
-  const newCache = encode(await data());
-  await client.set(key, newCache, { EX: redis.exiration });
+  // set new cache
+  const dataToCache = await data();
+  await client.set(key, encode(dataToCache), { EX: redis.exiration });
 
-  return newCache;
+  return dataToCache;
 };
