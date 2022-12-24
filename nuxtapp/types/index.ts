@@ -60,3 +60,10 @@ export interface IVariable {
   createdAt: string;
   updatedAt: string;
 }
+
+export interface IMessage {
+  id: string;
+  content: string;
+  createdAt?: string;
+  updatedAt?: string;
+}

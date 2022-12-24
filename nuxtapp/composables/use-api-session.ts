@@ -20,8 +20,8 @@ export const useApiSession = () => {
     })
   );
 
-  watch([AT, ST, ID], async () => {
-    if (AT.value && ST.value && ID.value) {
+  watch([AT, ST, ID], async ([newAT, newST, newID]) => {
+    if (newAT && newST && newID) {
       await refresh();
     }
   });

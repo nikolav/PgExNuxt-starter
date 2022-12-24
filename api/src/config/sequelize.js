@@ -7,7 +7,7 @@ module.exports = new Promise(async (resolve, reject) => {
   //
   try {
     connection = new Sequelize(pg, {
-      logging: isProductionEnv ? logger.info.bind(logger) : logDB,
+      logging: isProductionEnv ? logger.info.bind(logger) : (logDB && console.log.bind(console)),
     });
     // throw if no connection
     await connection.authenticate();

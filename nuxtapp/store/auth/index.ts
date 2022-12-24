@@ -25,8 +25,8 @@ export const useStoreAuth = defineStore("auth", () => {
   // fetch session data on user.id
   watch(
     () => user.value?.id,
-    async () => {
-      const ID = user.value?.id;
+    async (ID) => {
+      // const ID = user.value?.id;
       const ST = token.value?.sessionToken;
       const AT = token.value?.accessToken;
       if (!ID || !ST || !AT) return;
@@ -57,8 +57,8 @@ export const useStoreAuth = defineStore("auth", () => {
   // cache access-token in localStorage to auto-init user @mount
   watch(
     () => token.value?.accessToken,
-    () => {
-      const AT = token.value?.accessToken;
+    (AT) => {
+      // const AT = token.value?.accessToken;
       if (!AT) return;
       authCached.value = AT;
     }
@@ -93,9 +93,9 @@ export const useStoreAuth = defineStore("auth", () => {
   const { onLogin: onAuthApollo, onLogout: onAuthApolloLogout } = useApollo();
   watch(
     () => token.value?.accessToken,
-    () => {
-      const AT = token.value?.accessToken;
-      AT && onAuthApollo(AT);
+    (AT) => {
+      // const AT = token.value?.accessToken;
+      if (AT) onAuthApollo(AT);
     }
   );
 

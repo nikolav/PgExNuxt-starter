@@ -42,7 +42,7 @@ const validated = {
 
 // @use; requestValidationSchemaCheck as check
 // const { body, query, params } =
-//   await check(event, { body: Schema });
+//   await check(event, { body: <schema> });
 export const requestValidationSchemaCheck = (
   event: H3Event,
   schema: TSchemaValidation

@@ -2,6 +2,8 @@ const model = require('../../../../models/sequelize');
 const withMiddleware = require('../../../../utils/resolver-middlewares');
 const checks = require('../../../../validations/checks');
 const assign = require('lodash/assign');
+const { IOEVENT_MESSAGES_CHANGE } = require('../../../../config/vars');
+const { useIO } = require('../../../../config/io');
 /**
  * @api             {post} v1/graphql Add a Message
  * @apiName         GraphqlAddMessage
@@ -37,6 +39,7 @@ module.exports = withMiddleware(
   async (_source, { content }, { res, httpStatus }) => {
     const { Message } = await model;
     const message = await Message.create({ content });
+    useIO(io => io.emit(IOEVENT_MESSAGES_CHANGE));
     // graphql http plugin set response code
     assign(res, { CODE: httpStatus.CREATED });
     return message;

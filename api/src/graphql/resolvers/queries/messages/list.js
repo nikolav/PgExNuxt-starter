@@ -1,4 +1,5 @@
 const model = require('../../../../models/sequelize');
+const { dateSortedBy } = require('../../../../utils');
 
 /**
  * @api             {post} v1/graphql List all Messages
@@ -29,7 +30,8 @@ const model = require('../../../../models/sequelize');
  * @apiError  Unauthorized 401  Unauthorized -- Only authenticated users can access the data
  */
 // eslint-disable-next-line no-unused-vars
-module.exports = async (_p, _a, _c) => {
+module.exports = async (_src, _args, _ctx) => {
   const { Message } = await model;
-  return await Message.findAll();
+  const messages = await Message.findAll();
+  return messages.sort(dateSortedBy("createdAt"));
 };

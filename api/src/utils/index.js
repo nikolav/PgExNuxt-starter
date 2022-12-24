@@ -9,6 +9,7 @@ const Null = () => null;
 module.exports = {
   cached: require('./cached-redis'),
   clamp,
+  dateSortedBy: require('./date-sorted-by'),
   False,
   groupByCount: require('./group-by-count'),
   gzip: require('./gzip'),

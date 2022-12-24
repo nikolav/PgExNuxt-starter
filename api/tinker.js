@@ -82,7 +82,7 @@ const model = require('./src/models/sequelize')
 
   // const b = Buffer.from([65]);
   // createWriteStream(path.join(__dirname, 'out')).write(b);
-  const { Main } = await model;  
-  const res = await Main.findOne({ where: { name: "app.name" }});
-  console.log(res.toJSON());
+  const { Message } = await model;  
+  const res = await Message.destroy({ where: { id: "11152b54-8493-4b9c-8f5d-47ec68343d46" } });
+  console.log({ res });
 })();

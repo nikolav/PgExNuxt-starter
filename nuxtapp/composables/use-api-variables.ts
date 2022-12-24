@@ -21,8 +21,8 @@ export const useApiVariables = () => {
   $socket?.on(IOEVENT_VARIABLES_CHANGE, reloadVariables);
   onUnmounted(() => $socket?.off(IOEVENT_VARIABLES_CHANGE, reloadVariables));
 
-  watch(AT, () => {
-    if (AT.value)
+  watch(AT, (newAT) => {
+    if (newAT)
       reloadVariables();
   });
 

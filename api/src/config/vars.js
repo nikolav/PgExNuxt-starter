@@ -82,4 +82,5 @@ module.exports = {
 
   // @io-events
   IOEVENT_VARIABLES_CHANGE: "change:variables",
+  IOEVENT_MESSAGES_CHANGE: "change:messages",
 };

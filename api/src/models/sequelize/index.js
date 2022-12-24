@@ -54,11 +54,14 @@ module.exports = new Promise(async (resolve, reject) => {
     // schema.push
     await client
 
-      // just create new tables, no drop-create
+      // create new tables, dont drop-create
       .sync();
 
-    // drop/rebuild tables
+    // drop/rebuild *tables
     // .sync({ force: true });
+
+    // drop/rebuild tables matchig regex
+    // .sync({ force: true, match: /_temp$/ });
 
     // modify table schema and columns
     // .sync({ alter: true });

@@ -28,7 +28,7 @@ Content-Type: application/json
 Authorization: Bearer -
 
 {
-  "query": "mutation { addMessage(content: \"223\") { id, content } }"
+  "query": "mutation { addMessage(content: \"a2\") { id, content } }"
 }
 
 ###

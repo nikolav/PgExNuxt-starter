@@ -13,7 +13,7 @@ export default defineNuxtConfig({
   runtimeConfig: {
     // secrests, vars, @server
 
-    // 
+    //
     public: {},
   },
   modules: [
@@ -105,11 +105,18 @@ export default defineNuxtConfig({
     // injectPosition: 0,
     viewer: false,
   },
+
+  // https://apollo.nuxtjs.org/getting-started/configuration#configuration
   apollo: {
     clients: {
       default: {
         httpEndpoint: ENDPOINT_GRAPHQL,
       },
     },
+    // autoImports: true,
+    // authType: 'Bearer',
+    // authHeader: 'Authorization',
+    // tokenStorage: 'cookie',
+    // proxyCookies: true,
   },
 });

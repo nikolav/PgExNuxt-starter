@@ -9,6 +9,7 @@ import {
   URL_AUTH_WHO,
   URL_VARIABLES,
   IOEVENT_VARIABLES_CHANGE,
+  IOEVENT_MESSAGES_CHANGE,
 } from "@/config";
 
 // @client, useAppConfig()
@@ -35,7 +36,8 @@ export default defineAppConfig({
   URL_REGISTER,
   URL_AUTH_SESSION,
   URL_AUTH_WHO,
-  // 
+  //
   URL_VARIABLES,
   IOEVENT_VARIABLES_CHANGE,
+  IOEVENT_MESSAGES_CHANGE,
 });

@@ -1,4 +1,7 @@
 const model = require('../../../../models/sequelize');
+const { IOEVENT_MESSAGES_CHANGE } = require('../../../../config/vars');
+const { useIO } = require('../../../../config/io');
+
 /**
  * @api             {post} v1/graphql Remove Message
  * @apiName         GraphqlRemoveMessage
@@ -26,5 +29,9 @@ const model = require('../../../../models/sequelize');
 // eslint-disable-next-line no-unused-vars
 module.exports = async (_source, { id }, _context) => {
   const { Message } = await model;
-  return await Message.destroy({ where: { id } });
+  const rowsDeleted = await Message.destroy({ where: { id } });
+  if (0 < rowsDeleted)
+    useIO(io => io.emit(IOEVENT_MESSAGES_CHANGE));
+  // 
+  return rowsDeleted;
 };

@@ -40,6 +40,10 @@ const session = useApiSession();
 const putSession = () => session.put({x: Math.random()});
 const clearSession = () => session.clear();
 
+// @@messages
+const messages = useApiMessages();
+const messageAdd = () => messages.post(`message --${Math.random()}`);
+
 </script>
 
 <template>
@@ -75,12 +79,16 @@ const clearSession = () => session.clear();
       <v-btn size="small" color="secondary" variant="outlined" @click="clearSession">
         sess clear
       </v-btn>
+      <v-btn size="small" color="secondary" variant="outlined" @click="messageAdd">
+        message add
+      </v-btn>
     </v-btn-group>
     <v-sheet>
       <pre>
         {{
           JSON.stringify(
             {
+              messages: messages.ls.value,
               error: auth.error,
               processing: auth.processing,
               user: auth.user,
