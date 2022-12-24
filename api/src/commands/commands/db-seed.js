@@ -54,4 +54,26 @@ module.exports = (program) => {
 
       console.log(chalk.green(`@main table seeded, [${c}] added`));
     });
+
+  dbCmdSeed
+    .command('messages')
+    .description('seeds @messages table')
+    .argument('[count]', 'add N random posts @messages', 1)
+    // eslint-disable-next-line no-unused-vars
+    .action(async (count = 1, command) => {
+      const c = clamp(count, 0, MAX_DBSEED_COUNT);
+      if (!(0 < c)) return;
+
+      const { Message } = await model;
+      await Message.bulkCreate(
+        map(range(c), () => ({
+          content: `message --${testId()}`,
+        })),
+        {
+          validation: true,
+        }
+      );
+
+      console.log(chalk.green(`@messages table seeded, [${c}] added`));
+    });
 };
