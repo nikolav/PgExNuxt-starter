@@ -12,12 +12,15 @@ export const useApiMessages = () => {
   const { IOEVENT_MESSAGES_CHANGE } = useAppConfig();
 
   // https://v4.apollo.vuejs.org/api/use-query.html#usequery
-  const { result: data, refetch } = useQuery<IMessage[]>(Q__MESSAGES_LIST);
+  const { result: data, refetch } = useQuery<{ messages?: IMessage[] }>(
+    Q__MESSAGES_LIST
+  );
+  const ls = computed(() => data.value?.messages);
 
   // https://v4.apollo.vuejs.org/api/use-mutation.html#usemutation
   const { mutate: mutatePost } = useMutation(QM__MESSAGES_POST);
   const { mutate: mutateDelete } = useMutation(QM__MESSAGES_DELETE);
-  
+
   const reloadQuery = async () => await refetch();
 
   $socket?.on(IOEVENT_MESSAGES_CHANGE, reloadQuery);
@@ -41,7 +44,7 @@ export const useApiMessages = () => {
   };
 
   return {
-    ls: data,
+    ls,
     post,
     rm,
     reload: reloadQuery,

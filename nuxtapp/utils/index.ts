@@ -33,5 +33,6 @@ export {
   reduce,
   set,
 };
+export { default as forEach } from "./for-each";
 export { default as hasOwn } from "./has-own";
 export * from "./request-validation-schema-check";

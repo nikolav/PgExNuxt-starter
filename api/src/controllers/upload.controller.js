@@ -10,6 +10,7 @@ module.exports = {
     // files stored in prev mw. @upload.config
     // loop stored files, save file info in db
     const { files, body, user } = req;
+    
     if (!files.length) return res.json([]);
 
     const { Upload } = await model;

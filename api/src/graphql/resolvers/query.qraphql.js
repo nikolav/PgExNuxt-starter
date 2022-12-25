@@ -1,11 +1,14 @@
 const Query = {
   status: require('./queries/status.graphql'),
 
-  // @messsages
+  // @@messsages
   messages: require('./queries/messages/list'),
   message: require('./queries/messages/find-one-by-id'),
 
-  // testing
+  // @@storage
+  storageListFiles: require('./queries/storage/list'),
+
+  // @@testing
   fakePosts: require('./queries/testing/fake-posts'),
   fakeUsers: require('./queries/testing/fake-users'),
 };

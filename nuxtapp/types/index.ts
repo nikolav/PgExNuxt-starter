@@ -1,5 +1,6 @@
+
 const objectEmpty = {};
-//
+
 export type OrNull<T> = T | null;
 export type OrNoValue<T> = T | null | undefined;
 export type OneOrMany<T> = T | T[];
@@ -62,8 +63,31 @@ export interface IVariable {
 }
 
 export interface IMessage {
+  __typename?: string;
   id: string;
   content: string;
   createdAt?: string;
   updatedAt?: string;
+}
+
+export interface IStorageFile {
+  __typename?: string;
+  id: string;
+  fileID: string;
+  user_id: string;
+  title?: string;
+  description?: string;
+  filename: string;
+  path: string;
+  size?: number;
+  mimetype?: string;
+  meta?: string;
+  createdAt?: string;
+  updatedAt?: string;
+}
+export interface IFileToUpload {
+  name: string;
+  file: any;
+  title?: OrNoValue<string>;
+  description?: OrNoValue<string>;
 }

@@ -36,19 +36,45 @@ const typeDefs = `#graphql
     body: String!
   }
 
+  type File {
+    id: ID!
+    fileID: String!
+    user_id: String!
+    title: String
+    description: String
+    filename: String!
+    path: String!
+    size: Int
+    mimetype: String
+    meta: String
+    createdAt: String
+    updatedAt: String
+  }
+
   type Query {
+
+    # etc.
     status: String!
+
+    # messages
     messages: [Message]!
     message(id: ID!): Message
+
+    # storage
+    storageListFiles: [File]!
 
     # testing
     fakePosts: [FakePost!]!
     fakeUsers: [FakeUser!]!
+    
   }
 
   type Mutation {
+
+    # messages
     addMessage(content: String!): Message!
     removeMessage(id: ID!): Int!
+
   }
 `;
 

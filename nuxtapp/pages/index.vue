@@ -44,6 +44,33 @@ const clearSession = () => session.clear();
 const messages = useApiMessages();
 const messageAdd = () => messages.post(`message --${Math.random()}`);
 
+// @@storage
+const file1$ = ref();
+const file1_name = "file_1";
+const file1_title = ref("");
+const file1_description = ref("");
+const setFile1 = ([file1]: any[]) => {
+  file1$.value = file1;
+}
+const resetFile1 = () => {
+  file1$.value = null;
+  file1_title.value = "";
+  file1_description.value = "";
+};
+const storage = useApiStorage();
+const onStorage = async () => {
+  const uploadedFiles = await storage.upload(
+    {
+      name: file1_name,
+      file: file1$.value,
+      title: file1_title.value,
+      description: file1_description.value,
+    }
+  );
+  if (0 < uploadedFiles.length)
+    resetFile1();
+};
+
 </script>
 
 <template>
@@ -84,10 +111,26 @@ const messageAdd = () => messages.post(`message --${Math.random()}`);
       </v-btn>
     </v-btn-group>
     <v-sheet>
+      <form @submit.prevent="onStorage" noValidate>
+        <v-file-input 
+          :name="file1_name" 
+          clearable 
+          show-size
+          label="file1" 
+          @update:modelValue="setFile1"></v-file-input>
+        <v-text-field autocomplete="off" type="text" clearable label="file1 title" v-model="file1_title"></v-text-field>
+        <v-text-field autocomplete="off" type="text" clearable label="file1 description" v-model="file1_description"></v-text-field>
+        <v-btn type="submit" block color="secondary" variant="outlined">
+          upload
+        </v-btn>
+      </form>
+    </v-sheet>
+    <v-sheet>
       <pre>
         {{
           JSON.stringify(
             {
+              files: storage.files.value,
               messages: messages.ls.value,
               error: auth.error,
               processing: auth.processing,
