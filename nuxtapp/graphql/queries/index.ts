@@ -8,5 +8,5 @@ export const Q__MESSAGES_LIST = gql`
 `;
 
 export const Q__STORAGE_LIST = gql`
-  query storageList { storageListFiles { id, fileID, user_id, title, description, filename, path, size, mimetype, meta, createdAt, updatedAt } }
+  query storageList { storageListFiles { id, fileID, user_id, title, description, filename, path, size, mimetype, meta, public, createdAt, updatedAt } }
 `;

@@ -82,6 +82,7 @@ export interface IStorageFile {
   size?: number;
   mimetype?: string;
   meta?: string;
+  public: boolean;
   createdAt?: string;
   updatedAt?: string;
 }

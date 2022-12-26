@@ -25,6 +25,9 @@ module.exports = {
   ERROR_LOG: process.env.ERROR_LOG,
   COMBINED_LOG: process.env.COMBINED_LOG,
 
+  // @urls
+  STORAGE_PUBLIC_URL: `${process.env.API_HOST}/v1/shared`,
+
   // @paths
   storagePath: path.join(__dirname, '../../storage'),
   pdfTemplatesPath: path.join(__dirname, '../services/pdf'),

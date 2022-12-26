@@ -1,6 +1,7 @@
 const fs = require('fs/promises');
 const { DataTypes, Model } = require('sequelize');
 const logger = require('../../../config/logger');
+const { STORAGE_PUBLIC_URL } = require('../../../config/vars');
 
 class Upload extends Model {
   static async ownsFile(user, fileID) {
@@ -33,6 +34,17 @@ class Upload extends Model {
       logger.error(error.message);
     }
     return removedFileID;
+  }
+
+  // allow public access to file
+  // instance method; node.publicAccess(true);
+  async publicAccess(flag = true) {
+    await this.update({ public: true === flag });
+    return this;
+  }
+
+  async publicUrl() {
+    return true === this.public ? `${STORAGE_PUBLIC_URL}/${this.fileID}` : "";
   }
 }
 
@@ -76,6 +88,8 @@ module.exports = (client) => {
       mimetype: DataTypes.STRING,
 
       meta: DataTypes.STRING,
+
+      public: DataTypes.BOOLEAN
     },
     {
       modelName: 'Upload',

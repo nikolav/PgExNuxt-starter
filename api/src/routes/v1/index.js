@@ -11,6 +11,7 @@ router.use('/variables', require('./variables.route'));
 router.use('/mail', require('./mail.route'));
 router.use('/upload', require('./upload.route'));
 router.use('/download', require('./download.route'));
+router.use('/shared', require('./shared.route'));
 
 (async () => {
   router.use('/graphql', await apolloGraphql);

@@ -47,6 +47,7 @@ const typeDefs = `#graphql
     size: Int
     mimetype: String
     meta: String
+    public: Boolean
     createdAt: String
     updatedAt: String
   }
