@@ -10,7 +10,7 @@ router
   /**
    * @api             {post} v1/upload Upload files and data
    * @apiName         FilesUpload
-   * @apiGroup        Upload
+   * @apiGroup        Storage-Upload
    * @apiDescription  Upload files and data
    * @apiVersion      1.0.0
    * @apiPermission   token

@@ -7,7 +7,7 @@ module.exports = () =>
   mailer.sendMail({
     message: {
       to: adminEmail,
-      subject: `error-log@scheduler.app`,
+      subject: `error-log@app.scheduler`,
     },
     locals: {
       message: readFileSync(pathJoin(LOGS_PATH, ERROR_LOG)),

@@ -14,13 +14,12 @@ module.exports = (client) =>
         type: DataTypes.TEXT,
         allowNull: false,
         unique: true,
-        //
+        // // https://sequelize.org/docs/v6/core-concepts/validations-and-constraints/#per-attribute-validations
         // validates @create/save/update @validator.js
         //   validate: { <rule>: <value> },
         //   validate: { is: /^\w{10}$/ },
         //   validate: { len: [2, 5] },
         //   validate: { isIn: [['yes', 'no']] },
-        //
         // throws <SequelizeUniqueConstraintError>
       },
       value: {
@@ -44,5 +43,12 @@ module.exports = (client) =>
     {
       tableName: 'main',
       timestamps: true,
+      // // https://sequelize.org/docs/v6/core-concepts/validations-and-constraints/#model-wide-validations
+      // validate: {
+      //   customModelWideValidation() {
+      //     // throw @invalid
+      //     // this == model instance
+      //   }
+      // }
     }
   );

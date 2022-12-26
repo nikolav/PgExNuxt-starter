@@ -24,8 +24,8 @@ class Upload extends Model {
       const file$ = await this.findOne({ where: { fileID } });
       if (file$) {
         const { path } = file$;
-        await fs.unlink(path);
         await file$.destroy();
+        await fs.unlink(path);
         removedFileID = fileID;
       }
     } catch (error) {

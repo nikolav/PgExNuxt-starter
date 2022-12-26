@@ -19,6 +19,7 @@ module.exports = new Promise(async (resolve, reject) => {
     const Tokens = configureTokens(client);
     const Upload = configureUpload(client);
 
+    // // https://sequelize.org/docs/v6/core-concepts/assocs/
     // // declare schema.relations here
     // // 1-m
     // Post.belongsTo(User, { constraints: true, onDelete: 'CASCADE', as: 'author', foreignKey: 'user_id' });
@@ -34,14 +35,20 @@ module.exports = new Promise(async (resolve, reject) => {
     // Product.belongsToMany(Cart, { through: CartItem });
     // // m-n
     // Order.belongsToMany(Product, { through: OrderItem });
-    // Product.belongsToMany(Order, { through: OrderItem });
+    // Product.belongsToMany(Order, { through: OrderItem, uniqueKey: string/name | false/dont-create-uniq-key });
+
+    // To create a One-To-One relationship, the hasOne and belongsTo associations are used together;
+    // To create a One-To-Many relationship, the hasMany and belongsTo associations are used together;
+    // To create a Many-To-Many relationship, two belongsToMany calls are used together.
 
     // quick shortcut in models
     // ..or, RoleUser.Role = client.models.Role
+
     RoleUser.Role = Role;
 
     // collect all models in namespace
     const model = {
+      client,
       Main,
       Message,
       Session,

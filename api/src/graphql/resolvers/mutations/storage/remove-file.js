@@ -1,7 +1,7 @@
 /**
  * @api             {post} v1/graphql Remove File
  * @apiName         GraphqlRemoveFile
- * @apiGroup        Graphql-File
+ * @apiGroup        Graphql-Storage
  * @apiDescription  Removes a file
  * @apiVersion      1.0.0
  * @apiPermission   token

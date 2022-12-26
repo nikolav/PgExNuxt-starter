@@ -20,8 +20,8 @@
 // 
 // const { hashSync } = require('bcryptjs')
 
-const { cached } = require('./src/utils');
-// const model = require('./src/models/sequelize')
+// const { cached } = require('./src/utils');
+const model = require('./src/models/sequelize')
 ; (async () => {
   // db.connect();
   // const { Tokens } = await model;
@@ -85,12 +85,9 @@ const { cached } = require('./src/utils');
 
   // const b = Buffer.from([65]);
   // createWriteStream(path.join(__dirname, 'out')).write(b);
-
-  const cachedData = await cached({
-    key: "admin", 
-    data: () => Promise.resolve({name: "nikolav", email: "admin@nikolav.rs"})
-  });
-
-  console.log({ cachedData });
+  
+  const { Main } = await model;
+  const vars = await Main.findAll({ raw: true });
+  console.log({ vars });
 
 })();

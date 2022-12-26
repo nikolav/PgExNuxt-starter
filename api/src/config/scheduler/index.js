@@ -1,15 +1,15 @@
 const { CronJob } = require('cron');
 const { AT_MIDNIGHT } = require('./cron-time-formats');
 const {
-  // logDate,
   mailErrorLog,
+  // logDate,
 } = require('./cron-jobs');
 
 // https://www.npmjs.com/package/cron
 // https://github.com/kelektiv/node-cron/tree/master/examples
 
-// const job1 = new CronJob(AT_MIDNIGHT, logDate);
-const job2 = new CronJob(AT_MIDNIGHT, mailErrorLog);
+const job1 = new CronJob(AT_MIDNIGHT, mailErrorLog);
+// const job2 = new CronJob(AT_MIDNIGHT, logDate);
 
-// job1.start();
-job2.start();
+job1.start();
+// job2.start();
