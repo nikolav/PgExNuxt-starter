@@ -14,3 +14,9 @@ export const QM__MESSAGES_DELETE = gql`
     removeMessage(id: $id)
   }
 `;
+
+export const QM__STORAGE_REMOVE = gql`
+  mutation removeFile($fileID: String!) {
+    storageRemoveFile(fileID: $fileID)
+  }
+`;

@@ -1,5 +1,6 @@
 const fs = require('fs/promises');
 const { DataTypes, Model } = require('sequelize');
+const logger = require('../../../config/logger');
 
 class Upload extends Model {
   static async ownsFile(user, fileID) {
@@ -18,18 +19,20 @@ class Upload extends Model {
   }
 
   static async unlink(fileID) {
+    let removedFileID = "";
     try {
       const file$ = await this.findOne({ where: { fileID } });
-      if (!file$) return;
-
-      const { path } = file$;
-      await fs.unlink(path);
-      await file$.destroy();
-      //
-      return fileID;
+      if (file$) {
+        const { path } = file$;
+        await fs.unlink(path);
+        await file$.destroy();
+        removedFileID = fileID;
+      }
     } catch (error) {
-      throw error;
+      // throw error;
+      logger.error(error.message);
     }
+    return removedFileID;
   }
 }
 

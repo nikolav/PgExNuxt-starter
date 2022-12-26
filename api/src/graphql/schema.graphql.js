@@ -75,6 +75,9 @@ const typeDefs = `#graphql
     addMessage(content: String!): Message!
     removeMessage(id: ID!): Int!
 
+    # storage
+    storageRemoveFile(fileID: String!): String!
+
   }
 `;
 

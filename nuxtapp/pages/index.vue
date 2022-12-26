@@ -37,7 +37,7 @@ const varX = computed(() => {
 
 // @@session
 const session = useApiSession();
-const putSession = () => session.put({x: Math.random()});
+const putSession = () => session.put({ x: Math.random() });
 const clearSession = () => session.clear();
 
 // @@messages
@@ -51,7 +51,7 @@ const file1_title = ref("");
 const file1_description = ref("");
 const setFile1 = ([file1]: any[]) => {
   file1$.value = file1;
-}
+};
 const resetFile1 = () => {
   file1$.value = null;
   file1_title.value = "";
@@ -59,18 +59,24 @@ const resetFile1 = () => {
 };
 const storage = useApiStorage();
 const onStorage = async () => {
-  const uploadedFiles = await storage.upload(
-    {
-      name: file1_name,
-      file: file1$.value,
-      title: file1_title.value,
-      description: file1_description.value,
-    }
-  );
-  if (0 < uploadedFiles.length)
-    resetFile1();
+  const uploadedFiles = await storage.upload({
+    name: file1_name,
+    file: file1$.value,
+    title: file1_title.value,
+    description: file1_description.value,
+  });
+  if (0 < uploadedFiles.length) resetFile1();
 };
-
+const dlFileID = ref("");
+const onStorageDowload = async () => {
+  const downloadedFileID = await storage.download(dlFileID.value);
+  console.log({ downloadedFileID });
+};
+const rmFileID = ref("");
+const onStorageRemove = async () => {
+  const removedFileID = await storage.remove(rmFileID.value);
+  console.log({ removedFileID });
+};
 </script>
 
 <template>
@@ -80,18 +86,13 @@ const onStorage = async () => {
       <v-btn
         size="small"
         :prepend-icon="icon"
-        color="secondary"
+        color="primary"
         variant="outlined"
         @click="login"
       >
         login
       </v-btn>
-      <v-btn
-        size="small"
-        color="secondary"
-        variant="outlined"
-        @click="logout"
-      >
+      <v-btn size="small" color="secondary" variant="outlined" @click="logout">
         logout
       </v-btn>
       <v-btn size="small" color="secondary" variant="outlined" @click="putVar">
@@ -100,29 +101,101 @@ const onStorage = async () => {
       <v-btn size="small" color="secondary" variant="outlined" @click="dropVar">
         drop var
       </v-btn>
-      <v-btn size="small" color="secondary" variant="outlined" @click="putSession">
+      <v-btn
+        size="small"
+        color="secondary"
+        variant="outlined"
+        @click="putSession"
+      >
         sess.put
       </v-btn>
-      <v-btn size="small" color="secondary" variant="outlined" @click="clearSession">
+      <v-btn
+        size="small"
+        color="secondary"
+        variant="outlined"
+        @click="clearSession"
+      >
         sess clear
       </v-btn>
-      <v-btn size="small" color="secondary" variant="outlined" @click="messageAdd">
+      <v-btn
+        size="small"
+        color="secondary"
+        variant="outlined"
+        @click="messageAdd"
+      >
         message add
       </v-btn>
     </v-btn-group>
     <v-sheet>
       <form @submit.prevent="onStorage" noValidate>
-        <v-file-input 
-          :name="file1_name" 
-          clearable 
+        <v-file-input
+          :name="file1_name"
+          clearable
           show-size
-          label="file1" 
-          @update:modelValue="setFile1"></v-file-input>
-        <v-text-field autocomplete="off" type="text" clearable label="file1 title" v-model="file1_title"></v-text-field>
-        <v-text-field autocomplete="off" type="text" clearable label="file1 description" v-model="file1_description"></v-text-field>
-        <v-btn type="submit" block color="secondary" variant="outlined">
+          label="file"
+          @update:modelValue="setFile1"
+        ></v-file-input>
+        <v-text-field
+          autocomplete="off"
+          type="text"
+          clearable
+          label="file.title"
+          v-model="file1_title"
+        ></v-text-field>
+        <v-text-field
+          autocomplete="off"
+          type="text"
+          clearable
+          label="file.description"
+          v-model="file1_description"
+        ></v-text-field>
+        <v-btn type="submit" block color="primary" variant="outlined">
           upload
         </v-btn>
+      </form>
+    </v-sheet>
+    <v-sheet>
+      <form noValidate @submit.prevent="onStorageDowload">
+        <v-container fluid>
+          <v-row no-gutters>
+            <v-col cols="12" sm="8">
+              <v-text-field
+                autocomplete="off"
+                type="text"
+                clearable
+                label="download fileID"
+                v-model="dlFileID"
+              ></v-text-field>
+            </v-col>
+            <v-col cols="12" sm="4" class="pa-1">
+              <v-btn type="submit" block color="primary" variant="outlined"
+                >download</v-btn
+              >
+            </v-col>
+          </v-row>
+        </v-container>
+      </form>
+    </v-sheet>
+    <v-sheet>
+      <form noValidate @submit.prevent="onStorageRemove">
+        <v-container fluid>
+          <v-row no-gutters>
+            <v-col cols="12" sm="8">
+              <v-text-field
+                autocomplete="off"
+                type="text"
+                clearable
+                label="delete fileID"
+                v-model="rmFileID"
+              ></v-text-field>
+            </v-col>
+            <v-col cols="12" sm="4" class="pa-1">
+              <v-btn type="submit" block color="primary" variant="outlined"
+                >delete</v-btn
+              >
+            </v-col>
+          </v-row>
+        </v-container>
       </form>
     </v-sheet>
     <v-sheet>
