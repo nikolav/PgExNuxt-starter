@@ -19,8 +19,8 @@ module.exports = {
   logDB,
 
   // @logs
-  LOGS_PATH: path.join(__dirname, '../../logs'),
   logs: isProductionEnv ? 'combined' : 'dev', // morgan log mode
+  LOGS_PATH: path.join(__dirname, '../../logs'),
   ACCESS_LOG: process.env.ACCESS_LOG,
   ERROR_LOG: process.env.ERROR_LOG,
   COMBINED_LOG: process.env.COMBINED_LOG,
@@ -79,8 +79,6 @@ module.exports = {
   CONFIG_IO: {
     public_channel: 'public',
   },
-
-  // @io-events
   IOEVENT_VARIABLES_CHANGE: "change:variables",
   IOEVENT_MESSAGES_CHANGE: "change:messages",
   IOEVENT_STORAGE_CHANGE: "change:storage",

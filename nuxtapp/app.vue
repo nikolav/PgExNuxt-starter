@@ -1,16 +1,15 @@
 <script setup lang="ts">
 import "animate.css";
-
 const { OVERLAYS_ID_START, OVERLAYS_ID_END } = useAppConfig();
 </script>
 
 <template>
   <main>
-    <div :id="OVERLAYS_ID_START"/>
+    <div :id="OVERLAYS_ID_START" />
     <NuxtLayout>
       <NuxtPage />
     </NuxtLayout>
-    <div :id="OVERLAYS_ID_END"/>
+    <div :id="OVERLAYS_ID_END" />
   </main>
 </template>
 

@@ -1,3 +1,4 @@
+const assign = require('lodash/assign');
 const range = require('lodash/range');
 const map = require('lodash/map');
 const clamp = require('lodash/clamp');
@@ -7,6 +8,7 @@ const True = () => true;
 const Null = () => null;
 
 module.exports = {
+  assign,
   cached: require('./cached-redis'),
   clamp,
   dateSortedBy: require('./date-sorted-by'),

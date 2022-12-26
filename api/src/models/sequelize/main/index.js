@@ -44,6 +44,5 @@ module.exports = (client) =>
     {
       tableName: 'main',
       timestamps: true,
-      // logging: false,
     }
   );

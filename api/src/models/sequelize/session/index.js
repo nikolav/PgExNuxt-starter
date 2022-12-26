@@ -37,7 +37,6 @@ module.exports = (client) => {
       // json data, gzipped
       data: {
         type: DataTypes.TEXT,
-        //
         get() {
           return gzip.unzip(this.getDataValue('data'));
         },

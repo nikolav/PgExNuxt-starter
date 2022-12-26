@@ -1,8 +1,10 @@
 const httpStatus = require('http-status');
 const passport = require('passport');
+
 const User = require('../models/user.model');
 const model = require('../models/sequelize');
 const APIError = require('../errors/api-error');
+const { assign } = require('../utils');
 
 const ADMIN = 'admin';
 const LOGGED_USER = '_loggedUser';
@@ -40,20 +42,19 @@ const handleJWT =
       return next(apiError);
     }
 
-    // user passes auth here
-    // can @session.init
+    // auth passes
+    // init user/session
 
     const { Session } = await model;
     // eslint-disable-next-line no-unused-vars
-    const [sess, _sessCreated] = await Session.findOrCreate({
+    const [session, _sessCreated] = await Session.findOrCreate({
       // @read if session exists
       where: { user_id: id },
       // @default write empty session
       defaults: { data: JSON.stringify({}) },
     });
 
-    req.user = user;
-    req.session = sess;
+    assign(req, { user, session });
 
     return next();
   };
@@ -63,11 +64,11 @@ exports.LOGGED_USER = LOGGED_USER;
 
 exports.authorize =
   (roles = User.roles) =>
-  (req, res, next) =>
-    passport.authenticate(
-      'jwt',
-      { session: false },
-      handleJWT(req, res, next, roles)
-    )(req, res, next);
+    (req, res, next) =>
+      passport.authenticate(
+        'jwt',
+        { session: false },
+        handleJWT(req, res, next, roles)
+      )(req, res, next);
 //
 // exports.oAuth = (service) => passport.authenticate(service, { session: false });

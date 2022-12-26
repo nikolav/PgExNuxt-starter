@@ -89,13 +89,19 @@ export const useStoreAuth = defineStore("auth", () => {
 
   // apply auth token to Apollo client
   // required if GraphQL API expects authentication to be passed via a HTTP header
-  // https://apollo.nuxtjs.org/getting-started/auth-helpers#onlogin
-  const { onLogin: onAuthApollo, onLogout: onAuthApolloLogout } = useApollo();
+  const {
+    // https://apollo.nuxtjs.org/getting-started/auth-helpers#onlogin
+    onLogin: onAuthApollo,
+    // https://apollo.nuxtjs.org/getting-started/auth-helpers#onlogout-reference
+    onLogout: onAuthApolloLogout,
+  } = useApollo();
   watch(
     () => token.value?.accessToken,
-    (AT) => {
-      // const AT = token.value?.accessToken;
-      if (AT) onAuthApollo(AT);
+    async (AT) => {
+      if (AT) {
+        await onAuthApollo(AT, undefined, true);
+        console.log({ "onLoginApollo-AT": AT });
+      }
     }
   );
 
@@ -116,11 +122,11 @@ export const useStoreAuth = defineStore("auth", () => {
     }
   };
   const logout = async () => {
+    await onAuthApolloLogout(undefined, true);
     user.value = null;
     token.value = null;
     session.value = null;
     authCached.value = "";
-    onAuthApolloLogout();
   };
 
   initializeAuthFromStorage();
