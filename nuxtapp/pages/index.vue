@@ -82,6 +82,11 @@ const fileIdUrl = ref("");
 const onStoragePublicUrl = async () => {
   console.log({ url: await storage.publicUrl(fileIdUrl.value) });
 };
+
+const likeTopicID = ref("122");
+const likes = useApiLikes(likeTopicID.value);
+const onLike = likes.like;
+const onUnlike = likes.unlike;
 </script>
 
 <template>
@@ -219,6 +224,48 @@ const onStoragePublicUrl = async () => {
             <v-col cols="12" sm="4" class="pa-1">
               <v-btn type="submit" block color="primary" variant="outlined"
                 >url</v-btn
+              >
+            </v-col>
+          </v-row>
+        </v-container>
+      </form>
+    </v-sheet>
+    <v-sheet>
+      <form noValidate @submit.prevent>
+        <v-container fluid>
+          <v-row no-gutters>
+            <v-col cols="12" sm="3">
+              <v-text-field
+                autocomplete="off"
+                type="text"
+                clearable
+                label="topicID to like"
+                v-model="likeTopicID"
+              ></v-text-field>
+            </v-col>
+            <v-col cols="12" sm="3">
+              <p class="ma-1 pa-1">
+                likes# {{ likes.likeCount }}
+              </p>
+            </v-col>
+            <v-col cols="12" sm="3" class="pa-1">
+              <v-btn
+                @click="onLike"
+                type="button"
+                block
+                color="secondary"
+                variant="outlined"
+                >like</v-btn
+              >
+            </v-col>
+            <v-col cols="12" sm="3" class="pa-1">
+              <v-btn
+                @click="onUnlike"
+                type="button"
+                block
+                color="secondary"
+                variant="outlined"
+                >unlike</v-btn
               >
             </v-col>
           </v-row>

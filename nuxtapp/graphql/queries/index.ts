@@ -34,3 +34,9 @@ export const Q__STORAGE_LIST = gql`
     }
   }
 `;
+
+export const Q__LIKES_COUNT = gql`
+  query likeCountByTopic($topicID: String!) {
+    likeCount(topicID: $topicID)
+  }
+`;

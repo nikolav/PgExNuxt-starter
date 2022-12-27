@@ -84,5 +84,9 @@ module.exports = {
   },
   IOEVENT_VARIABLES_CHANGE: "change:variables",
   IOEVENT_MESSAGES_CHANGE: "change:messages",
-  IOEVENT_STORAGE_CHANGE: "change:storage",
+  IOEVENT_STORAGE_CHANGE: "change:storage",  
+  IOEVENT_LIKES_CHANGE: "change::likes",  
+
+  // @likes
+  LIKES_PREFIX: 'like::',
 };

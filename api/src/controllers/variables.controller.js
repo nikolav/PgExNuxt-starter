@@ -3,9 +3,10 @@ const httpStatus = require('http-status');
 
 const model = require('../models/sequelize');
 const { useIO } = require('../config/io');
-const { IOEVENT_VARIABLES_CHANGE } = require('../config/vars');
+const { IOEVENT_VARIABLES_CHANGE, IOEVENT_LIKES_CHANGE, LIKES_PREFIX } = require('../config/vars');
 
 const ioNotifyChange = () => useIO((io) => io.emit(IOEVENT_VARIABLES_CHANGE));
+const ioNotifyLikesChange = (topicID) => useIO(io => io.emit(`${IOEVENT_LIKES_CHANGE}:${topicID}`));
 //
 module.exports = {
   // eslint-disable-next-line no-unused-vars
@@ -34,9 +35,12 @@ module.exports = {
     } else {
       node = await Main.create({ name, value });
     }
-    //
+
     res.status(httpStatus.CREATED).json(node);
+
     ioNotifyChange();
+    if (String(name).startsWith(LIKES_PREFIX))
+      ioNotifyLikesChange(name.slice(LIKES_PREFIX.length));
   },
   // eslint-disable-next-line no-unused-vars
   destroy: async (req, res, next) => {

@@ -11,6 +11,10 @@ const Query = {
   // @@testing
   fakePosts: require('./queries/testing/fake-posts'),
   fakeUsers: require('./queries/testing/fake-users'),
+
+  // @@likes
+  likeCount: require('./queries/likes/count'),
+
 };
 
 module.exports = Query;

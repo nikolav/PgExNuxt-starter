@@ -36,6 +36,16 @@ class Upload extends Model {
     return removedFileID;
   }
 
+  static async fileIdExists(fileID) {
+    if (!fileID) return false;
+    try {
+      return 0 < await this.count({ where: { fileID } });
+    } catch (error) {
+      // ignore
+    }
+    return false;
+  }
+
   // allow public access to file
   // instance method; node.publicAccess(true);
   async publicAccess(flag = true) {
@@ -45,17 +55,6 @@ class Upload extends Model {
 
   publicUrl() {
     return true === this.public ? `${STORAGE_PUBLIC_URL}/${this.fileID}` : "";
-  }
-
-  static async fileIdExists(fileID) {
-    if (!fileID) return false;
-    try {
-      const count = await this.count({ where: { fileID } });
-      return 0 < count;
-    } catch (error) {
-      // ignore
-    }
-    return false;
   }
 }
 

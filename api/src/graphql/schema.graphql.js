@@ -67,6 +67,9 @@ const typeDefs = `#graphql
     # testing
     fakePosts: [FakePost!]!
     fakeUsers: [FakeUser!]!
+
+    # likes
+    likeCount(topicID: String!): Int!
     
   }
 

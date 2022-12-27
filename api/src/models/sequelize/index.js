@@ -41,6 +41,17 @@ module.exports = new Promise(async (resolve, reject) => {
     // To create a One-To-Many relationship, the hasMany and belongsTo associations are used together;
     // To create a Many-To-Many relationship, two belongsToMany calls are used together.
 
+    /*
+      # https://sequelize.org/docs/v6/core-concepts/assocs/#association-aliases--custom-foreign-keys
+      # https://sequelize.org/docs/v6/core-concepts/assocs/#defining-an-alias
+      # https://sequelize.org/docs/v6/core-concepts/assocs/#special-methodsmixins-added-to-instances
+      # create alias for the foreign key
+      # creates `Ship.leaderId`
+      # eager-load: await Ship.findAll({ include: 'leader' }); ...ship.leader.name
+      # lazy-load: await ship.getLeader();
+      Ship.belongsTo(Captain, { as: 'leader' });
+    */
+
     // quick shortcut in models
     // ..or, RoleUser.Role = client.models.Role
 

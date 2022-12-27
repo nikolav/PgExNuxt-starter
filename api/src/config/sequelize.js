@@ -3,14 +3,14 @@ const { pg, isProductionEnv, logDB } = require('./vars');
 const logger = require('./logger');
 
 module.exports = new Promise(async (resolve, reject) => {
-  let connection;
+  let client;
   try {
-    connection = new Sequelize(pg, {
+    client = new Sequelize(pg, {
       logging: isProductionEnv ? logger.info.bind(logger) : (logDB && console.log.bind(console)),
     });
     // throw if no connection
-    await connection.authenticate();
-    return resolve(connection);
+    await client.authenticate();
+    return resolve(client);
   } catch (error) {
     reject(error);
   }
