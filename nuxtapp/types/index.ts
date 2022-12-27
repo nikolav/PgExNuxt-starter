@@ -92,3 +92,19 @@ export interface IFileToUpload {
   title?: OrNoValue<string>;
   description?: OrNoValue<string>;
 }
+
+export interface IComment {
+  __typename?: string;
+  id: string;
+  topicID: string;
+  userId?: string;
+  userName?: string;
+  value: string;
+  createdAt?: string;
+  updatedAt?: string;
+}
+export interface ICommentInput {
+  value: string;
+  userId?: string;
+  userName?: string;
+}

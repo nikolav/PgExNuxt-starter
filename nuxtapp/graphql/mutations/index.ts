@@ -20,3 +20,37 @@ export const QM__STORAGE_REMOVE = gql`
     storageRemoveFile(fileID: $fileID)
   }
 `;
+
+// input InputComment {
+//   topicID: String!
+//   value: String!
+//   userId: String
+//   userName: String
+// }
+export const QM__COMMENTS_ADD = gql`
+  mutation addComment($comment: InputComment!) {
+    commentsAdd(comment: $comment) {
+      id
+      topicID
+      userId
+      userName
+      value
+      createdAt
+      updatedAt
+    }
+  }
+`;
+
+export const QM__COMMENTS_REMOVE = gql`
+  mutation removeComment($id: ID!) {
+    commentsRemove(id: $id) {
+      id
+      topicID
+      userId
+      userName
+      value
+      createdAt
+      updatedAt
+    }
+  }
+`;

@@ -15,6 +15,9 @@ const Query = {
   // @@likes
   likeCount: require('./queries/likes/count'),
 
+  // @@comments
+  listCommentsByTopic: require('./queries/comments/list-by-topic'),
+
 };
 
 module.exports = Query;

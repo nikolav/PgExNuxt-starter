@@ -22,72 +22,73 @@
 
 // const { cached } = require('./src/utils');
 const model = require('./src/models/sequelize')
-; (async () => {
-  // db.connect();
-  // const { Tokens } = await model;
-  // const tok = await Tokens.findAll({ raw: true })
-  // console.log(tok);
+const { dateSortedDescBy } = require('./src/utils')
+  ; (async () => {
+    // db.connect();
+    // const { Tokens } = await model;
+    // const tok = await Tokens.findAll({ raw: true })
+    // console.log(tok);
 
-  // const message = await inlineTemplate({
-  //   template: 'test-doc/index.html',
-  //   locals: {
-  //     // message: `hello --${testId()}`
-  //     title: `title --${testId()}`,
-  //     description: `description --${testId()}`,
-  //     price: testId()
-  //   },
-  //   config: {
-  //     templatesPath: path.join(__dirname, './src/services/pdf')
-  //   }
-  // });
-  // const buffer = await htmlToBufferPdf(message);
-  // fs.createWriteStream(path.join(__dirname, 'out.pdf')).write(buffer);
+    // const message = await inlineTemplate({
+    //   template: 'test-doc/index.html',
+    //   locals: {
+    //     // message: `hello --${testId()}`
+    //     title: `title --${testId()}`,
+    //     description: `description --${testId()}`,
+    //     price: testId()
+    //   },
+    //   config: {
+    //     templatesPath: path.join(__dirname, './src/services/pdf')
+    //   }
+    // });
+    // const buffer = await htmlToBufferPdf(message);
+    // fs.createWriteStream(path.join(__dirname, 'out.pdf')).write(buffer);
 
-  // await Test.create({ name: 'admin.name', value: 'nikolav' });
-  // const test = await Test.findOne({ name: 'admin.name' });
-  // console.log({ id: test.id });
+    // await Test.create({ name: 'admin.name', value: 'nikolav' });
+    // const test = await Test.findOne({ name: 'admin.name' });
+    // console.log({ id: test.id });
 
-  // const { Upload } = await model;
-  // const res = await Upload.unlink("o7rfa3");
+    // const { Upload } = await model;
+    // const res = await Upload.unlink("o7rfa3");
 
 
-  // await Tokens.expire("@22@");
-  // const tokens = await Tokens.findAll({ raw: true, attributes: ['token', 'expired'] });
-  // console.log(tokens);
+    // await Tokens.expire("@22@");
+    // const tokens = await Tokens.findAll({ raw: true, attributes: ['token', 'expired'] });
+    // console.log(tokens);
 
-  // resolverMiddlewares(
-  //   async (...a) => {
-  //     console.log('@1');
-  //     console.log({ a });
-  //   },
-  //   async (...a) => {
-  //     console.log('@2');
-  //     throw `error`;
-  //     console.log({ a });
-  //   },
-  //   async (...a) => {
-  //     console.log('@@handler');
-  //     console.log({ a });
-  //   },
-  // )(1, 22);
+    // resolverMiddlewares(
+    //   async (...a) => {
+    //     console.log('@1');
+    //     console.log({ a });
+    //   },
+    //   async (...a) => {
+    //     console.log('@2');
+    //     throw `error`;
+    //     console.log({ a });
+    //   },
+    //   async (...a) => {
+    //     console.log('@@handler');
+    //     console.log({ a });
+    //   },
+    // )(1, 22);
 
-  // const fd = new FormData();
+    // const fd = new FormData();
 
-  // const b1 = Buffer.alloc(256)
-  // b1.write("nikolav", "utf-8")
-  // const b2 = await fs.readFile('./out.pdf');
+    // const b1 = Buffer.alloc(256)
+    // b1.write("nikolav", "utf-8")
+    // const b2 = await fs.readFile('./out.pdf');
 
-  // const r$ = new Readable({
-  //   async read() {
-  //     this.push(Buffer.concat([b1, b2]));
-  //   }
-  // });
+    // const r$ = new Readable({
+    //   async read() {
+    //     this.push(Buffer.concat([b1, b2]));
+    //   }
+    // });
 
-  // const b = Buffer.from([65]);
-  // createWriteStream(path.join(__dirname, 'out')).write(b);
-  
-  const { Main } = await model;
-  const res = await Main.count({ where: { name: "admin.email" } });
-  console.log({ res });
+    // const b = Buffer.from([65]);
+    // createWriteStream(path.join(__dirname, 'out')).write(b);
 
-})();
+    const { Comment } = await model;
+    const res = await Comment.byTopicId("@1");
+    console.log(JSON.stringify((res || []).sort(dateSortedDescBy('createdAt')), null, 2));
+
+  })();

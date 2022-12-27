@@ -1,0 +1,24 @@
+
+###
+
+POST http://localhost:3001/v1/graphql
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer -
+
+{
+  "query": "mutation { commentsAdd ( comment: { topicID: \"@A\", value: \"comment --@A.2\" } ) { id } }"
+}
+
+###
+
+POST http://localhost:3001/v1/graphql
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer -
+
+{
+  "query": "mutation { commentsRemove ( id: \"03ee3b96-3679-40d6-b610-e8cfe47118b3\" ) { id } }"
+}
+
+###

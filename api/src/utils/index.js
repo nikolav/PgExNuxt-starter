@@ -1,8 +1,14 @@
 const assign = require('lodash/assign');
-const range = require('lodash/range');
-const map = require('lodash/map');
 const clamp = require('lodash/clamp');
 const identity = require('lodash/identity');
+const map = require('lodash/map');
+const range = require('lodash/range');
+
+const dateSortedBy = require('./date-sorted-by');
+const dateSortedDescBy = dateSortedBy;
+const resolverMiddlewares = require('./resolver-middlewares');
+const withMiddleware = resolverMiddlewares;
+
 const False = () => false;
 const True = () => true;
 const Null = () => null;
@@ -11,7 +17,8 @@ module.exports = {
   assign,
   cached: require('./cached-redis'),
   clamp,
-  dateSortedBy: require('./date-sorted-by'),
+  dateSortedBy,
+  dateSortedDescBy,
   False,
   groupByCount: require('./group-by-count'),
   gzip: require('./gzip'),
@@ -24,9 +31,10 @@ module.exports = {
   pickValues: require('./pick-values'),
   range,
   resolverContext: require('./resolver-context'),
-  resolverMiddlewares: require('./resolver-middlewares'),
+  resolverMiddlewares,
   setDownloadHeaders: require('./set-download-headers'),
   testId: require('./test-id'),
   True,
   validation: require('./run-validation'),
+  withMiddleware,
 };

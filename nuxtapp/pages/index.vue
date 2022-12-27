@@ -87,6 +87,18 @@ const likeTopicID = ref("122");
 const likes = useApiLikes(likeTopicID.value);
 const onLike = likes.like;
 const onUnlike = likes.unlike;
+
+// @@comments
+const commentsTopicID = "@B";
+const cmts$ = useApiComments(commentsTopicID);
+const cmt$ = ref("");
+const addComment = async () => {
+  await cmts$.add({ value: cmt$.value });
+};
+const rmComment = async () => {
+  await cmts$.remove(cmt$.value);
+};
+
 </script>
 
 <template>
@@ -273,10 +285,48 @@ const onUnlike = likes.unlike;
       </form>
     </v-sheet>
     <v-sheet>
+      <form noValidate @submit.prevent>
+        <v-container fluid>
+          <v-row no-gutters>
+            <v-col cols="12" sm="6">
+              <v-text-field
+                autocomplete="off"
+                type="text"
+                clearable
+                label="comment | commentTopicID"
+                v-model="cmt$"
+              ></v-text-field>
+            </v-col>
+            <v-col cols="12" sm="3" class="pa-1">
+              <v-btn
+                @click="addComment"
+                type="button"
+                block
+                color="secondary"
+                variant="outlined"
+                >cmt add</v-btn
+              >
+            </v-col>
+            <v-col cols="12" sm="3" class="pa-1">
+              <v-btn
+                @click="rmComment"
+                type="button"
+                block
+                color="secondary"
+                variant="outlined"
+                >cmt rm</v-btn
+              >
+            </v-col>
+          </v-row>
+        </v-container>
+      </form>
+    </v-sheet>
+    <v-sheet>
       <pre>
         {{
           JSON.stringify(
             {
+              comments: cmts$.ls.value,
               files: storage.files.value,
               messages: messages.ls.value,
               error: auth.error,

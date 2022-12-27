@@ -52,6 +52,23 @@ const typeDefs = `#graphql
     updatedAt: String
   }
 
+  type Comment {
+    id: ID!
+    topicID: String!
+    userId: String
+    userName: String
+    value: String!
+    createdAt: String
+    updatedAt: String
+  }
+
+  input InputComment {
+    topicID: String!
+    value: String!
+    userId: String
+    userName: String
+  }
+
   type Query {
 
     # etc.
@@ -70,6 +87,9 @@ const typeDefs = `#graphql
 
     # likes
     likeCount(topicID: String!): Int!
+
+    # comments
+    listCommentsByTopic(topicID: String!): [Comment!]!
     
   }
 
@@ -82,6 +102,10 @@ const typeDefs = `#graphql
     # storage
     storageRemoveFile(fileID: String!): String!
 
+    # comments
+    commentsAdd(comment: InputComment!): Comment!
+    commentsRemove(id: ID!): Comment
+    
   }
 `;
 

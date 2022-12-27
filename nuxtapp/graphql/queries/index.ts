@@ -40,3 +40,17 @@ export const Q__LIKES_COUNT = gql`
     likeCount(topicID: $topicID)
   }
 `;
+
+export const Q__COMMENTS_LIST_BY_TOPIC = gql`
+  query commentsByTopic($topicID: String!) {
+    listCommentsByTopic(topicID: $topicID) {
+      id
+      topicID
+      userId
+      userName
+      value
+      createdAt
+      updatedAt
+    }
+  }
+`;

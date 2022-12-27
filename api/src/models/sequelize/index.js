@@ -6,6 +6,7 @@ const configureRole = require('./roles');
 const configureRoleUser = require('./role-user');
 const configureTokens = require('./tokens');
 const configureUpload = require('./upload');
+const configureComment = require('./comments');
 
 module.exports = new Promise(async (resolve, reject) => {
   try {
@@ -18,6 +19,7 @@ module.exports = new Promise(async (resolve, reject) => {
     const Session = configureSession(client);
     const Tokens = configureTokens(client);
     const Upload = configureUpload(client);
+    const Comment = configureComment(client);
 
     // // https://sequelize.org/docs/v6/core-concepts/assocs/
     // // declare schema.relations here
@@ -67,6 +69,7 @@ module.exports = new Promise(async (resolve, reject) => {
       RoleUser,
       Tokens,
       Upload,
+      Comment,
     };
 
     // schema.push
