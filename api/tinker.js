@@ -87,7 +87,7 @@ const model = require('./src/models/sequelize')
   // createWriteStream(path.join(__dirname, 'out')).write(b);
   
   const { Main } = await model;
-  const vars = await Main.findAll({ raw: true });
-  console.log({ vars });
+  const res = await Main.count({ where: { name: "admin.email" } });
+  console.log({ res });
 
 })();

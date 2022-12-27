@@ -14,6 +14,7 @@ import {
   IOEVENT_STORAGE_CHANGE,
   STORAGE_POLLINTERVAL,
   URL_STORAGE_DOWNLOAD,
+  URL_STORAGE_PUBLIC_URL,
 } from "@/config";
 
 // @client, useAppConfig()
@@ -48,4 +49,5 @@ export default defineAppConfig({
   IOEVENT_STORAGE_CHANGE,
   STORAGE_POLLINTERVAL,
   URL_STORAGE_DOWNLOAD,
+  URL_STORAGE_PUBLIC_URL,
 });

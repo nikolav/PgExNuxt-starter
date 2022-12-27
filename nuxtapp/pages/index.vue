@@ -77,6 +77,11 @@ const onStorageRemove = async () => {
   const removedFileID = await storage.remove(rmFileID.value);
   console.log({ removedFileID });
 };
+
+const fileIdUrl = ref("");
+const onStoragePublicUrl = async () => {
+  console.log({ url: await storage.publicUrl(fileIdUrl.value) });
+};
 </script>
 
 <template>
@@ -192,6 +197,28 @@ const onStorageRemove = async () => {
             <v-col cols="12" sm="4" class="pa-1">
               <v-btn type="submit" block color="primary" variant="outlined"
                 >delete</v-btn
+              >
+            </v-col>
+          </v-row>
+        </v-container>
+      </form>
+    </v-sheet>
+    <v-sheet>
+      <form noValidate @submit.prevent="onStoragePublicUrl">
+        <v-container fluid>
+          <v-row no-gutters>
+            <v-col cols="12" sm="8">
+              <v-text-field
+                autocomplete="off"
+                type="text"
+                clearable
+                label="get fileID url"
+                v-model="fileIdUrl"
+              ></v-text-field>
+            </v-col>
+            <v-col cols="12" sm="4" class="pa-1">
+              <v-btn type="submit" block color="primary" variant="outlined"
+                >url</v-btn
               >
             </v-col>
           </v-row>

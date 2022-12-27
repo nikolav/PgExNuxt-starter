@@ -43,8 +43,19 @@ class Upload extends Model {
     return this;
   }
 
-  async publicUrl() {
+  publicUrl() {
     return true === this.public ? `${STORAGE_PUBLIC_URL}/${this.fileID}` : "";
+  }
+
+  static async fileIdExists(fileID) {
+    if (!fileID) return false;
+    try {
+      const count = await this.count({ where: { fileID } });
+      return 0 < count;
+    } catch (error) {
+      // ignore
+    }
+    return false;
   }
 }
 

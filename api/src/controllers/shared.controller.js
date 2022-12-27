@@ -42,5 +42,19 @@ module.exports = {
       })
     );
 
-  }
+  },
+
+  // eslint-disable-next-line no-unused-vars
+  publicUrl: async (req, res, _next) => {
+    const { Upload } = await model;
+    const { fileID } = req.params;
+    let url = "";
+    try {
+      const file$ = await Upload.findOne({ where: { fileID } });
+      url = file$.publicUrl();
+    } catch (error) {
+      // ignore
+    }
+    res.json({ url });
+  },
 };

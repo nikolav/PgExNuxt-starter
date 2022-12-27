@@ -10,8 +10,12 @@ import { get, each, unpackBlob } from "@/utils";
 const { saveAs } = fileSaver;
 
 export const useApiStorage = () => {
-  const { STORAGE_POLLINTERVAL, URL_UPLOAD, URL_STORAGE_DOWNLOAD } =
-    useAppConfig();
+  const {
+    STORAGE_POLLINTERVAL,
+    URL_UPLOAD,
+    URL_STORAGE_DOWNLOAD,
+    URL_STORAGE_PUBLIC_URL,
+  } = useAppConfig();
 
   const auth = useStoreAuth();
   const AT = computed(() => auth.token?.accessToken);
@@ -73,9 +77,7 @@ export const useApiStorage = () => {
               responseType: "arrayBuffer",
             }
           );
-          
-          const [blobFile, filename] = await unpackBlob(blobFileData);
-          saveAs(blobFile, filename);
+          saveAs(...(await unpackBlob(blobFileData)));
         } catch (error) {
           return reject(error);
         }
@@ -92,11 +94,20 @@ export const useApiStorage = () => {
       if (removedFileID) await reloadFiles();
     });
 
+  const publicUrl = async (fileID: string) => {
+    if (!fileID) return "";
+    const { url } = await $fetch<{ url: string }>(
+      `${URL_STORAGE_PUBLIC_URL}/${fileID}`
+    );
+    return url;
+  };
+
   return {
     files,
     upload,
     download,
     remove,
+    publicUrl,
     reload: reloadFiles,
   };
 };
