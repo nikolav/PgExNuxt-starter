@@ -9,7 +9,7 @@ const model = require('../../../../models/sequelize');
 *
 * @apiHeader {String}  Authorization Access token
 *
-* @apiParam  {String}  `query { likeCount(topicID: String!): Int! }`
+* @apiParam  {String}  query `query { likeCount(topicID: String!): Int! }`
 *
 * @apiSuccess {Number} data.likeCount  likeCount
 *

@@ -12,7 +12,7 @@ const { useIO } = require('../../../../config/io');
  *
  * @apiHeader {String}  Authorization Access token
  *
- * @apiParam  {String}  `mutation { commentsRemove(id: ID!): Comment }`
+ * @apiParam  {String}  query `mutation { commentsRemove(id: ID!): Comment }`
  *
  * @apiSuccess {Object} data  Remove comment
  *
