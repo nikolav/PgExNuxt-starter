@@ -40,7 +40,7 @@ app.use(methodOverride());
 // set security headers
 app.use(helmet());
 
-// enable cors; allow app client
+// enable cors; allow app clients
 app.use(cors(corsConfig));
 
 // enable authentication

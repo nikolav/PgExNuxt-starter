@@ -1,4 +1,7 @@
+
+// https://www.apollographql.com/docs/apollo-server/getting-started
 const { ApolloServer } = require('@apollo/server');
+// https://www.apollographql.com/docs/apollo-server/api/express-middleware#expressmiddleware
 const { expressMiddleware } = require('@apollo/server/express4');
 const setHttpPlugin = require('./apollo-graphql-http-plugin');
 // const {
@@ -22,8 +25,8 @@ module.exports = new Promise(async (resolve, reject) => {
     const apollo = new ApolloServer({
       typeDefs,
       resolvers,
-      // skip gui
       playground: false,
+      // https://www.apollographql.com/docs/apollo-server/migration#plugins-are-in-deep-imports
       plugins: [
         setHttpPlugin,
         // ApolloServerPluginDrainHttpServer({ httpServer }),
@@ -49,6 +52,7 @@ module.exports = new Promise(async (resolve, reject) => {
       // token access level
       authorize(),
       // apollo route handler
+      // https://www.apollographql.com/docs/apollo-server/api/express-middleware#example
       expressMiddleware(apollo, {
         // @context return services object shared in *resolvers, 3rd argument
         context: resolverContext,

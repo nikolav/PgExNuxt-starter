@@ -4,9 +4,9 @@ export default defineNuxtPlugin((nuxtApp) => {
   const auth = useStoreAuth();
   const { AUTH_TOKEN_NAME } = useAppConfig();
   const AT = computed(() => auth.token?.accessToken || "");
-  nuxtApp.hook("apollo:auth", ({ token }) => {
+  nuxtApp.hook("apollo:auth", ({ client, token }) => {
     // apply apollo client token
     token.value = AT.value;
-    console.log({ [AUTH_TOKEN_NAME]: AT.value });
+    console.log({ client, [AUTH_TOKEN_NAME]: AT.value });
   });
 });

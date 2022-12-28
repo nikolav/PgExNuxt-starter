@@ -30,6 +30,7 @@
     "@types/faker": "^6.6.9",
     "@types/file-saver": "^2.0.5",
     "@types/http-status": "^1.1.2",
+    "@types/lodash": "^4.14.191",
     "@types/node": "^18.11.9",
     "@types/socket.io-client": "^3.0.0",
     "@vitejs/plugin-vue": "^3.2.0",

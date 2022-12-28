@@ -1,4 +1,4 @@
-// #graphql pragma enable syntax color
+
 const typeDefs = `#graphql
 
   type Message {

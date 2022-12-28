@@ -29,7 +29,7 @@ Content-Type: application/json
 Authorization: Bearer -
 
 {
-  "query": "query { fakeUsers { id } }"
+  "query": "query { fakeUsers { id, email } }"
 }
 
 ###
