@@ -32,6 +32,6 @@ module.exports = async (_source, { id }, _context) => {
   const rowsDeleted = await Message.destroy({ where: { id } });
   if (0 < rowsDeleted)
     useIO(io => io.emit(IOEVENT_MESSAGES_CHANGE));
-  // 
+
   return rowsDeleted;
 };

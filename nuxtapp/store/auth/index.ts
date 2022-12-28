@@ -7,17 +7,14 @@ import { get } from "@/utils";
 let runInit = true;
 
 export const useStoreAuth = defineStore("auth", () => {
-  const user: Ref<OrNull<IUser>> = ref(null);
   const token: Ref<OrNull<IToken>> = ref(null);
+  const user: Ref<OrNull<IUser>> = ref(null);
   const session: Ref<OrNull<IData>> = ref(null);
 
   const error: Ref<any> = ref(null);
   const processing: Ref<boolean> = ref(false);
 
-  const authInit = () => {
-    error.value = null;
-    processing.value = true;
-  };
+  const isAuth = computed(() => !!token.value?.accessToken);
 
   const {
     URL_AUTHENTICATE,
@@ -25,23 +22,32 @@ export const useStoreAuth = defineStore("auth", () => {
     URL_AUTH_SESSION,
     URL_AUTH_WHO,
     APPEVENT_AUTH_TOKEN,
+    AUTH_TOKEN_NAME,
   } = useAppConfig();
   const { $emitter } = useNuxtApp();
 
-  // fetch session data on user.id
-  watch(
-    () => user.value?.id,
-    async (ID) => {
-      // const ID = user.value?.id;
-      const ST = token.value?.sessionToken;
-      const AT = token.value?.accessToken;
-      if (!ID || !ST || !AT) return;
+  const authInit = () => {
+    error.value = null;
+    processing.value = true;
+  };
 
-      session.value = await $fetch(`${URL_AUTH_SESSION}/${ID}`, {
-        method: "post",
-        body: { sessionToken: ST },
-        headers: { Authorization: `Bearer ${AT}` },
-      });
+  // fetch session data on auth
+  //  ..not synced, only fetch initial session data
+  //  ..`useApiSession` to access synced session
+  watch(
+    [
+      () => user.value?.id,
+      () => token.value?.accessToken,
+      () => token.value?.sessionToken,
+    ],
+    async ([ID, AT, ST]) => {
+      if (ID && ST && AT) {
+        session.value = await $fetch(`${URL_AUTH_SESSION}/${ID}`, {
+          method: "post",
+          body: { sessionToken: ST },
+          headers: { Authorization: `Bearer ${AT}` },
+        });
+      }
     }
   );
 
@@ -59,14 +65,12 @@ export const useStoreAuth = defineStore("auth", () => {
     token.value = { accessToken, refreshToken, sessionToken };
   };
 
-  const authCached = useLocalStorage(".auth", "");
+  const authCached = useLocalStorage(AUTH_TOKEN_NAME, "");
   // cache access-token in localStorage to auto-init user @mount
   watch(
     () => token.value?.accessToken,
     (AT) => {
-      // const AT = token.value?.accessToken;
-      if (!AT) return;
-      authCached.value = AT;
+      if (AT) authCached.value = AT;
     }
   );
   const initializeAuthFromStorage = async () => {
@@ -105,7 +109,7 @@ export const useStoreAuth = defineStore("auth", () => {
     () => token.value?.accessToken,
     async (AT) => {
       if (AT) {
-        await onLogin(AT);
+        await onLogin(AT, undefined, true);
         $emitter?.emit(APPEVENT_AUTH_TOKEN, AT);
       }
     }
@@ -128,7 +132,7 @@ export const useStoreAuth = defineStore("auth", () => {
     }
   };
   const logout = async () => {
-    await onLogout();
+    await onLogout(undefined, true);
     user.value = null;
     token.value = null;
     session.value = null;
@@ -144,6 +148,7 @@ export const useStoreAuth = defineStore("auth", () => {
     user,
     token,
     session,
+    isAuth,
     //
     authenticate: $auth(URL_AUTHENTICATE),
     register: $auth(URL_REGISTER),

@@ -10,8 +10,9 @@ const passport = require('passport');
 const routes = require('../routes/v1');
 const strategies = require('./passport');
 const error = require('../middlewares/error');
-const { logs, isProductionEnv, ACCESS_LOG, appHost } = require('./vars');
+const { logs, isProductionEnv, ACCESS_LOG } = require('./vars');
 const accessLogs = require('./log-stream');
+const corsConfig = require('./cors');
 
 const app = express();
 
@@ -40,7 +41,7 @@ app.use(methodOverride());
 app.use(helmet());
 
 // enable cors; allow app client
-app.use(cors({ origin: [appHost], credentials: true }));
+app.use(cors(corsConfig));
 
 // enable authentication
 app.use(passport.initialize());

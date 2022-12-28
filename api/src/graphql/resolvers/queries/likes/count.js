@@ -26,8 +26,7 @@ const model = require('../../../../models/sequelize');
 module.exports = async (_src, args, context) => {
   const { Main } = await model;
   const { topicID } = args;
-  const { config } = context;
-  const { LIKES_PREFIX } = config;
+  const { config: { LIKES_PREFIX } } = context;
   const name = `${LIKES_PREFIX}${topicID}`;
   const like$ = await Main.findOne({ where: { name }, attributes: ['value'] });
   return like$ ? parseInt(like$.value, 10) : 0;

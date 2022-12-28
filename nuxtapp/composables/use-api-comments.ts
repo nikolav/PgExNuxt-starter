@@ -12,7 +12,8 @@ export const useApiComments = (topicID: string) => {
 
   const { result, refetch } = useQuery<{ listCommentsByTopic: IComment[] }>(
     Q__COMMENTS_LIST_BY_TOPIC,
-    { topicID }
+    { topicID },
+    { enabled: auth.isAuth }
   );
   const { mutate: mutateCommentsAdd } = useMutation(QM__COMMENTS_ADD);
   const { mutate: mutateCommentsRemove } = useMutation(QM__COMMENTS_REMOVE);
@@ -23,7 +24,6 @@ export const useApiComments = (topicID: string) => {
   const { IOEVENT_COMMENTS_CHANGE } = useAppConfig();
   const { $socket } = useNuxtApp();
   const IOEVENT = `${IOEVENT_COMMENTS_CHANGE}:${topicID}`;
-
   $socket?.on(IOEVENT, reloadComments);
   onUnmounted(() => $socket?.off(IOEVENT, reloadComments));
 

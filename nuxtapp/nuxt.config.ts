@@ -107,13 +107,16 @@ export default defineNuxtConfig({
   },
 
   // https://apollo.nuxtjs.org/getting-started/configuration#configuration
+  // https://apollo.nuxtjs.org/getting-started/configuration#clients
   apollo: {
     clients: {
       default: {
         httpEndpoint: ENDPOINT_GRAPHQL,
         httpLinkOptions: {
+          // Enable sending cookies over cross-origin requests
           credentials: "include",
         },
+        tokenName: "apollo:default.token",
       },
     },
     autoImports: true,
