@@ -1,7 +1,6 @@
 const axios = require('axios');
 const httpStatus = require('http-status');
 
-const model = require('../models/sequelize');
 const User = require('../models/user.model');
 const config = require('../config/vars');
 const logger = require('../config/logger');
@@ -15,7 +14,6 @@ module.exports = ({ req, res }) => ({
   dateSortedBy,
   httpStatus,
   logger,
-  model,
   req,
   res,
   token: 'jzxxdebbksn',

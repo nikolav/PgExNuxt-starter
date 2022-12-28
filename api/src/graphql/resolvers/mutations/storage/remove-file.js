@@ -1,3 +1,4 @@
+const model = require('../../../../models/sequelize');
 /**
  * @api             {post} v1/graphql Remove File
  * @apiName         GraphqlRemoveFile
@@ -22,9 +23,8 @@
  * @apiError  Unauthorized 401  Unauthorized -- Only authenticated users can access the data
  */
 // eslint-disable-next-line no-unused-vars
-module.exports = async (_source, args, context) => {
-  const { fileID } = args;
-  const { model } = context;
+module.exports = async (_source, args, _context) => {
   const { Upload } = await model;
+  const { fileID } = args;
   return await Upload.unlink(fileID);
 };

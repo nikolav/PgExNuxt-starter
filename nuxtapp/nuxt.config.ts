@@ -111,12 +111,15 @@ export default defineNuxtConfig({
     clients: {
       default: {
         httpEndpoint: ENDPOINT_GRAPHQL,
+        httpLinkOptions: {
+          credentials: "include",
+        },
       },
     },
-    // autoImports: true,
+    autoImports: true,
     authType: "Bearer",
     authHeader: "Authorization",
-    // tokenStorage: 'cookie',
-    // proxyCookies: true,
+    tokenStorage: "cookie",
+    proxyCookies: true,
   },
 });

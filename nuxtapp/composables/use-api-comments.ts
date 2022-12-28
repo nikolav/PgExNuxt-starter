@@ -19,7 +19,7 @@ export const useApiComments = (topicID: string) => {
 
   const lsComments = computed(() => result.value?.listCommentsByTopic || []);
   const reloadComments = async () => await refetch();
-  
+
   const { IOEVENT_COMMENTS_CHANGE } = useAppConfig();
   const { $socket } = useNuxtApp();
   const IOEVENT = `${IOEVENT_COMMENTS_CHANGE}:${topicID}`;

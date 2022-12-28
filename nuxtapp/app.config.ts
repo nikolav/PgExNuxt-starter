@@ -54,6 +54,8 @@ export default defineAppConfig({
   IOEVENT_VARIABLES_CHANGE,
   IOEVENT_COMMENTS_CHANGE,
   // 
+  APPEVENT_AUTH_TOKEN: "auth:token",
+  // 
   LIKES_PREFIX: "like::",
   STORAGE_POLLINTERVAL,
 });

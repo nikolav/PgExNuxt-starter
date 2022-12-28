@@ -7,12 +7,17 @@ const isProductionEnv = process.env.NODE_ENV === 'production';
 const runScheduler = parseBool(process.env.SCHEDULER);
 const logDB = parseBool(process.env.LOG_DB);
 
+const apiHost = process.env.API_HOST;
+const appHost = process.env.APP_HOST;
+
 module.exports = {
   // @flags
   isProductionEnv,
   isTestEnv,
 
   // @env
+  apiHost,
+  appHost,
   env: process.env.NODE_ENV,
   port: process.env.PORT,
   runScheduler,
@@ -26,7 +31,7 @@ module.exports = {
   COMBINED_LOG: process.env.COMBINED_LOG,
 
   // @urls
-  STORAGE_PUBLIC_URL: `${process.env.API_HOST}/v1/shared`,
+  STORAGE_PUBLIC_URL: `${apiHost}/v1/shared`,
 
   // @paths
   storagePath: path.join(__dirname, '../../storage'),
@@ -84,8 +89,8 @@ module.exports = {
   },
   IOEVENT_VARIABLES_CHANGE: "change:variables",
   IOEVENT_MESSAGES_CHANGE: "change:messages",
-  IOEVENT_STORAGE_CHANGE: "change:storage",  
-  IOEVENT_LIKES_CHANGE: "change::likes",  
+  IOEVENT_STORAGE_CHANGE: "change:storage",
+  IOEVENT_LIKES_CHANGE: "change::likes",
   IOEVENT_COMMENTS_CHANGE: "change:comments",
 
   // @likes

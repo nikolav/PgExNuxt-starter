@@ -1,4 +1,4 @@
-
+const model = require('../../../../models/sequelize');
 /**
  * @api             {post} v1/graphql List all storage files
  * @apiName         GraphqlListFiles
@@ -26,8 +26,8 @@
  */
 // eslint-disable-next-line no-unused-vars
 module.exports = async (_src, _args, context) => {
-  const { user: { id: user_id }, model, dateSortedBy } = context;
   const { Upload } = await model;
+  const { user: { id: user_id }, dateSortedBy } = context;
   const files = await Upload.findAll({ where: { user_id } });
   return files.sort(dateSortedBy("createdAt"));
 };

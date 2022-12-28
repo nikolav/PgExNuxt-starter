@@ -19,8 +19,14 @@ export const useStoreAuth = defineStore("auth", () => {
     processing.value = true;
   };
 
-  const { URL_AUTHENTICATE, URL_REGISTER, URL_AUTH_SESSION, URL_AUTH_WHO } =
-    useAppConfig();
+  const {
+    URL_AUTHENTICATE,
+    URL_REGISTER,
+    URL_AUTH_SESSION,
+    URL_AUTH_WHO,
+    APPEVENT_AUTH_TOKEN,
+  } = useAppConfig();
+  const { $emitter } = useNuxtApp();
 
   // fetch session data on user.id
   watch(
@@ -91,16 +97,16 @@ export const useStoreAuth = defineStore("auth", () => {
   // required if GraphQL API expects authentication to be passed via a HTTP header
   const {
     // https://apollo.nuxtjs.org/getting-started/auth-helpers#onlogin
-    onLogin: onAuthApollo,
+    onLogin,
     // https://apollo.nuxtjs.org/getting-started/auth-helpers#onlogout-reference
-    onLogout: onAuthApolloLogout,
+    onLogout,
   } = useApollo();
   watch(
     () => token.value?.accessToken,
     async (AT) => {
       if (AT) {
-        await onAuthApollo(AT, undefined, true);
-        console.log({ "onLoginApollo-AT": AT });
+        await onLogin(AT);
+        $emitter?.emit(APPEVENT_AUTH_TOKEN, AT);
       }
     }
   );
@@ -122,7 +128,7 @@ export const useStoreAuth = defineStore("auth", () => {
     }
   };
   const logout = async () => {
-    await onAuthApolloLogout(undefined, true);
+    await onLogout();
     user.value = null;
     token.value = null;
     session.value = null;

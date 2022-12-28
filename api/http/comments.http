@@ -1,7 +1,19 @@
 
 ###
 
-POST http://localhost:3001/v1/graphql
+POST http://45.76.85.250:8081/v1/graphql
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer -
+
+{
+  "query": "query { listCommentsByTopic (topicID: \"@A\") { id } }"
+}
+
+
+###
+
+POST http://45.76.85.250:8081/v1/graphql
 Accept: application/json
 Content-Type: application/json
 Authorization: Bearer -
@@ -12,7 +24,7 @@ Authorization: Bearer -
 
 ###
 
-POST http://localhost:3001/v1/graphql
+POST http://45.76.85.250:8081/v1/graphql
 Accept: application/json
 Content-Type: application/json
 Authorization: Bearer -
@@ -22,3 +34,4 @@ Authorization: Bearer -
 }
 
 ###
+

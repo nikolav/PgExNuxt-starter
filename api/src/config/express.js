@@ -10,7 +10,7 @@ const passport = require('passport');
 const routes = require('../routes/v1');
 const strategies = require('./passport');
 const error = require('../middlewares/error');
-const { logs, isProductionEnv, ACCESS_LOG } = require('./vars');
+const { logs, isProductionEnv, ACCESS_LOG, appHost } = require('./vars');
 const accessLogs = require('./log-stream');
 
 const app = express();
@@ -20,9 +20,9 @@ app.use(
     logs,
     isProductionEnv
       ? // log http @file
-        accessLogs(ACCESS_LOG)
+      accessLogs(ACCESS_LOG)
       : // log* stdout --one-line
-        null
+      null
   )
 );
 
@@ -39,8 +39,8 @@ app.use(methodOverride());
 // set security headers
 app.use(helmet());
 
-// enable cors
-app.use(cors());
+// enable cors; allow app client
+app.use(cors({ origin: [appHost], credentials: true }));
 
 // enable authentication
 app.use(passport.initialize());

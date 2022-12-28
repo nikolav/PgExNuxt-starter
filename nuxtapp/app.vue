@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import "animate.css";
+
 const { OVERLAYS_ID_START, OVERLAYS_ID_END } = useAppConfig();
+
 </script>
 
 <template>
