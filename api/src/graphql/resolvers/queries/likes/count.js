@@ -1,3 +1,4 @@
+const model = require('../../../../models/sequelize');
 /**
 * @api             {post} v1/graphql get like count by topicID
 * @apiName         GraphqlCountLikes
@@ -23,9 +24,9 @@
 */
 // eslint-disable-next-line no-unused-vars
 module.exports = async (_src, args, context) => {
-  const { model, config } = context;
   const { Main } = await model;
   const { topicID } = args;
+  const { config } = context;
   const { LIKES_PREFIX } = config;
   const name = `${LIKES_PREFIX}${topicID}`;
   const like$ = await Main.findOne({ where: { name }, attributes: ['value'] });
