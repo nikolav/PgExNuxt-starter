@@ -39,4 +39,4 @@ export { default as hasOwn } from "./has-own";
 export { default as unpackBlob } from "./unpack-blob";
 
 export const False = () => false;
-export const True = () => false;
+export const True = () => true;
