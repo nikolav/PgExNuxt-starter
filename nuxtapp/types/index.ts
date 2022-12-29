@@ -108,3 +108,7 @@ export interface ICommentInput {
   userId?: string;
   userName?: string;
 }
+
+export interface IFlags {
+  [key: string]: boolean;
+}

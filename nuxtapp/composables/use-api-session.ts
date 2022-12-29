@@ -3,6 +3,7 @@ import { IData } from "@/types";
 
 export const useApiSession = () => {
   const { URL_AUTH_SESSION } = useAppConfig();
+
   const auth = useStoreAuth();
   const AT = computed(() => auth.token?.accessToken);
   const ST = computed(() => auth.token?.sessionToken);
@@ -20,10 +21,8 @@ export const useApiSession = () => {
     })
   );
 
-  watch([AT, ST, ID], async ([newAT, newST, newID]) => {
-    if (newAT && newST && newID) {
-      await refresh();
-    }
+  watchEffect(() => {
+    if (ID.value && AT.value && ST.value) refresh();
   });
 
   const put = async (newSessionData: IData) => {

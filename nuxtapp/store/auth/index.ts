@@ -2,7 +2,7 @@ import { defineStore } from "pinia";
 import { ref, Ref } from "vue";
 
 import { OrNull, IUser, IToken, IAuthCredentials, IData } from "@/types";
-import { get } from "@/utils";
+import { pickValues } from "@/utils";
 
 let runInit = true;
 
@@ -22,7 +22,7 @@ export const useStoreAuth = defineStore("auth", () => {
   const session: Ref<OrNull<IData>> = ref(null);
   const error: Ref<any> = ref(null);
   const processing: Ref<boolean> = ref(false);
-  
+
   const isAuth = useState($ISAUTH);
   const authCached = useLocalStorage($TOKEN, "");
 
@@ -33,11 +33,14 @@ export const useStoreAuth = defineStore("auth", () => {
 
   // copy auth data from response
   const authFromResponse = (res: any) => {
-    const id = get(res, "user.id");
-    const email = get(res, "user.email");
-    const accessToken = get(res, "token.accessToken");
-    const refreshToken = get(res, "token.refreshToken");
-    const sessionToken = get(res, "token.sessionToken");
+    const [id, email, accessToken, refreshToken, sessionToken] = pickValues(
+      res,
+      "user.id",
+      "user.email",
+      "token.accessToken",
+      "token.refreshToken",
+      "token.sessionToken"
+    );
 
     if (!id || !email || !accessToken) throw `bad request`;
 

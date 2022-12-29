@@ -18,6 +18,9 @@ const onClick = () => {
             <NuxtLink to="/">home</NuxtLink>
           </v-list-item>
           <v-list-item>
+            <NuxtLink to="/test">test</NuxtLink>
+          </v-list-item>
+          <v-list-item>
             <NuxtLink to="/about">about</NuxtLink>
           </v-list-item>
         </v-list>
