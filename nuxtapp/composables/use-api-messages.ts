@@ -4,36 +4,33 @@ import {
   QM__MESSAGES_DELETE,
 } from "@/graphql";
 import { IMessage } from "@/types";
-import { useStoreAuth } from "@/store";
 
 export const useApiMessages = () => {
-  const auth = useStoreAuth();
-  const { $socket } = useNuxtApp();
-  const { IOEVENT_MESSAGES_CHANGE } = useAppConfig();
-
+  const { IOEVENT_MESSAGES_CHANGE, $ISMOUNTED, $ISAUTH } = useAppConfig();
+  
   // https://v4.apollo.vuejs.org/api/use-query.html#usequery
-  const { result: data, refetch } = useQuery<{ messages?: IMessage[] }>(
-    Q__MESSAGES_LIST
-  );
+  const {
+    load: loadMessages,
+    result: data,
+    refetch,
+  } = useLazyQuery<{ messages: IMessage[] }>(Q__MESSAGES_LIST);
   const ls = computed(() => data.value?.messages);
 
   // https://v4.apollo.vuejs.org/api/use-mutation.html#usemutation
   const { mutate: mutatePost } = useMutation(QM__MESSAGES_POST);
   const { mutate: mutateDelete } = useMutation(QM__MESSAGES_DELETE);
-
+  
   const reloadQuery = async () => await refetch();
-
+  
+  const { $socket } = useNuxtApp();
   $socket?.on(IOEVENT_MESSAGES_CHANGE, reloadQuery);
   onUnmounted(() => $socket?.off(IOEVENT_MESSAGES_CHANGE, reloadQuery));
 
-  watch(
-    () => auth.token?.accessToken,
-    async (AT) => {
-      if (AT) {
-        await reloadQuery();
-      }
-    }
-  );
+  const isMounted = useState($ISMOUNTED);
+  const isAuth = useState($ISAUTH);
+  watchEffect(() => {
+    if (isMounted.value && isAuth.value) loadMessages();
+  });
 
   const post = async (content: string) => {
     await mutatePost({ content });

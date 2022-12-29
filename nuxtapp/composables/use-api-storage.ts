@@ -15,20 +15,34 @@ export const useApiStorage = () => {
     URL_UPLOAD,
     URL_STORAGE_DOWNLOAD,
     URL_STORAGE_PUBLIC_URL,
+    $ISMOUNTED,
+    $ISAUTH,
   } = useAppConfig();
 
   const auth = useStoreAuth();
   const AT = computed(() => auth.token?.accessToken);
 
-  const { result, refetch } = useQuery<{ storageListFiles?: IStorageFile[] }>(
+  const {
+    load: loadStorage,
+    result,
+    refetch,
+  } = useLazyQuery<{ storageListFiles: IStorageFile[] }>(
     Q__STORAGE_LIST,
     null,
-    { pollInterval: STORAGE_POLLINTERVAL }
+    {
+      pollInterval: STORAGE_POLLINTERVAL,
+    }
   );
   const { mutate: mutateRemoveFile } = useMutation(QM__STORAGE_REMOVE);
 
   const files = computed(() => result.value?.storageListFiles);
   const reloadFiles = async () => await refetch();
+
+  const isMounted = useState($ISMOUNTED);
+  const isAuth = useState($ISAUTH);
+  watchEffect(() => {
+    if (isMounted.value && isAuth.value) loadStorage();
+  });
 
   // POST @api/v1/upload
   const upload = (...filesToUpload: IFileToUpload[]): Promise<IStorageFile[]> =>

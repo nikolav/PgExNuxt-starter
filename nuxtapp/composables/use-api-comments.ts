@@ -7,19 +7,29 @@ import {
 import { IComment, ICommentInput } from "@/types";
 
 export const useApiComments = (topicID: string) => {
+  const { $ISAUTH, $ISMOUNTED } = useAppConfig();
   const auth = useStoreAuth();
   const userId = computed(() => auth.user?.id || "");
 
-  const { result, refetch } = useQuery<{ listCommentsByTopic: IComment[] }>(
+  const {
+    load: loadComments,
+    result,
+    refetch,
+  } = useLazyQuery<{ listCommentsByTopic: IComment[] }>(
     Q__COMMENTS_LIST_BY_TOPIC,
-    { topicID },
-    { enabled: auth.isAuth }
+    { topicID }
   );
   const { mutate: mutateCommentsAdd } = useMutation(QM__COMMENTS_ADD);
   const { mutate: mutateCommentsRemove } = useMutation(QM__COMMENTS_REMOVE);
 
   const lsComments = computed(() => result.value?.listCommentsByTopic || []);
   const reloadComments = async () => await refetch();
+
+  const isMounted = useState($ISMOUNTED);
+  const isAuth = useState($ISAUTH);
+  watchEffect(() => {
+    if (isMounted.value && isAuth.value) loadComments();
+  });
 
   const { IOEVENT_COMMENTS_CHANGE } = useAppConfig();
   const { $socket } = useNuxtApp();

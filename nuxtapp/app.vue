@@ -1,8 +1,19 @@
 <script setup lang="ts">
 import "animate.css";
+import { False } from "@/utils";
 
-const { OVERLAYS_ID_START, OVERLAYS_ID_END } = useAppConfig();
+const { OVERLAYS_ID_START, OVERLAYS_ID_END, $ISMOUNTED, $ISAUTH } =
+  useAppConfig();
 
+useState($ISAUTH, False);
+
+const isMounted = useState($ISMOUNTED, False);
+onMounted(() => {
+  isMounted.value = true;
+});
+onUnmounted(() => {
+  isMounted.value = false;
+});
 </script>
 
 <template>

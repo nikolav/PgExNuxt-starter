@@ -37,3 +37,6 @@ export * from "./request-validation-schema-check";
 export { default as forEach } from "./for-each";
 export { default as hasOwn } from "./has-own";
 export { default as unpackBlob } from "./unpack-blob";
+
+export const False = () => false;
+export const True = () => false;
