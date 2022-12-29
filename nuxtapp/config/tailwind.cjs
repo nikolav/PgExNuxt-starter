@@ -21,6 +21,9 @@ module.exports = {
       // colors: {
       //   primary: "#4682b3"
       // },
+      // fontFamily: {
+      //   sans: ["Poppins", "sans-serif"],
+      // },
       screens: {
         // 'sm': '640px',
         // 'md': '768px',
