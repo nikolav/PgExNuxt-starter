@@ -9,9 +9,16 @@ import {
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  
+  // # client-side output
+  // # use .generate command to produce html in .output/public
+  // # specify routes for nitro to prerender @nitro.prerender.routes<path[]>
+  // ssr: false,
+
   // imports: {
   //   autoImport: false,
   // },
+
   // https://nuxt.com/docs/getting-started/configuration#environment-variables-and-private-tokens
   runtimeConfig: {
     // # server secrests, vars.. only available server-side
@@ -20,6 +27,7 @@ export default defineNuxtConfig({
     // @ keys within runtimeConfig.public are available client-side
     public: {},
   },
+
   modules: [
     "@vueuse/nuxt",
 
@@ -75,10 +83,10 @@ export default defineNuxtConfig({
       ],
       // bodyAttrs: {
       //   class: 'test'
-      // },    
+      // },
     },
     // css-transition all pages
-    pageTransition: { name: "PAGE", mode: "out-in" },
+    pageTransition: { name: "PAGE", mode: "in-out" },
     // enable layout transitions to apply an automatic transition for all layouts
     layoutTransition: { name: "PAGE", mode: "out-in" },
   },
@@ -87,6 +95,7 @@ export default defineNuxtConfig({
     "@/assets/style/main.scss",
     "vuetify/lib/styles/main.sass",
     "@mdi/font/css/materialdesignicons.min.css",
+    "vue-toastification/dist/index.css",
   ],
   build: {
     transpile: ["vuetify"],
@@ -109,6 +118,15 @@ export default defineNuxtConfig({
         tls: {},
       },
     },
+
+    // # build nitro from preset
+    // preset: 'node-server',
+    // # ..or use env variable with build
+    // # $ NITRO_PRESET=node-server nuxt build
+    
+    // prerender: {
+    //   routes: ["/user/1", "/user/2"],
+    // },
   },
   tailwindcss: {
     cssPath: "~/src/tailwind.css",

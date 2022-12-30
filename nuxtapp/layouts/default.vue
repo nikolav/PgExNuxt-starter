@@ -2,15 +2,17 @@
 import { mdiWeatherSunny, mdiWeatherNight } from "@mdi/js";
 
 const theme = ref("light");
-const icon = computed(() => theme.value === "light" ? mdiWeatherSunny : mdiWeatherNight);
+const icon = computed(() =>
+  theme.value === "light" ? mdiWeatherSunny : mdiWeatherNight
+);
 
 const onClick = () => {
   theme.value = theme.value === "light" ? "dark" : "light";
-}
+};
 </script>
 
 <template>
-  <section>
+  <section class="ma-0 pa-0">
     <v-app :theme="theme">
       <v-navigation-drawer width="92" color="grey-darken-2" permanent>
         <v-list>
@@ -29,9 +31,8 @@ const onClick = () => {
         <v-spacer></v-spacer>
 
         <v-btn @click="onClick">
-          <v-icon :icon="icon"/>
+          <v-icon :icon="icon" />
         </v-btn>
-
       </v-app-bar>
       <v-main>
         <v-container>

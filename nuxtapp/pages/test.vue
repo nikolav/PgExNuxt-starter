@@ -19,6 +19,9 @@
     <v-btn @click="setOff" color="primary" size="small" variant="outlined">
       unset
     </v-btn>
+    <v-btn @click="showToast" color="secondary" size="small" variant="outlined">
+      toast
+    </v-btn>
   </v-container>
 </template>
 
@@ -32,6 +35,10 @@ const isSet_processing = computed(() => flags.isSet($ISPROCESSING) ? "yes" : "no
 
 const setOn = () => flags.set("$1");
 const setOff = () => flags.unset("$1");
+
+const { $toast } = useNuxtApp();
+const showToast = () => $toast(`message --${Date.now()}`);
+
 </script>
 
 <style scoped></style>

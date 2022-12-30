@@ -3,8 +3,10 @@ import { TPrimitive, TVariableValue, IVariable } from "@/types";
 // @@
 export const useApiVariables = () => {
   const { URL_VARIABLES, IOEVENT_VARIABLES_CHANGE } = useAppConfig();
+
   const auth = useStoreAuth();
   const AT = computed(() => auth.token?.accessToken);
+  
   const { $socket } = useNuxtApp();
 
   const { data: ls, refresh } = useLazyAsyncData<IVariable[]>(
@@ -16,8 +18,8 @@ export const useApiVariables = () => {
         },
       })
   );
-
   const reloadVariables = async () => await refresh();
+
   $socket?.on(IOEVENT_VARIABLES_CHANGE, reloadVariables);
   onUnmounted(() => $socket?.off(IOEVENT_VARIABLES_CHANGE, reloadVariables));
 

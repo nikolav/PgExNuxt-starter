@@ -102,7 +102,7 @@ const rmComment = async () => {
 </script>
 
 <template>
-  <v-container class="bg-stone-200 p-1 min-h-[128px]">
+  <v-container class="bg-stone-200 p-1 min-h-[256px]">
     <h4>{{ screenSizeName }}</h4>
     <v-btn-group>
       <v-btn
