@@ -47,6 +47,9 @@ export default defineNuxtConfig({
 
     // https://apollo.nuxtjs.org/getting-started/quick-start
     "@nuxtjs/apollo",
+
+    // https://v1.image.nuxtjs.org/get-started/
+    "@nuxt/image-edge"
   ],
   app: {
     head: {
@@ -155,4 +158,10 @@ export default defineNuxtConfig({
     tokenStorage: "cookie",
     proxyCookies: true,
   },
+
+  // https://v1.image.nuxtjs.org/get-started/#configuration
+  image: {
+    
+  }
+  
 });

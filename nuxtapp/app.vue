@@ -1,13 +1,10 @@
 <script setup lang="ts">
 import "animate.css";
-import { False } from "@/utils";
 
-const { OVERLAYS_ID_START, OVERLAYS_ID_END, $ISMOUNTED, $ISAUTH } =
+const { OVERLAYS_ID_START, OVERLAYS_ID_END, $ISMOUNTED } =
   useAppConfig();
 
-useState($ISAUTH, False);
-
-// # set $ISMOUNTED flag in plugins/mounted
+// $ISMOUNTED set flag @plugins/mounted
 onUnmounted(() => {
   useState($ISMOUNTED).value = false;
 });

@@ -1,12 +1,12 @@
 import "vuetify/styles";
 import { createVuetify } from "vuetify";
-import { md1 } from "vuetify/blueprints";
+import { md2 } from "vuetify/blueprints";
 import { aliases, mdi } from "vuetify/iconsets/mdi-svg";
 
 export default defineNuxtPlugin((nuxtApp) => {
   const vuetify = createVuetify({
     ssr: true,
-    blueprint: md1,
+    blueprint: md2,
 
     // https://next.vuetifyjs.com/en/features/display-and-platform/#interface
     // display: {

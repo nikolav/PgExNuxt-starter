@@ -1,4 +1,5 @@
 export default defineEventHandler((event) => {
-  console.log({ "nuxt:middleware.log": event.node.req.url });
+  console.log(`nuxt:middleware.log`);
+  console.log({ event });
   // event.context.auth = { user: 123 }
 });
