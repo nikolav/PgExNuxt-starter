@@ -1,7 +1,24 @@
 import "vuetify/styles";
-import { createVuetify } from "vuetify";
+import {
+  createVuetify,
+  // ThemeDefinition
+} from "vuetify";
 import { md2 } from "vuetify/blueprints";
 import { aliases, mdi } from "vuetify/iconsets/mdi-svg";
+
+// const demoLightTheme: ThemeDefinition = {
+//   dark: false,
+//   colors: {
+//     background: '#FFFFFF',
+//     surface: '#FFFFFF',
+//     primary: '#6200EE',
+//     secondary: '#03DAC6',
+//     error: '#B00020',
+//     info: '#2196F3',
+//     success: '#4CAF50',
+//     warning: '#FB8C00',
+//   }
+// };
 
 export default defineNuxtPlugin((nuxtApp) => {
   const vuetify = createVuetify({
@@ -24,16 +41,14 @@ export default defineNuxtPlugin((nuxtApp) => {
     // https://next.vuetifyjs.com/en/features/theme/#theme-object-structure
     theme: {
       defaultTheme: "dark",
+      // defaultTheme: "demoLightTheme",
       // themes: {
-      //   CustomTheme: {
-      //     dark: false,
-      //     colors: {},
-      //   },
+      //   demoLightTheme,
       // },
       variations: {
         colors: ["primary", "secondary"],
-        lighten: 2,
-        darken: 2,
+        lighten: 5,
+        darken: 5,
       },
     },
 
