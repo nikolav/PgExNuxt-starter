@@ -7,17 +7,16 @@ const { OVERLAYS_ID_START, OVERLAYS_ID_END, $ISMOUNTED, $ISAUTH } =
 
 useState($ISAUTH, False);
 
-const isMounted = useState($ISMOUNTED, False);
-onMounted(() => {
-  isMounted.value = true;
-});
+// # set $ISMOUNTED flag in plugins/mounted
 onUnmounted(() => {
-  isMounted.value = false;
+  useState($ISMOUNTED).value = false;
 });
+
 </script>
 
 <template>
-  <main>
+  <main class="ma-0 pa-0 border-0">
+    <NuxtLoadingIndicator color="red" :height="2" />
     <div :id="OVERLAYS_ID_START" />
     <NuxtLayout>
       <NuxtPage />
