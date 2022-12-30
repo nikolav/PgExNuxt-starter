@@ -7,13 +7,17 @@ import {
   ENDPOINT_GRAPHQL,
 } from "./config";
 
-// https://v3.nuxtjs.org/api/configuration/nuxt.config
-// https://www.geeksforgeeks.org/meta-tags-in-nuxt-js/
+// https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  // imports: {
+  //   autoImport: false,
+  // },
+  // https://nuxt.com/docs/getting-started/configuration#environment-variables-and-private-tokens
   runtimeConfig: {
-    // secrests, vars, @server
+    // # server secrests, vars.. only available server-side
+    // privateField: "value",
 
-    //
+    // @ keys within runtimeConfig.public are available client-side
     public: {},
   },
   modules: [
@@ -39,12 +43,13 @@ export default defineNuxtConfig({
   ],
   app: {
     head: {
-      // @useHead()
+      // @useHead(); # https://nuxt.com/docs/getting-started/seo-meta#composable-usehead
       charset: "utf-16",
       viewport:
         "width=device-width, initial-scale=1.0, shrink-to-fit=no, minimum-scale=1",
       title: "nuxtapp",
       titleTemplate: "%s | Nuxt3",
+      // https://www.geeksforgeeks.org/meta-tags-in-nuxt-js/
       meta: [
         { name: "description", content: "App" },
         { name: "theme-color", content: "#fafafa" },
@@ -68,6 +73,9 @@ export default defineNuxtConfig({
           href: "https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap",
         },
       ],
+      // bodyAttrs: {
+      //   class: 'test'
+      // },    
     },
     // css-transition all pages
     pageTransition: { name: "PAGE", mode: "out-in" },
