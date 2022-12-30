@@ -1,4 +1,3 @@
-
 const objectEmpty = {};
 
 export type OrNull<T> = T | null;
@@ -111,4 +110,8 @@ export interface ICommentInput {
 
 export interface IFlags {
   [key: string]: boolean;
+}
+
+export interface IFormData {
+  [key: string]: OrNoValue<string | number>;
 }

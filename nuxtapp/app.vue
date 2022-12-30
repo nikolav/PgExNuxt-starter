@@ -33,8 +33,7 @@ onUnmounted(() => {
   transition: all 0.24s;
 }
 
-/* place outgoing page behind, full-width */
-/* prevents content jump @mode.in-out */
+/* place outgoing page behind, full-width, to prevent content jump @mode.in-out */
 .PAGE-leave-active {
   position: absolute;
   z-index: -1;
@@ -44,6 +43,6 @@ onUnmounted(() => {
 .PAGE-enter-from,
 .PAGE-leave-to {
   opacity: 0;
-  filter: blur(.2rem);
+  filter: blur(0.2rem);
 }
 </style>
