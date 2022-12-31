@@ -1,8 +1,9 @@
-const { DataTypes } = require('sequelize');
+const { DataTypes, Model } = require('sequelize');
 
-module.exports = (client) =>
-  client.define(
-    'Main',
+class Main extends Model { }
+
+module.exports = (client) => {
+  Model.init(
     {
       id: {
         type: DataTypes.UUID,
@@ -42,6 +43,8 @@ module.exports = (client) =>
     },
     {
       tableName: 'main',
+      modelName: 'Main',
+      sequelize: client,
       timestamps: true,
       // // https://sequelize.org/docs/v6/core-concepts/validations-and-constraints/#model-wide-validations
       // validate: {
@@ -52,3 +55,5 @@ module.exports = (client) =>
       // }
     }
   );
+  return Main;
+};

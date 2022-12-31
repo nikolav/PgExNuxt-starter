@@ -7,11 +7,8 @@ class Comment extends Model {
   static async byTopicId(topicID) {
     let comments = [];
     try {
-      if (topicID) {
-        const cmts$ = await this.findAll({ where: { topicID } });
-        if (0 < cmts$.length)
-          comments = cmts$;
-      }
+      if (topicID)
+        comments = await this.findAll({ where: { topicID } });
     } catch (error) {
       // ignore
     }
@@ -46,9 +43,9 @@ module.exports = (client) => {
 
     },
     {
+      tableName: 'comments',
       modelName: 'Comment',
       sequelize: client,
-      tableName: 'comments',
       timestamps: true,
     }
   );

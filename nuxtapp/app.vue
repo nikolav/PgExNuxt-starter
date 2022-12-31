@@ -1,24 +1,26 @@
 <script setup lang="ts">
 import "animate.css";
 
-const { OVERLAYS_ID_START, OVERLAYS_ID_END, $ISMOUNTED } =
-  useAppConfig();
+const { OVERLAYS_ID_START, OVERLAYS_ID_END, $ISMOUNTED } = useAppConfig();
 
 // $ISMOUNTED set flag @plugins/mounted
 onUnmounted(() => {
   useState($ISMOUNTED).value = false;
 });
-
 </script>
 
 <template>
   <main class="ma-0 pa-0 border-0">
-    <NuxtLoadingIndicator color="red" :height="2" />
     <div :id="OVERLAYS_ID_START" />
+    <!-- @@content -->
     <NuxtLayout>
       <NuxtPage />
     </NuxtLayout>
-    <div :id="OVERLAYS_ID_END" />
+    <div :id="OVERLAYS_ID_END">
+      <div class="fixed top-0 inset-x-0 z-1">
+        <NuxtLoadingIndicator color="red" :height="2" />
+      </div>
+    </div>
   </main>
 </template>
 

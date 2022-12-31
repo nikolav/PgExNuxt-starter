@@ -1,8 +1,9 @@
-const { DataTypes } = require('sequelize');
+const { DataTypes, Model } = require('sequelize');
 
-module.exports = (client) =>
-  client.define(
-    'Message',
+class Message extends Model { }
+
+module.exports = (client) => {
+  Message.init(
     {
       id: {
         type: DataTypes.UUID,
@@ -17,6 +18,10 @@ module.exports = (client) =>
     },
     {
       tableName: 'messages',
+      modelName: 'Message',
+      sequelize: client,
       timestamps: true,
     }
   );
+  return Message;
+};

@@ -14,8 +14,6 @@ module.exports =
         password: redis.password,
       });
 
-      if (!client) return reject(`no redis connection`);
-
       client.on('error', (err) =>
         isProductionEnv ? logger.info(err.message) : console.error(err)
       );

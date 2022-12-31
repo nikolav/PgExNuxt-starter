@@ -48,7 +48,7 @@ export default defineNuxtConfig({
     // https://apollo.nuxtjs.org/getting-started/quick-start
     "@nuxtjs/apollo",
 
-    // https://v1.image.nuxtjs.org/get-started/
+    // https://v1.image.nuxtjs.org/components/nuxt-img#usage
     "@nuxt/image-edge"
   ],
   app: {
