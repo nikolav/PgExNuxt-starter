@@ -3,9 +3,6 @@ export default defineNuxtRouteMiddleware((to, from) => {
   // if (!user.value.isAuthorized) {
   //   return abortNavigation()
   // }
-
   // return navigateTo('/edit-post')
-
   console.log(`@nuxt:route-middleware.log`);
-  console.log({ to, from });
 });
