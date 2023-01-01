@@ -80,12 +80,11 @@ module.exports = (client) => {
       },
     },
     {
+      tableName: 'token_valid',
       modelName: 'Tokens',
       sequelize: client,
-      tableName: 'token_valid',
       timestamps: true,
     }
   );
-  //
   return Tokens;
 };

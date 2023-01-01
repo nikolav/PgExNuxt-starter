@@ -1,6 +1,16 @@
 const { DataTypes, Model } = require('sequelize');
 
-class Main extends Model { }
+class Main extends Model {
+  static async byName(name) {
+    let node = null;
+    try {
+      node = await Main.findOne({ where: { name } });
+    } catch (error) {
+      // ignore
+    }
+    return node;
+  }
+}
 
 module.exports = (client) => {
   Model.init(
@@ -42,10 +52,12 @@ module.exports = (client) => {
       },
     },
     {
+
       tableName: 'main',
       modelName: 'Main',
       sequelize: client,
       timestamps: true,
+
       // // https://sequelize.org/docs/v6/core-concepts/validations-and-constraints/#model-wide-validations
       // validate: {
       //   customModelWideValidation() {
@@ -53,6 +65,11 @@ module.exports = (client) => {
       //     // this == model instance
       //   }
       // }
+
+      // paranoid: true, 
+      //  # `.restore` method undeletes deleted row
+      //  # include deleted rows in queries: `paranoid: false`
+
     }
   );
   return Main;

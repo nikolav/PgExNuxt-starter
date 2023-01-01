@@ -22,7 +22,6 @@
 
 // const { cached } = require('./src/utils');
 const model = require('./src/models/sequelize')
-const { dateSortedDescBy } = require('./src/utils')
   ; (async () => {
     // db.connect();
     // const { Tokens } = await model;
@@ -87,8 +86,9 @@ const { dateSortedDescBy } = require('./src/utils')
     // const b = Buffer.from([65]);
     // createWriteStream(path.join(__dirname, 'out')).write(b);
 
-    const { Comment } = await model;
-    const res = await Comment.byTopicId("@1");
-    console.log(JSON.stringify((res || []).sort(dateSortedDescBy('createdAt')), null, 2));
+    const { Main } = await model;
+
+    const res = await Main.findOne({ attributes: ["value"], where: { name: "admin.email" }, raw: true })
+    console.log(res)
 
   })();
