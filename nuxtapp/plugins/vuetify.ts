@@ -39,18 +39,18 @@ export default defineNuxtPlugin((nuxtApp) => {
 
     // https://next.vuetifyjs.com/en/features/theme/
     // https://next.vuetifyjs.com/en/features/theme/#theme-object-structure
-    theme: {
-      defaultTheme: "dark",
-      // defaultTheme: "demoLightTheme",
-      // themes: {
-      //   demoLightTheme,
-      // },
-      variations: {
-        colors: ["primary", "secondary"],
-        lighten: 5,
-        darken: 5,
-      },
-    },
+    // theme: {
+    //   // defaultTheme: "dark",
+    //   // defaultTheme: "demoLightTheme",
+    //   // themes: {
+    //   //   demoLightTheme,
+    //   // },
+    //   // variations: {
+    //   //   colors: ["primary", "secondary"],
+    //   //   lighten: 5,
+    //   //   darken: 5,
+    //   // },
+    // },
 
     // @@ set component/alias props
     defaults: {

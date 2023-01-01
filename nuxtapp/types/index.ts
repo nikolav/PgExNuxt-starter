@@ -115,3 +115,8 @@ export interface IFlags {
 export interface IFormData {
   [key: string]: OrNoValue<string | number>;
 }
+
+export interface IAppStreamEvent {
+  type: string;
+  [key: TPrimitive]: any;
+}

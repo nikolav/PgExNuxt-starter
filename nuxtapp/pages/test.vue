@@ -17,6 +17,7 @@ const setOff = () => flags.unset("$1");
 
 const { $toast } = useNuxtApp();
 const showToast = () => $toast(`message --${Date.now()}`);
+
 </script>
 
 <template>

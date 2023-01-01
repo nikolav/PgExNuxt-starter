@@ -1,4 +1,5 @@
 import { False } from "@/utils";
+
 export default defineNuxtPlugin((nuxtApp) => {
   nuxtApp.hook("app:mounted", () => {
     const { $ISMOUNTED, $ISAUTH } = useAppConfig();
