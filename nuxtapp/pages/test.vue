@@ -18,6 +18,22 @@ const setOff = () => flags.unset("$1");
 const { $toast } = useNuxtApp();
 const showToast = () => $toast(`message --${Date.now()}`);
 
+const { open: openGallery } = useLightbox();
+const gallery = () =>
+  openGallery([
+    {
+      title: "koala",
+      src: "/dist/Koala.jpg",
+    },
+    {
+      title: "penguins",
+      src: "/dist/Penguins.jpg",
+    },
+    {
+      title: "tulips",
+      src: "/dist/Tulips.jpg",
+    },
+  ]);
 </script>
 
 <template>
@@ -27,6 +43,7 @@ const showToast = () => $toast(`message --${Date.now()}`);
       excepturi, ipsa deserunt nisi, eligendi ipsam eum iusto quaerat est sequi.
       Debitis aliquam nihil neque voluptatum exercitationem fugiat quos iure.
     </p>
+    <v-btn @click="gallery" color="primary" variant="outlined">gallery</v-btn>
     <v-sheet>
       <p>isSet_1: [{{ isSet_1 }}]</p>
       <p>isSet_processing: [{{ isSet_processing }}]</p>

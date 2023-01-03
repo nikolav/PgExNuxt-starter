@@ -120,3 +120,9 @@ export interface IAppStreamEvent {
   type: string;
   [key: TPrimitive]: any;
 }
+
+export interface ILightboxImage {
+  src: string;
+  title?: string;
+  alt?: string;
+}

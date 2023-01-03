@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import "animate.css";
 
+import { Lightbox } from "@/components/ui";
+
 const { OVERLAYS_ID_START, OVERLAYS_ID_END, $ISMOUNTED } = useAppConfig();
 
 // $ISMOUNTED set flag @plugins/mounted
@@ -11,16 +13,25 @@ onUnmounted(() => {
 
 <template>
   <main class="ma-0 pa-0 border-0">
+
     <div :id="OVERLAYS_ID_START" />
+
     <!-- @@content -->
     <NuxtLayout>
       <NuxtPage />
     </NuxtLayout>
-    <div :id="OVERLAYS_ID_END">
-      <div class="fixed top-0 inset-x-0 z-1">
-        <NuxtLoadingIndicator color="red" :height="2" />
-      </div>
+
+    <!-- global lightbox component -->
+    <!-- https://onycat.com/vue-easy-lightbox/ -->
+    <Lightbox />
+
+    <!-- loading indicator -->
+    <div class="fixed top-0 inset-x-0 z-1">
+      <NuxtLoadingIndicator color="red" :height="2" />
     </div>
+
+    <div :id="OVERLAYS_ID_END"></div>
+
   </main>
 </template>
 
