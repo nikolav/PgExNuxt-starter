@@ -1,12 +1,5 @@
 import { Ref } from "vue";
-import {
-  axisBottom,
-  axisLeft,
-  scaleBand,
-  scaleLinear,
-  select,
-  transition,
-} from "d3";
+import { axisBottom, axisLeft, scaleBand, scaleLinear, select } from "d3";
 
 import { IDataChartBarVertical } from "@/types";
 import { merge, map, maxOfValue, get } from "@/utils";
@@ -21,7 +14,7 @@ export default defineNuxtPlugin((nuxtApp) => {
     //  1. fetch data, merge config
     //  2. calc. chart dimensions
     //  3. declare scales without domains
-    //  4. add svg-canvas, graph, xAxis, yAxis, default transition
+    //  4. add svg-canvas, graph, xAxis, yAxis
     // @data:updated
     //  5. set domains
     //  6. join data, draw shapes
@@ -108,7 +101,7 @@ export default defineNuxtPlugin((nuxtApp) => {
         .attr("transform", `translate(${paddingLeft}, ${paddingTop})`)
         .classed(_classYAxis, true);
 
-      // const t = transition("@1").duration(_transitionDuration);
+      const domainMinY = 0;
 
       watchEffect(() => {
         // @data:updated
@@ -116,7 +109,7 @@ export default defineNuxtPlugin((nuxtApp) => {
 
         // update scale domains
         x.domain(map(data_, key));
-        y.domain([0, maxOfValue(data_)]);
+        y.domain([domainMinY, maxOfValue(data_)]);
 
         // draw shapes
         graph
@@ -127,31 +120,33 @@ export default defineNuxtPlugin((nuxtApp) => {
             (enter) =>
               enter
                 .append("rect")
-                .attr("x", (d) => x(d.key) as number)
+                .attr("x", (d) => x(key(d)) as number)
                 .attr("width", x.bandwidth())
                 .attr("fill", color)
                 .classed(_classBars, true)
                 // transition.from
-                .attr("y", y(0))
+                .attr("y", y(domainMinY))
                 .attr("height", 0)
                 .attr("fill-opacity", 0)
                 .call((enter) =>
                   enter
                     .transition()
+                    .duration(_transitionDuration)
                     // transition.to
-                    .attr("y", (d) => y(d.value))
-                    .attr("height", (d) => innerHeight - y(d.value))
+                    .attr("y", (d) => y(value(d)))
+                    .attr("height", (d) => innerHeight - y(value(d)))
                     .attr("fill-opacity", 1)
                 ),
             (update) =>
               update.call((update) =>
                 update
                   .transition()
+                  .duration(_transitionDuration)
                   // transition.to from current
-                  .attr("x", (d) => x(d.key) as number)
-                  .attr("y", (d) => y(d.value))
+                  .attr("x", (d) => x(key(d)) as number)
+                  .attr("y", (d) => y(value(d)))
                   .attr("width", x.bandwidth())
-                  .attr("height", (d) => innerHeight - y(d.value))
+                  .attr("height", (d) => innerHeight - y(value(d)))
               ),
             (exit) =>
               exit
@@ -160,9 +155,10 @@ export default defineNuxtPlugin((nuxtApp) => {
                 .call((exit) =>
                   exit
                     .transition()
+                    .duration(_transitionDuration)
                     // transition.to
                     .attr("fill-opacity", 0)
-                    .attr("y", y(0))
+                    .attr("y", y(domainMinY))
                     .attr("height", 0)
                 )
                 .remove()

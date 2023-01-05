@@ -71,5 +71,5 @@ export const CONFIG: IConfig = {
   _classYAxis: "BarChart--yaxis",
   //
   // [ms]
-  _transitionDuration: 345,
+  _transitionDuration: 1234,
 };
