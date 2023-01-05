@@ -1,5 +1,5 @@
-// https://onycat.com/vue-easy-lightbox/
 import { ILightboxImage, OrNoValue } from "@/types";
+
 export const useLightbox = (initialImages: ILightboxImage[] = []) => {
   const images = useState("Lightbox:images", () => initialImages);
   const index = useState("Lightbox:index", () => 0);
@@ -7,8 +7,9 @@ export const useLightbox = (initialImages: ILightboxImage[] = []) => {
   const setImages = (ls: ILightboxImage[]) => {
     images.value = [...ls];
   };
-  const open = (ls: OrNoValue<ILightboxImage[]> = null) => {
-    if (ls && 0 < ls.length) setImages(ls);
+  const open = (ls: OrNoValue<ILightboxImage[]>, i: number = 0) => {
+    if (ls) setImages(ls);
+    index.value = i;
     isActive.value = true;
   };
   const close = () => {

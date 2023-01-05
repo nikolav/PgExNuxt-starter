@@ -22,16 +22,16 @@ const { open: openGallery } = useLightbox();
 const gallery = () =>
   openGallery([
     {
+      src: "/local/Koala.jpg",
       title: "koala",
-      src: "/dist/Koala.jpg",
     },
     {
+      src: "/local/Penguins.jpg",
       title: "penguins",
-      src: "/dist/Penguins.jpg",
     },
     {
+      src: "/local/Tulips.jpg",
       title: "tulips",
-      src: "/dist/Tulips.jpg",
     },
   ]);
 </script>
@@ -43,11 +43,13 @@ const gallery = () =>
       excepturi, ipsa deserunt nisi, eligendi ipsam eum iusto quaerat est sequi.
       Debitis aliquam nihil neque voluptatum exercitationem fugiat quos iure.
     </p>
-    <v-btn @click="gallery" color="primary" variant="outlined">gallery</v-btn>
     <v-sheet>
       <p>isSet_1: [{{ isSet_1 }}]</p>
       <p>isSet_processing: [{{ isSet_processing }}]</p>
     </v-sheet>
+    <v-btn @click="gallery" color="secondary" size="small" variant="outlined">
+      gallery
+    </v-btn>
     <v-btn @click="setOn" color="primary" size="small" variant="outlined">
       set
     </v-btn>

@@ -121,6 +121,19 @@ export interface IAppStreamEvent {
   [key: TPrimitive]: any;
 }
 
+export interface IDataChartBarVertical<TKey = string, TValue = number> {
+  key: TKey;
+  value: TValue;
+  [index: string]: any;
+}
+
+export interface IValueNumber {
+  value: number;
+}
+export interface IHasValueNumber extends IValueNumber {
+  [name: TPrimitive]: any;
+}
+
 export interface ILightboxImage {
   src: string;
   title?: string;
