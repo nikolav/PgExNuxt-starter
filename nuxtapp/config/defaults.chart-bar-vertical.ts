@@ -1,4 +1,3 @@
-import { ValueFn, BaseType } from "d3";
 import { IDataChartBarVertical } from "@/types";
 
 export interface IConfig {

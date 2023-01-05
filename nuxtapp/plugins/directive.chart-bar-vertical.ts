@@ -9,7 +9,7 @@ import {
 } from "d3";
 
 import { IDataChartBarVertical } from "@/types";
-import { merge, map, maxOfValue } from "@/utils";
+import { merge, map, maxOfValue, get } from "@/utils";
 import { CONFIG, IConfig } from "@/config/defaults.chart-bar-vertical";
 
 // https://nuxt.com/docs/guide/directory-structure/plugins#creating-plugins
@@ -33,14 +33,9 @@ export default defineNuxtPlugin((nuxtApp) => {
     // called when the bound element's parent component
     // and all its children are mounted.
     mounted: (el, binding, _vnode, _prevVnode) => {
-      const {
-        value: { data, config },
-      }: {
-        value: {
-          data: Ref<IDataChartBarVertical[]>;
-          config: Partial<IConfig>;
-        };
-      } = binding;
+      const data$: Ref<IDataChartBarVertical[]> = get(binding, "value.data");
+      const config: Partial<IConfig> = get(binding, "value.config");
+
       const {
         width,
         height,
@@ -119,7 +114,7 @@ export default defineNuxtPlugin((nuxtApp) => {
 
       watchEffect(() => {
         // @data:updated
-        const data_ = data.value || [];
+        const data_ = data$.value || [];
 
         // update scale domains
         x.domain(map(data_, key));
@@ -182,6 +177,8 @@ export default defineNuxtPlugin((nuxtApp) => {
     },
 
     // called when the parent component is unmounted
-    // unmounted(el, binding, vnode, prevVnode) {},
+    unmounted(el, binding, vnode, prevVnode) {
+      select(el).select("svg").remove();
+    },
   });
 });
