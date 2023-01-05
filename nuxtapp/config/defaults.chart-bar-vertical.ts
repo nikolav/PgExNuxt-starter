@@ -61,8 +61,8 @@ export const CONFIG: IConfig = {
   // _tickSizeOuter,
   // _tickFormat,
   // _tickValues,
-  _paddingInner: 0.02,
-  _paddingOuter: 0.02,
+  _paddingInner: 0.01,
+  _paddingOuter: 0.01,
   //
   _classCanvas: "BarChart--canvas",
   _classGraph: "BarChart--graph",

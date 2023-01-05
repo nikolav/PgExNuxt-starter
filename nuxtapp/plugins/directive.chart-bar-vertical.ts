@@ -108,9 +108,7 @@ export default defineNuxtPlugin((nuxtApp) => {
         .attr("transform", `translate(${paddingLeft}, ${paddingTop})`)
         .classed(_classYAxis, true);
 
-      const t = transition("@transition.ChartBarVertical").duration(
-        _transitionDuration
-      );
+      // const t = transition("@1").duration(_transitionDuration);
 
       watchEffect(() => {
         // @data:updated
@@ -139,7 +137,7 @@ export default defineNuxtPlugin((nuxtApp) => {
                 .attr("fill-opacity", 0)
                 .call((enter) =>
                   enter
-                    .transition(t)
+                    .transition()
                     // transition.to
                     .attr("y", (d) => y(d.value))
                     .attr("height", (d) => innerHeight - y(d.value))
@@ -148,7 +146,7 @@ export default defineNuxtPlugin((nuxtApp) => {
             (update) =>
               update.call((update) =>
                 update
-                  .transition(t)
+                  .transition()
                   // transition.to from current
                   .attr("x", (d) => x(d.key) as number)
                   .attr("y", (d) => y(d.value))
@@ -161,7 +159,7 @@ export default defineNuxtPlugin((nuxtApp) => {
                 .attr("fill", "#ff0000")
                 .call((exit) =>
                   exit
-                    .transition(t)
+                    .transition()
                     // transition.to
                     .attr("fill-opacity", 0)
                     .attr("y", y(0))
@@ -171,8 +169,8 @@ export default defineNuxtPlugin((nuxtApp) => {
           );
 
         // draw axis
-        xAxis.transition(t).call(axisBottom(x).ticks(_ticksX));
-        yAxis.transition(t).call(axisLeft(y).ticks(_ticksY));
+        xAxis.transition().call(axisBottom(x).ticks(_ticksX));
+        yAxis.transition().call(axisLeft(y).ticks(_ticksY));
       });
     },
 

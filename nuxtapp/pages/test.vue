@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { useStoreFlags } from "@/store";
+import { random } from "@/utils";
 
 definePageMeta({
   middleware: ["log"],
@@ -34,6 +35,42 @@ const gallery = () =>
       title: "tulips",
     },
   ]);
+
+const data = ref([
+  {
+    key: "A",
+    value: 1,
+  },
+  {
+    key: "B",
+    value: 2,
+  },
+  {
+    key: "C",
+    value: 3,
+  },
+  {
+    key: "D",
+    value: 4,
+  },
+]);
+const config = {
+  color: "steelblue",
+};
+const chart = { data, config };
+
+const i1$ = ref<any>(null);
+
+onMounted(() => {
+  i1$.value = setInterval(() => {
+    data.value = "A B C D"
+      .split(" ")
+      .map((key) => ({ key, value: random(100) }));
+  }, 2345);
+});
+onUnmounted(() => {
+  clearInterval(i1$.value);
+});
 </script>
 
 <template>
@@ -59,6 +96,9 @@ const gallery = () =>
     <v-btn @click="showToast" color="secondary" size="small" variant="outlined">
       toast
     </v-btn>
+    <v-sheet>
+      <div v-chartBarVertical="chart"></div>
+    </v-sheet>
   </v-container>
 </template>
 
