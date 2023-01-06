@@ -36,51 +36,47 @@ const gallery = () =>
     },
   ]);
 
+const data = ref([
+  {
+    key: "A",
+    value: 1,
+  },
+  {
+    key: "B",
+    value: 2,
+  },
+  {
+    key: "C",
+    value: 3,
+  },
+  {
+    key: "D",
+    value: 4,
+  },
+]);
 // const data = ref([
 //   {
-//     key: "A",
+//     key: 11,
 //     value: 1,
 //   },
 //   {
-//     key: "B",
+//     key: 12,
 //     value: 2,
 //   },
 //   {
-//     key: "C",
-//     value: 3,
+//     key: 13,
+//     value: 1,
 //   },
 //   {
-//     key: "D",
-//     value: 4,
+//     key: 14,
+//     value: 2,
 //   },
 // ]);
-// const config = {
-//   color: "steelblue",
-// };
 
-const data = ref([
-  {
-    key: 11,
-    value: 1,
-  },
-  {
-    key: 12,
-    value: 2,
-  },
-  {
-    key: 13,
-    value: 1,
-  },
-  {
-    key: 14,
-    value: 2,
-  },
-]);
+
 const config = {
-  color: "steelblue",
-  _tickSpanHorizontal: 92,
+  color: "orange",
 };
-
 
 // @chart
 const chart = { data, config };
@@ -89,16 +85,16 @@ const i1$ = ref<any>(null);
 
 onMounted(() => {
 
-  // i1$.value = setInterval(() => {
-  //   data.value = "A B C D"
-  //     .split(" ")
-  //     .map((key) => ({ key, value: random(100) }));
-  // }, 2345);
-  
   i1$.value = setInterval(() => {
-    data.value = [11, 12, 13, 14]
+    data.value = "A B C D"
+      .split(" ")
       .map((key) => ({ key, value: random(100) }));
   }, 2345);
+  
+  // i1$.value = setInterval(() => {
+  //   data.value = [11, 12, 13, 14]
+  //     .map((key) => ({ key, value: random(100) }));
+  // }, 2345);
 });
 onUnmounted(() => {
   clearInterval(i1$.value);
@@ -129,8 +125,8 @@ onUnmounted(() => {
       toast
     </v-btn>
     <v-sheet>
-      <!-- <div v-chartBarVertical="chart"></div> -->
-      <div v-chartLine="chart"></div>
+      <div v-chartBarVertical="chart"></div>
+      <!-- <div v-chartLine="chart"></div> -->
     </v-sheet>
   </v-container>
 </template>

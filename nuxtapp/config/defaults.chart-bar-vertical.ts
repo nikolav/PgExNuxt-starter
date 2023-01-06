@@ -21,9 +21,11 @@ export interface IConfig {
   // _xAxisTextOpacity: 0.85,
   _ticksX: number;
   _ticksY: number;
+  _tickSpanX: number;
+  _tickSpanY: number;
   // _tickSize,
-  // _tickSizeInner,
-  // _tickSizeOuter,
+  // _tickSizeInner: number;
+  _tickSizeOuterX: number;
   // _tickFormat,
   // _tickValues,
   _paddingInner: number;
@@ -59,12 +61,14 @@ export const CONFIG: IConfig = {
   // _xAxisTextOpacity: 0.85,
   _ticksX: 5,
   _ticksY: 4,
+  _tickSpanX: 64,
+  _tickSpanY: 92,
   // _tickSize,
-  // _tickSizeInner,
-  // _tickSizeOuter,
+  // _tickSizeInner: 4,
+  _tickSizeOuterX: 0,
   // _tickFormat,
   // _tickValues,
-  _paddingInner: 0.01,
+  _paddingInner: 0.02,
   _paddingOuter: 0.01,
   //
   _classCanvas: "BarChart--canvas",

@@ -54,9 +54,11 @@ export default defineNuxtPlugin((nuxtApp) => {
         //
         _ticksX,
         _ticksY,
+        _tickSpanX,
+        _tickSpanY,
         // _tickSize,
         // _tickSizeInner,
-        // _tickSizeOuter,
+        _tickSizeOuterX,
         // _tickFormat,
         // _tickValues,
 
@@ -124,7 +126,7 @@ export default defineNuxtPlugin((nuxtApp) => {
             (enter) =>
               enter
                 .append("rect")
-                .attr("x", (d) => x(key(d)) as number)
+                .attr("x", (d) => Number(x(key(d))))
                 .attr("width", x.bandwidth())
                 .attr("fill", color)
                 .classed(_classBars, true)
@@ -147,7 +149,7 @@ export default defineNuxtPlugin((nuxtApp) => {
                   .transition()
                   .duration(_transitionDuration)
                   // transition.to from current
-                  .attr("x", (d) => x(key(d)) as number)
+                  .attr("x", (d) => Number(x(key(d))))
                   .attr("y", (d) => y(value(d)))
                   .attr("width", x.bandwidth())
                   .attr("height", (d) => innerHeight - y(value(d)))
@@ -169,8 +171,9 @@ export default defineNuxtPlugin((nuxtApp) => {
           );
 
         // draw axis
-        xAxis.transition().call(axisBottom(x).ticks(_ticksX));
-        yAxis.transition().call(axisLeft(y).ticks(_ticksY));
+        xAxis.transition().call(axisBottom(x).tickSizeOuter(_tickSizeOuterX));
+        // xAxis.transition().call(axisBottom(x).ticks(innerWidth / _tickSpanX));
+        yAxis.transition().call(axisLeft(y).ticks(innerHeight / _tickSpanY));
       });
     },
 

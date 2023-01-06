@@ -1,15 +1,14 @@
 import { defineStore } from "pinia";
-import { ref, Ref } from "vue";
 
-import { IFlags } from "../../types";
-import { $ISPROCESSING } from "../../config";
+import { IFlags } from "@/types";
+import { $ISPROCESSING } from "@/config";
 
-const initialFlags = <IFlags>{
+const initialFlags: IFlags = {
   [$ISPROCESSING]: false,
 };
 
 export const useStoreFlags = defineStore("flags", () => {
-  const flag: Ref<IFlags> = ref(initialFlags);
+  const flag = ref(initialFlags);
   const setFlag = (name: string) => {
     flag.value[name] = true;
   };
