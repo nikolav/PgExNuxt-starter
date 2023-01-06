@@ -114,7 +114,7 @@ export default defineNuxtPlugin((nuxtApp) => {
         // draw shapes
         graph
           .selectAll("rect")
-          // .data(data_, key)
+          // .data<IDataChartBarVertical>(data_, key)
           .data(data_)
           .join(
             (enter) =>

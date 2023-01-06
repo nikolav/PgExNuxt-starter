@@ -59,17 +59,49 @@ const config = {
 };
 const chart = { data, config };
 
+const dataLine = ref([
+  {
+    key: 11,
+    value: 1,
+  },
+  {
+    key: 12,
+    value: 2,
+  },
+  {
+    key: 13,
+    value: 1,
+  },
+  {
+    key: 14,
+    value: 2,
+  },
+]);
+const configLine = {
+  color: "steelblue",
+  _tickSpanHorizontal: 92,
+};
+const chartLine = { data: dataLine, config: configLine };
+
 const i1$ = ref<any>(null);
+const i2$ = ref<any>(null);
 
 onMounted(() => {
+
   i1$.value = setInterval(() => {
     data.value = "A B C D"
       .split(" ")
       .map((key) => ({ key, value: random(100) }));
   }, 2345);
+  
+  i2$.value = setInterval(() => {
+    dataLine.value = [11, 12, 13, 14]
+      .map((key) => ({ key, value: random(100) }));
+  }, 2345);
 });
 onUnmounted(() => {
   clearInterval(i1$.value);
+  clearInterval(i2$.value);
 });
 </script>
 
@@ -98,6 +130,7 @@ onUnmounted(() => {
     </v-btn>
     <v-sheet>
       <div v-chartBarVertical="chart"></div>
+      <div v-chartLine="chartLine"></div>
     </v-sheet>
   </v-container>
 </template>

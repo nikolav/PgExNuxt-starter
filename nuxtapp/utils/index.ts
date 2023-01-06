@@ -17,6 +17,7 @@ const {
   range,
   reduce,
   set,
+  identity,
 } = lodash;
 
 export {
@@ -36,6 +37,7 @@ export {
   range,
   reduce,
   set,
+  identity,
 };
 export * from "./request-validation-schema-check";
 export { default as forEach } from "./for-each";

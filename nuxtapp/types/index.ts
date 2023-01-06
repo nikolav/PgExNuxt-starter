@@ -139,3 +139,9 @@ export interface ILightboxImage {
   title?: string;
   alt?: string;
 }
+
+export interface IDataChartLine<TKey = number, TValue = number> {
+  key: TKey;
+  value: TValue;
+  [name: TPrimitive]: any;
+}
