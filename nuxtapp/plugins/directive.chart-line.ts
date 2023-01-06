@@ -79,13 +79,6 @@ export default defineNuxtPlugin((nuxtApp) => {
       const x = xScale().range([0, innerWidth]);
       const y = yScale().range([innerHeight, 0]);
 
-      // line generator, [d]
-      const lineGen = d3
-        .line<IDataChartLine>()
-        .curve(_curve)
-        .x((d) => x(key(d)))
-        .y((d) => y(value(d)));
-
       const svg = d3
         .select(el)
         .append("svg")
@@ -99,16 +92,6 @@ export default defineNuxtPlugin((nuxtApp) => {
         .append("g")
         .attr("transform", `translate(${paddingLeft}, ${paddingTop})`)
         .classed(_classGraph, true);
-
-      const path = graph
-        .append("path")
-        .attr("fill", fill)
-        .attr("stroke", color)
-        .attr("stroke-width", strokeWidth)
-        .attr("stroke-linecap", strokeLinecap)
-        .attr("stroke-linejoin", strokeLinejoin)
-        .attr("stroke-opacity", strokeOpacity)
-        .classed(_classPath, true);
 
       const xAxis = svg
         .append("g")
@@ -132,6 +115,23 @@ export default defineNuxtPlugin((nuxtApp) => {
             .text(yLabel)
         )
         .classed(_classYAxis, true);
+
+      const path = graph
+        .append("path")
+        .attr("fill", fill)
+        .attr("stroke", color)
+        .attr("stroke-width", strokeWidth)
+        .attr("stroke-linecap", strokeLinecap)
+        .attr("stroke-linejoin", strokeLinejoin)
+        .attr("stroke-opacity", strokeOpacity)
+        .classed(_classPath, true);
+
+      // line generator, [d]
+      const lineGen = d3
+        .line<IDataChartLine>()
+        .curve(_curve)
+        .x((d) => x(key(d)))
+        .y((d) => y(value(d)));
 
       // @data:updated
       watchEffect(() => {

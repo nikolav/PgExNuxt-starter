@@ -29,7 +29,9 @@ export interface IConfig {
   yScale: any;
   //
   // accesors
+  // gets x-axis value
   key: (d: IDataChartLine) => number;
+  // gets y-axis value
   value: (d: IDataChartLine) => number;
   //
   _xAxisTextRotationDegrees: number;
