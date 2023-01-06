@@ -35,10 +35,10 @@ export default defineNuxtPlugin((nuxtApp) => {
         fill,
         key,
         value,
+        paddingTop,
+        paddingRight,
         paddingBottom,
         paddingLeft,
-        paddingRight,
-        paddingTop,
         strokeLinecap,
         strokeLinejoin,
         strokeOpacity,
@@ -71,7 +71,7 @@ export default defineNuxtPlugin((nuxtApp) => {
 
       // @init
 
-      // canvas dimensions
+      // chart dimensions
       const innerWidth = width - paddingLeft - paddingRight;
       const innerHeight = height - paddingTop - paddingBottom;
 
@@ -149,6 +149,7 @@ export default defineNuxtPlugin((nuxtApp) => {
         // run axis
         xAxis
           // .transition()
+          // # draw ticks
           .call(
             d3
               .axisBottom(x)
@@ -156,6 +157,7 @@ export default defineNuxtPlugin((nuxtApp) => {
               .tickFormat(_xAxisTextFormat)
               .tickSizeOuter(_tickSizeOuter)
           )
+          // # format axis text
           .call((g) =>
             g
               .selectAll("text")
@@ -163,17 +165,19 @@ export default defineNuxtPlugin((nuxtApp) => {
               .attr("fill-opacity", _xAxisTextOpacity)
               .attr("transform", `rotate(${_xAxisTextRotationDegrees})`)
           );
+
         yAxis
           // .transition()
+          // # draw ticks
           .call(
             d3
               .axisLeft(y)
               .ticks(height / _tickSpanVertical)
               .tickFormat(_yAxisTextFormat)
           )
-          // remove vertical axis
+          // # remove vertical axis
           .call((g) => g.select(".domain").remove())
-          // draw horizontal guides
+          // # draw horizontal guides
           .call((g) => {
             g.selectAll(`.tick line.${_classGuide}`).remove();
             g.selectAll(".tick line")
