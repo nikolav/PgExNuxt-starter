@@ -35,6 +35,7 @@ export default defineNuxtPlugin((nuxtApp) => {
         fill,
         key,
         value,
+        format,
         paddingTop,
         paddingRight,
         paddingBottom,
@@ -135,7 +136,10 @@ export default defineNuxtPlugin((nuxtApp) => {
 
       // @data:updated
       watchEffect(() => {
-        const data = data$.value || [];
+        const data = format<
+          IDataChartLine<number, number>[],
+          IDataChartLine<number, number>[]
+        >(data$.value || []);
 
         x.domain(d3.extent(data, key));
         y.domain([0, d3.max(data, value)]);

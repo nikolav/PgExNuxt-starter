@@ -41,6 +41,7 @@ export default defineNuxtPlugin((nuxtApp) => {
         //
         key,
         value,
+        format,
         //
         _classCanvas,
         _classGraph,
@@ -105,7 +106,10 @@ export default defineNuxtPlugin((nuxtApp) => {
 
       watchEffect(() => {
         // @data:updated
-        const data_ = data$.value || [];
+        const data_ = format<
+          IDataChartBarVertical<string, number>[],
+          IDataChartBarVertical<string, number>[]
+        >(data$.value || []);
 
         // update scale domains
         x.domain(map(data_, key));
@@ -114,7 +118,7 @@ export default defineNuxtPlugin((nuxtApp) => {
         // draw shapes
         graph
           .selectAll("rect")
-          // .data<IDataChartBarVertical>(data_, key)
+          // .data(data_, key)
           .data(data_)
           .join(
             (enter) =>

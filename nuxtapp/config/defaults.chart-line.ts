@@ -33,6 +33,8 @@ export interface IConfig {
   key: (d: IDataChartLine) => number;
   // gets y-axis value
   value: (d: IDataChartLine) => number;
+  // format data, f<d>
+  format: <TData = any[], TResult = any[]>(data: TData) => TResult;
   //
   _xAxisTextRotationDegrees: number;
   _xAxisTextOpacity: number;
@@ -85,6 +87,8 @@ export const CONFIG: IConfig = {
   // accesors
   key: (d) => d.key,
   value: (d) => d.value,
+  // format data, f(d)
+  format: identity,
   //
   _xAxisTextRotationDegrees: 0,
   _xAxisTextOpacity: 1,

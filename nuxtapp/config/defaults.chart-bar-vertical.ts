@@ -1,4 +1,5 @@
 import { IDataChartBarVertical } from "@/types";
+import { identity } from "@/utils";
 
 export interface IConfig {
   width: number;
@@ -13,6 +14,7 @@ export interface IConfig {
   // export type ValueFn<T extends BaseType, Datum, Result> = (this: T, datum: Datum, index: number, groups: T[] | ArrayLike<T>) => Result;
   key: (d: IDataChartBarVertical) => string;
   value: (d: IDataChartBarVertical) => number;
+  format: <TData = any[], TResult = any[]>(data: TData) => TResult;
   //
   // minor tweeks
   // _xAxisTextRotationDegrees: -24,
@@ -50,6 +52,7 @@ export const CONFIG: IConfig = {
   // export type ValueFn<T extends BaseType, Datum, Result> = (this: T, datum: Datum, index: number, groups: T[] | ArrayLike<T>) => Result;
   key: (d: IDataChartBarVertical) => d.key,
   value: (d: IDataChartBarVertical) => d.value,
+  format: identity,
   //
   // minor tweeks
   // _xAxisTextRotationDegrees: -24,
