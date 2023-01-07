@@ -96,9 +96,26 @@ onMounted(() => {
   //     .map((key) => ({ key, value: random(100) }));
   // }, 2345);
 });
+
+const { error, data: vars, add: addVar, rm: rmVar, put: putVar, unsubscribe } = useFirestoreCollection("vars");
+const newVar = async () => {
+  await addVar({
+    name: `var::${Date.now()}`,
+    value: Math.random(),
+  });
+};
+const removeVar = async () => {
+  await rmVar("RDIaatw1zt6g7aobNjMW");
+};
+const updateVar = async () => {
+  await putVar({ id: "RDIaatw1zt6g7aobNjMW", value: random(100) });
+};
+
 onUnmounted(() => {
+  unsubscribe();
   clearInterval(i1$.value);
 });
+
 </script>
 
 <template>
@@ -112,6 +129,15 @@ onUnmounted(() => {
       <p>isSet_1: [{{ isSet_1 }}]</p>
       <p>isSet_processing: [{{ isSet_processing }}]</p>
     </v-sheet>
+    <v-btn @click="newVar" color="primary" size="small" variant="outlined">
+      newVar
+    </v-btn>
+    <v-btn @click="updateVar" color="primary" size="small" variant="outlined">
+      updateVar
+    </v-btn>
+    <v-btn @click="removeVar" color="primary" size="small" variant="outlined">
+      rmVar
+    </v-btn>
     <v-btn @click="gallery" color="secondary" size="small" variant="outlined">
       gallery
     </v-btn>
@@ -127,6 +153,11 @@ onUnmounted(() => {
     <v-sheet>
       <div v-chartBarVertical="chart"></div>
       <!-- <div v-chartLine="chart"></div> -->
+    </v-sheet>
+    <v-sheet>
+      <pre>
+        {{ JSON.stringify({ error, vars }, null, 2) }}
+      </pre>
     </v-sheet>
   </v-container>
 </template>

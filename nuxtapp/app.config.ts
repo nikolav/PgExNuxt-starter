@@ -58,6 +58,7 @@ export default defineAppConfig({
   LIKES_PREFIX: "like::",
   STORAGE_POLLINTERVAL,
   $TOKEN: ".auth",
+  $FIRESTORE: "app",
   // flags
   $ISMOUNTED: "FXwmEX5afoE",
   $ISAUTH: "aKviNu7ubPK",

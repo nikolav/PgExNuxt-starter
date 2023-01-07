@@ -1,3 +1,5 @@
+import { DocumentData } from "firebase/firestore";
+
 const objectEmpty = {};
 
 export type OrNull<T> = T | null;
@@ -145,3 +147,5 @@ export interface IDataChartLine<TKey = number, TValue = number> {
   value: TValue;
   [name: TPrimitive]: any;
 }
+
+export type TFirebaseDoc = { id: string } & DocumentData;
