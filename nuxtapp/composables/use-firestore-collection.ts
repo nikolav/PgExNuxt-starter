@@ -24,7 +24,7 @@ export const useFirestoreCollection = (collectionName: string) => {
 
   const unsubscribe = onSnapshot(coll$, {
     next: (snapshot) => {
-      data.value = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+      data.value = snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
     },
     error: (err) => {
       error.value = err;

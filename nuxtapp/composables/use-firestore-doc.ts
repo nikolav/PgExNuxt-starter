@@ -8,12 +8,20 @@ import {
 } from "firebase/firestore";
 
 import firebase from "@/services/firebase";
-import { TFirebaseDoc, OrNoValue, IIncrementFields } from "@/types";
+import {
+  TFirebaseDoc,
+  OrNoValue,
+  IIncrementFields,
+  IDefaultDoc,
+} from "@/types";
 import { omit, transform } from "@/utils";
 
 const { db } = firebase;
 
-export const useFirestoreDoc = (id: string) => {
+export const useFirestoreDoc = (
+  id: string,
+  defaultDoc: IDefaultDoc = async () => ({})
+) => {
   const { $FIRESTORE } = useAppConfig();
   const path = `${$FIRESTORE}/${id}`;
   const doc$ = doc(db, path);
@@ -23,9 +31,15 @@ export const useFirestoreDoc = (id: string) => {
 
   const unsubscribe = onSnapshot(doc$, {
     async next(d) {
-      data.value = !d.exists()
-        ? (await setDoc(doc$, {}), { id })
-        : { id: d.id, ...d.data() };
+      let newd;
+      if (!d.exists()) {
+        const defaultd = omit(await defaultDoc(), ["id"]);
+        await setDoc(doc$, defaultd);
+        newd = { ...defaultd, id };
+      } else {
+        newd = { ...d.data(), id: d.id };
+      }
+      data.value = newd;
     },
     error(err) {
       error.value = err;

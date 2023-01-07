@@ -153,3 +153,7 @@ export type TFirebaseDoc = { id: string } & DocumentData;
 export interface IIncrementFields {
   [field: string]: number;
 }
+
+export interface IDefaultDoc {
+  (): DocumentData | Promise<DocumentData>;
+}
