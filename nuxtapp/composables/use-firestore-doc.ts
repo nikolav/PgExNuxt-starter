@@ -14,7 +14,7 @@ import {
   IIncrementFields,
   IDefaultDoc,
 } from "@/types";
-import { omit, transform } from "@/utils";
+import { transform, withoutId } from "@/utils";
 
 const { db } = firebase;
 
@@ -33,7 +33,7 @@ export const useFirestoreDoc = (
     async next(d) {
       let newd;
       if (!d.exists()) {
-        const defaultd = omit(await defaultDoc(), ["id"]);
+        const defaultd = withoutId(await defaultDoc());
         await setDoc(doc$, defaultd);
         newd = { ...defaultd, id };
       } else {
@@ -49,7 +49,7 @@ export const useFirestoreDoc = (
   const put = async (d: DocumentData) => {
     let res;
     try {
-      res = await updateDoc(doc$, omit(d, ["id"]));
+      res = await updateDoc(doc$, withoutId(d));
     } catch (err) {
       error.value = err;
     }
@@ -62,7 +62,7 @@ export const useFirestoreDoc = (
       res = await updateDoc(
         doc$,
         transform(
-          omit(d, ["id"]),
+          withoutId(d),
           (res, amount, field) => {
             res[field] = increment(amount);
           },

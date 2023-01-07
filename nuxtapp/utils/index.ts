@@ -52,3 +52,4 @@ export { default as maxOfValue } from "./max-of-value";
 
 export const False = () => false;
 export const True = () => true;
+export const withoutId = (node: any) => omit(Object(node), ["id"]);

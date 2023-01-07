@@ -10,7 +10,7 @@ import {
 
 import firebase from "@/services/firebase";
 import { TFirebaseDoc } from "@/types";
-import { omit } from "@/utils";
+import { withoutId } from "@/utils";
 
 const { db } = firebase;
 
@@ -34,7 +34,7 @@ export const useFirestoreCollection = (collectionName: string) => {
   const add = async (d: DocumentData) => {
     let res;
     try {
-      res = await addDoc(coll$, d);
+      res = await addDoc(coll$, withoutId(d));
     } catch (err) {
       error.value = err;
     }
@@ -45,7 +45,7 @@ export const useFirestoreCollection = (collectionName: string) => {
     let res;
     try {
       const doc$ = doc(db, `${path}/${d.id}`);
-      res = await setDoc(doc$, omit(d, ["id"]), { merge });
+      res = await setDoc(doc$, withoutId(d), { merge });
     } catch (err) {
       error.value = err;
     }
