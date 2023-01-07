@@ -123,7 +123,7 @@ const {
   increment: incDoc,
   unsubscribe: unsubscribeDoc,
   path,
-} = useFirestoreDoc("@2");
+} = useFirestoreDoc("@3");
 
 const updateDoc = async () => {
   await putDoc({ x0: random(10), y0: random(100) });
