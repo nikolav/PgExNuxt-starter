@@ -8,6 +8,8 @@ const {
   find,
   forOwn,
   get,
+  identity,
+  keys,
   map,
   maxBy,
   merge,
@@ -17,7 +19,7 @@ const {
   range,
   reduce,
   set,
-  identity,
+  transform,
 } = lodash;
 
 export {
@@ -28,6 +30,8 @@ export {
   find,
   forOwn,
   get,
+  identity,
+  keys,
   map,
   maxBy,
   merge,
@@ -37,7 +41,7 @@ export {
   range,
   reduce,
   set,
-  identity,
+  transform,
 };
 export * from "./request-validation-schema-check";
 export { default as forEach } from "./for-each";

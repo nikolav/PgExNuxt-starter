@@ -149,3 +149,7 @@ export interface IDataChartLine<TKey = number, TValue = number> {
 }
 
 export type TFirebaseDoc = { id: string } & DocumentData;
+
+export interface IIncrementFields {
+  [field: string]: number;
+}

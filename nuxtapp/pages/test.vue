@@ -73,7 +73,6 @@ const data = ref([
 //   },
 // ]);
 
-
 const config = {
   color: "orange",
 };
@@ -84,20 +83,26 @@ const chart = { data, config };
 const i1$ = ref<any>(null);
 
 onMounted(() => {
-
   i1$.value = setInterval(() => {
     data.value = "A B C D"
       .split(" ")
       .map((key) => ({ key, value: random(100) }));
   }, 2345);
-  
+
   // i1$.value = setInterval(() => {
   //   data.value = [11, 12, 13, 14]
   //     .map((key) => ({ key, value: random(100) }));
   // }, 2345);
 });
 
-const { error, data: vars, add: addVar, rm: rmVar, put: putVar, unsubscribe } = useFirestoreCollection("vars");
+const {
+  error,
+  data: vars,
+  add: addVar,
+  rm: rmVar,
+  put: putVar,
+  unsubscribe,
+} = useFirestoreCollection("vars");
 const newVar = async () => {
   await addVar({
     name: `var::${Date.now()}`,
@@ -111,11 +116,28 @@ const updateVar = async () => {
   await putVar({ id: "RDIaatw1zt6g7aobNjMW", value: random(100) });
 };
 
+const {
+  error: errorDoc,
+  doc,
+  put: putDoc,
+  increment: incDoc,
+  unsubscribe: unsubscribeDoc,
+  path,
+} = useFirestoreDoc("@22333");
+
+const updateDoc = async () => {
+  await putDoc({ x0: random(10), y0: random(100) });
+};
+
+const incrementDoc = async () => {
+  await incDoc({ x0: -1 });
+};
+
 onUnmounted(() => {
   unsubscribe();
+  unsubscribeDoc();
   clearInterval(i1$.value);
 });
-
 </script>
 
 <template>
@@ -129,6 +151,17 @@ onUnmounted(() => {
       <p>isSet_1: [{{ isSet_1 }}]</p>
       <p>isSet_processing: [{{ isSet_processing }}]</p>
     </v-sheet>
+    <v-btn @click="updateDoc" color="primary" size="small" variant="outlined">
+      updateDoc
+    </v-btn>
+    <v-btn
+      @click="incrementDoc"
+      color="primary"
+      size="small"
+      variant="outlined"
+    >
+      incrementDoc
+    </v-btn>
     <v-btn @click="newVar" color="primary" size="small" variant="outlined">
       newVar
     </v-btn>
@@ -156,7 +189,7 @@ onUnmounted(() => {
     </v-sheet>
     <v-sheet>
       <pre>
-        {{ JSON.stringify({ error, vars }, null, 2) }}
+        {{ JSON.stringify({ error, errorDoc, docPath: path, doc, vars }, null, 2) }}
       </pre>
     </v-sheet>
   </v-container>
