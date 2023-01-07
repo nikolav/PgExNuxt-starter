@@ -138,6 +138,13 @@ onUnmounted(() => {
   unsubscribeDoc();
   clearInterval(i1$.value);
 });
+const { $jQuery } = useNuxtApp();
+watchEffect(() => {
+  if ($jQuery?.value) {
+    const { $ } = $jQuery.value;
+    console.log($("body button"));
+  }
+});
 </script>
 
 <template>
@@ -189,7 +196,13 @@ onUnmounted(() => {
     </v-sheet>
     <v-sheet>
       <pre>
-        {{ JSON.stringify({ error, errorDoc, docPath: path, doc, vars }, null, 2) }}
+        {{
+          JSON.stringify(
+            { error, errorDoc, docPath: path, doc, vars },
+            null,
+            2
+          )
+        }}
       </pre>
     </v-sheet>
   </v-container>
