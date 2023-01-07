@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useStoreFlags } from "@/store";
 import { random } from "@/utils";
+import { useOn } from "../composables/use-on";
 
 definePageMeta({
   middleware: ["log"],
@@ -142,7 +143,10 @@ const { $jQuery } = useNuxtApp();
 watchEffect(() => {
   if ($jQuery?.value) {
     const { $ } = $jQuery.value;
-    console.log($("body button"));
+    useOn({
+      target: $("body")[0],
+      "click": (click) => console.log({ click }),
+    });
   }
 });
 </script>
