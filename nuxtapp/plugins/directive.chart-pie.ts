@@ -1,6 +1,5 @@
 import { Ref } from "vue";
 import * as d3 from "d3";
-import { legendColor } from "d3-svg-legend";
 
 import { IDataChartPie } from "@/types";
 import { merge, get, assign, map } from "@/utils";
@@ -103,8 +102,6 @@ export default defineNuxtPlugin((nuxtApp) => {
         .outerRadius(outerRadius)
         .innerRadius(innerRadius);
 
-      const legendGen = legendColor().shape("circle").scale(scaleColor);
-
       const arctween_enter = (d: TArcDatum) => {
         const i = d3.interpolate(d.endAngle, d.startAngle);
         return (t: number) => {
@@ -157,7 +154,7 @@ export default defineNuxtPlugin((nuxtApp) => {
         // [exit]
         paths.exit().transition(t1).attrTween("d", arctween_exit).remove();
 
-        legend.call(legendGen);
+        // @todo, draw legend
       });
     },
 
