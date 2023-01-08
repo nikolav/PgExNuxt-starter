@@ -116,9 +116,9 @@ export default defineNuxtPlugin((nuxtApp) => {
         };
       };
       // ⚠ @todo [n: any]
-      const arctween_update = (d: TArcDatum, i: number, n: any) => {
-        const i$ = d3.interpolate(get(n[i], "_d"), d);
-        assign(n[i], { _d: d });
+      const arctween_update = (d: TArcDatum, i: number, coll: any) => {
+        const i$ = d3.interpolate(get(coll[i], "_from"), d);
+        assign(coll[i], { _from: d });
         return (t: number) => {
           // d.startAngle = i$(t);
           return arcGen(i$(t)) || "";
@@ -141,11 +141,12 @@ export default defineNuxtPlugin((nuxtApp) => {
 
         scaleColor.domain(map(data, key));
 
-        const paths = graph.selectAll("path").data(pieGen(data));
         const t1 = d3.transition("t1@chartPie").duration(_transitionDuration);
         const t2 = d3
           .transition("t2@chartPie")
           .duration(_transitionDuration / 2);
+
+        const paths = graph.selectAll("path").data(pieGen(data));
         // [enter]
         paths
           .enter()
@@ -155,7 +156,7 @@ export default defineNuxtPlugin((nuxtApp) => {
           .attr("stroke-linejoin", _strokeLinejoin)
           .attr("fill", (d) => scaleColor(key(d.data)))
           .classed(_classPath, true)
-          .each((d, i, coll) => assign(coll[i], { _d: d }))
+          .each((d, i, coll) => assign(coll[i], { _from: d }))
           .transition()
           .attrTween("d", arctween_enter);
         // [update]
@@ -206,7 +207,10 @@ export default defineNuxtPlugin((nuxtApp) => {
         legendG
           .exit()
           .transition(t2)
-          .attr("transform", (d, i) => `translate(4, ${i * _legendLineHeight})`)
+          .attr(
+            "transform",
+            (_d, i) => `translate(4, ${i * _legendLineHeight})`
+          )
           .style("opacity", 0)
           .remove();
       });

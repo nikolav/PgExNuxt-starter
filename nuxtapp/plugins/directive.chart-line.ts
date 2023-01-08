@@ -14,7 +14,7 @@ export default defineNuxtPlugin((nuxtApp) => {
     //  1. fetch data, merge config
     //  2. calc. chart dimensions
     //  3. declare scales without domains
-    //  4. add svg-canvas, graph, xAxis, yAxis
+    //  4. add svg-canvas, graph, xAxis, yAxis, g-groups for chart elements
     // @data:updated
     //  5. set domains
     //  6. join data, draw shapes
