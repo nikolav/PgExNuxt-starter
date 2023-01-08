@@ -51,7 +51,14 @@ export default defineNuxtPlugin((nuxtApp) => {
         _classCanvas,
         _classGraph,
         _classLegend,
+        _classLegendItem,
+        _classLegendText,
         _classPath,
+        _legendLineHeight,
+        _legendSymbolSize,
+        _legendTextOffsetX,
+        _legendTextOffsetY,
+        _legendTextSize,
         _padAngle,
         _stroke,
         _strokeLinejoin,
@@ -61,7 +68,7 @@ export default defineNuxtPlugin((nuxtApp) => {
 
       // @init
       const pieCenter = { x: width / 2, y: height / 2 };
-      const outerRadius = Math.min(width, height) / 2 - 2 * padding;
+      const outerRadius = Math.min(width, height) / 2 - padding;
       const innerRadius = innerRadiusPercent * outerRadius;
 
       // canvas
@@ -81,7 +88,7 @@ export default defineNuxtPlugin((nuxtApp) => {
 
       // legend container
       // ⚠ @todo [legend: any]
-      const legend: any = svg
+      const legend = svg
         .append("g")
         .attr(
           "transform",
@@ -137,6 +144,9 @@ export default defineNuxtPlugin((nuxtApp) => {
 
         const paths = graph.selectAll("path").data(pieGen(data));
         const t1 = d3.transition("t1@chartPie").duration(_transitionDuration);
+        const t2 = d3
+          .transition("t2@chartPie")
+          .duration(_transitionDuration / 2);
         // [enter]
         paths
           .enter()
@@ -154,7 +164,52 @@ export default defineNuxtPlugin((nuxtApp) => {
         // [exit]
         paths.exit().transition(t1).attrTween("d", arctween_exit).remove();
 
-        // @todo, draw legend
+        // draw legend
+        const legendG = legend.selectAll("g").data(data, key as any);
+        // [enter]
+        legendG
+          .enter()
+          .append("g")
+          .classed(_classLegendItem, true)
+          .call((item) =>
+            item
+              .append("circle")
+              .attr("cx", 0)
+              .attr("cy", 0)
+              .attr("r", _legendSymbolSize)
+              .attr("fill", (d) => scaleColor(key(d)))
+              .attr("stroke", "black")
+              .attr("stroke-width", 1)
+          )
+          .call((item) =>
+            item
+              .append("text")
+              .attr("x", _legendTextOffsetX)
+              .attr("y", _legendTextOffsetY)
+              .attr("fill", "black")
+              .text(key)
+              .classed(_classLegendText, true)
+              .style("font-size", _legendTextSize)
+          )
+          .style("opacity", 0)
+          .attr(
+            "transform",
+            (_d, i) => `translate(4, ${i * _legendLineHeight})`
+          )
+          .transition(t2)
+          .style("opacity", 1)
+          .attr(
+            "transform",
+            (_d, i) => `translate(0, ${i * _legendLineHeight})`
+          );
+        // [update]
+        // [exit]
+        legendG
+          .exit()
+          .transition(t2)
+          .attr("transform", (d, i) => `translate(4, ${i * _legendLineHeight})`)
+          .style("opacity", 0)
+          .remove();
       });
     },
 

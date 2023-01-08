@@ -24,6 +24,14 @@ export interface IConfig {
   _strokeLinejoin: string;
   _strokeWidth: number;
   _transitionDuration: number;
+
+  _legendLineHeight: number;
+  _legendSymbolSize: number;
+  _legendTextOffsetX: number;
+  _legendTextOffsetY: number;
+  _legendTextSize: number;
+  _classLegendItem: string;
+  _classLegendText: string;
 }
 
 export const CONFIG: IConfig = {
@@ -31,11 +39,8 @@ export const CONFIG: IConfig = {
   height: 256,
   colors: [...schemeCategory10],
   //
-  padding: 2,
+  padding: 12,
   innerRadiusPercent: 0.55,
-  legendWidth: 256,
-  legendOffsetX: 32,
-  legendOffsetY: 48,
   //
   key: (d) => d.key,
   value: (d) => d.value,
@@ -44,11 +49,22 @@ export const CONFIG: IConfig = {
   _canvasOutline: false,
   _classCanvas: "chartPie--canvas",
   _classGraph: "chartPie--graph",
-  _classLegend: "chartPie--legend",
   _classPath: "chartPie--path",
   _padAngle: 0.02,
   _stroke: "#000000",
   _strokeLinejoin: "round",
   _strokeWidth: 1,
   _transitionDuration: 1234,
+  // style legend
+  legendWidth: 256,
+  legendOffsetX: 22,
+  legendOffsetY: 24,
+  _legendLineHeight: 32,
+  _legendSymbolSize: 10,
+  _legendTextOffsetX: 24,
+  _legendTextOffsetY: 6,
+  _legendTextSize: 16,
+  _classLegend: "chartPie--legend",
+  _classLegendItem: "chartPie--legendItem",
+  _classLegendText: "chartPie--legendText",
 };
