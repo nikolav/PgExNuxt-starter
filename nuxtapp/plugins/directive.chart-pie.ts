@@ -87,7 +87,6 @@ export default defineNuxtPlugin((nuxtApp) => {
         .classed(_classGraph, true);
 
       // legend container
-      // ⚠ @todo [legend: any]
       const legend = svg
         .append("g")
         .attr(
