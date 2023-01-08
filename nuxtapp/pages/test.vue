@@ -40,42 +40,25 @@ const gallery = () =>
 const data = ref([
   {
     key: "A",
-    value: 1,
+    value: 20,
   },
   {
     key: "B",
-    value: 2,
+    value: 10,
   },
   {
     key: "C",
-    value: 3,
+    value: 40,
   },
   {
     key: "D",
-    value: 4,
+    value: 30,
   },
 ]);
-// const data = ref([
-//   {
-//     key: 11,
-//     value: 1,
-//   },
-//   {
-//     key: 12,
-//     value: 2,
-//   },
-//   {
-//     key: 13,
-//     value: 1,
-//   },
-//   {
-//     key: 14,
-//     value: 2,
-//   },
-// ]);
 
 const config = {
-  color: "orange",
+  // color: "orange",
+  _canvasOutline: true,
 };
 
 // @chart
@@ -85,7 +68,7 @@ const i1$ = ref<any>(null);
 
 onMounted(() => {
   i1$.value = setInterval(() => {
-    data.value = "A B C D"
+    data.value = (0.5 < Math.random() ? "A B C D" : "A B C D E")
       .split(" ")
       .map((key) => ({ key, value: random(100) }));
   }, 2345);
@@ -139,16 +122,6 @@ onUnmounted(() => {
   unsubscribeDoc();
   clearInterval(i1$.value);
 });
-const { $jQuery } = useNuxtApp();
-watchEffect(() => {
-  if ($jQuery?.value) {
-    const { $ } = $jQuery.value;
-    useOn({
-      target: $("body")[0],
-      "click": (click) => console.log({ click }),
-    });
-  }
-});
 </script>
 
 <template>
@@ -195,8 +168,9 @@ watchEffect(() => {
       toast
     </v-btn>
     <v-sheet>
-      <div v-chartBarVertical="chart"></div>
+      <!-- <div v-chartBarVertical="chart"></div> -->
       <!-- <div v-chartLine="chart"></div> -->
+      <div v-chartPie="chart"></div>
     </v-sheet>
     <v-sheet>
       <pre>

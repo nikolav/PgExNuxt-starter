@@ -1,14 +1,14 @@
 import { Ref } from "vue";
 import * as d3 from "d3";
 
-import { IDataChartLine } from "@/types";
-import { merge, map, maxOfValue, get } from "@/utils";
-import { CONFIG, IConfig } from "@/config/defaults.chart-line";
+import { IDataChartPie } from "@/types";
+import { merge, get } from "@/utils";
+import { CONFIG, IConfig } from "@/config/defaults.chart-pie";
 
 // https://nuxt.com/docs/guide/directory-structure/plugins#creating-plugins
 // https://vuejs.org/guide/reusability/custom-directives.html#directive-hooks
 export default defineNuxtPlugin((nuxtApp) => {
-  nuxtApp.vueApp.directive("chartLine", {
+  nuxtApp.vueApp.directive("chartPie", {
     // chart steps:
     // @init
     //  1. fetch data, merge config
@@ -26,55 +26,32 @@ export default defineNuxtPlugin((nuxtApp) => {
     // called when the bound element's parent component
     // and all its children are mounted.
     mounted: (el, binding) => {
-      const data$: Ref<IDataChartLine[]> = get(binding, "value.data");
+      const data$: Ref<IDataChartPie[]> = get(binding, "value.data");
       const config: Partial<IConfig> = get(binding, "value.config");
       // merge config
       const {
-        color,
-        fill,
-        height,
-        key,
-        paddingBottom,
-        paddingLeft,
-        paddingRight,
-        paddingTop,
-        strokeLinecap,
-        strokeLinejoin,
-        strokeOpacity,
-        strokeWidth,
-        value,
         width,
-        xScale,
-        yScale,
-        yLabel,
-        yLabelColor,
-        yLabelOffsetX,
-        yLabelOffsetY,
-        _classCanvas,
-        _classGraph,
-        _classGuide,
-        _classPath,
-        _classXAxis,
-        _classYAxis,
-        _classYLabel,
-        _curve,
-        _guideHorizontalOpacity,
-        _tickSizeOuter,
-        _tickSpanHorizontal,
-        _tickSpanVertical,
-        _transitionDuration,
-        _xAxisTextAnchor,
-        _xAxisTextOpacity,
-        _xAxisTextRotationDegrees,
-        _xAxisTextFormat,
-        _yAxisTextFormat,
+        height,
+        colors,
+        padding,
+        innerRadius,
+        legendWidth,
+        key,
+        value,
+        format,
+        _stroke,
+        _strokeWidth,
+        _transitionDiration,
       }: IConfig = merge({}, CONFIG, config);
 
       // @init
 
       // @data:updated
       watchEffect(() => {
-        const data = data$.value || [];
+        const data = format<
+          IDataChartPie<string, number>[],
+          IDataChartPie<string, number>[]
+        >(data$.value || []);
       });
     },
 

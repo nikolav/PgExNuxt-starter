@@ -157,3 +157,14 @@ export interface IIncrementFields {
 export interface IDefaultDoc {
   (): DocumentData | Promise<DocumentData>;
 }
+
+export interface IEventsUseOn<TEvent = any> {
+  target: any;
+  [type: string]: (...e: TEvent[]) => void;
+}
+
+export interface IDataChartPie<TKey = string, TValue = number> {
+  key: TKey;
+  value: TValue;
+  [field: string]: any;
+}

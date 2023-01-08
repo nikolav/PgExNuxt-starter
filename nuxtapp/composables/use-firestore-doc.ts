@@ -9,12 +9,12 @@ import {
 
 import firebase from "@/services/firebase";
 import {
-  TFirebaseDoc,
-  OrNoValue,
-  IIncrementFields,
   IDefaultDoc,
+  IIncrementFields,
+  OrNoValue,
+  TFirebaseDoc,
 } from "@/types";
-import { transform, withoutId } from "@/utils";
+import { transform, withoutId, withCreatedAt, withUpdatedAt } from "@/utils";
 
 const { db } = firebase;
 
@@ -33,7 +33,7 @@ export const useFirestoreDoc = (
     async next(d) {
       let newd;
       if (!d.exists()) {
-        const defaultd = withoutId(await defaultDoc());
+        const defaultd = withCreatedAt(withoutId(await defaultDoc()));
         await setDoc(doc$, defaultd);
         newd = { ...defaultd, id };
       } else {
@@ -49,7 +49,7 @@ export const useFirestoreDoc = (
   const put = async (d: DocumentData) => {
     let res;
     try {
-      res = await updateDoc(doc$, withoutId(d));
+      res = await updateDoc(doc$, withUpdatedAt(withoutId(d)));
     } catch (err) {
       error.value = err;
     }
@@ -61,12 +61,14 @@ export const useFirestoreDoc = (
     try {
       res = await updateDoc(
         doc$,
-        transform(
-          withoutId(d),
-          (res, amount, field) => {
-            res[field] = increment(amount);
-          },
-          <DocumentData>{}
+        withUpdatedAt(
+          transform(
+            withoutId(d),
+            (res, amount, field) => {
+              res[field] = increment(amount);
+            },
+            <DocumentData>{}
+          )
         )
       );
     } catch (err) {
