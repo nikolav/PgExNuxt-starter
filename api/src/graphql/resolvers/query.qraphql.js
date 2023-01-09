@@ -18,6 +18,9 @@ const Query = {
   // @@comments
   listCommentsByTopic: require('./queries/comments/list-by-topic'),
 
+  // @@docs, collection
+  listDocsByTopic: require('./queries/collection/list-by-topicid'),
+
 };
 
 module.exports = Query;

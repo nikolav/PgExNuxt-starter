@@ -1,0 +1,13 @@
+
+###
+
+POST http://localhost:3001/v1/graphql
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer -
+
+{
+  "query": "query { listDocsByTopic(topicID: \"T2\") { id, userId, data, docId, createdAt, updatedAt } }"
+}
+
+###

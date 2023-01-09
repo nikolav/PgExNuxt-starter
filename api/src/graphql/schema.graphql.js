@@ -62,6 +62,15 @@ const typeDefs = `#graphql
     updatedAt: String
   }
 
+  type Doc {
+    id: ID!
+    userId: String!
+    data: String!
+    docId: String
+    createdAt: String
+    updatedAt: String
+  }
+
   input InputComment {
     topicID: String!
     value: String!
@@ -90,6 +99,9 @@ const typeDefs = `#graphql
 
     # comments
     listCommentsByTopic(topicID: String!): [Comment!]!
+
+    # docs, collection
+    listDocsByTopic(topicID: String!): [Doc!]!
     
   }
 
