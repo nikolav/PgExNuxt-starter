@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+
 // const fs = require('fs');
 // const path = require('path');
 // const resolverMiddlewares = require('./src/utils/resolver-middlewares');
@@ -86,9 +88,17 @@ const model = require('./src/models/sequelize')
     // const b = Buffer.from([65]);
     // createWriteStream(path.join(__dirname, 'out')).write(b);
 
-    const { Main } = await model;
+    const { Collection } = await model;
 
-    const res = await Main.findOne({ attributes: ["value"], where: { name: "admin.email" }, raw: true })
-    console.log(res)
+    const coll = await Collection.tagged({ id: "63bb89d589ae1408987fd043" }, "@1");
+    // const d = await Collection.doc({ id: "63bb89d589ae1408987fd043" }, "doc-11");
+    console.log({ coll });
 
   })();
+// id1 
+// id2 
+// at -
+// st -
+// data 
+
+
