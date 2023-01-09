@@ -1,4 +1,7 @@
+const { DataTypes } = require('sequelize');
+
 const connection = require('../../config/sequelize');
+
 const configureMain = require('./main');
 const configureMessage = require('./messages');
 const configureSession = require('./session');
@@ -7,6 +10,8 @@ const configureRoleUser = require('./role-user');
 const configureTokens = require('./tokens');
 const configureUpload = require('./upload');
 const configureComment = require('./comments');
+const configureTag = require('./tag');
+const configureCollection = require('./collection');
 
 module.exports = new Promise(async (resolve, reject) => {
   try {
@@ -20,6 +25,38 @@ module.exports = new Promise(async (resolve, reject) => {
     const Tokens = configureTokens(client);
     const Upload = configureUpload(client);
     const Comment = configureComment(client);
+
+    const Tag = configureTag(client);
+    const Collection = configureCollection(client);
+    const CollectionTag =
+      client.define('CollectionTag',
+        {
+          id: {
+            type: DataTypes.UUID,
+            defaultValue: DataTypes.UUIDV4,
+            allowNull: false,
+            primaryKey: true,
+          },
+          CollectionId: {
+            type: DataTypes.UUID,
+            references: {
+              model: Collection,
+              key: 'id'
+            }
+          },
+          TagId: {
+            type: DataTypes.UUID,
+            references: {
+              model: Tag,
+              key: 'id'
+            }
+          },
+        }, {
+        tableName: 'ln_collection_tag',
+        timestamps: true,
+      });
+    Tag.belongsToMany(Collection, { through: CollectionTag });
+    Collection.belongsToMany(Tag, { through: CollectionTag });
 
     // // https://sequelize.org/docs/v6/core-concepts/assocs/
     // // declare schema.relations here
@@ -79,6 +116,9 @@ module.exports = new Promise(async (resolve, reject) => {
     // ..or, RoleUser.Role = client.models.Role
 
     RoleUser.Role = Role;
+    // Tag.CollectionTag = CollectionTag;
+    // Collection.CollectionTag = CollectionTag;
+    Collection.Tag = Tag;
 
     // collect all models in namespace
     const model = {
@@ -91,6 +131,9 @@ module.exports = new Promise(async (resolve, reject) => {
       Tokens,
       Upload,
       Comment,
+      Tag,
+      Collection,
+      CollectionTag,
     };
 
     // schema.push

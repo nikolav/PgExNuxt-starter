@@ -70,6 +70,14 @@ module.exports = (client) => {
       //  # `.restore` method undeletes deleted row
       //  # include deleted rows in queries: `paranoid: false`
 
+      // indexes: [
+      //   {
+      //     unique: true,
+      //     fields: ["userId", "docId"]
+      //   }
+      // ],
+
+
     }
   );
   return Main;

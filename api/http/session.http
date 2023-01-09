@@ -19,7 +19,7 @@ Authorization: Bearer -
 
 {
   "sessionToken": "-",
-  "data": "{ \"x\": 22333 }"
+  "data": "{ \"x\": 123 }"
 }
 
 ###
