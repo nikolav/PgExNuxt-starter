@@ -88,14 +88,29 @@ const model = require('./src/models/sequelize')
     // const b = Buffer.from([65]);
     // createWriteStream(path.join(__dirname, 'out')).write(b);
 
-    const { Collection } = await model;
+    const { Collection, Tag } = await model;
 
-    const coll = await Collection.tagged({ id: "63bb89d589ae1408987fd043" }, "@1");
-    // const d = await Collection.doc({ id: "63bb89d589ae1408987fd043" }, "doc-11");
-    console.log({ coll });
+    // const res$ = await Collection.setDoc(
+    //   { id: "u2" },
+    //   {
+    //     id: "b1f31502-b64b-4377-80ba-16a49aa56281",
+    //     data: JSON.stringify({ x: Date.now() }),
+    //     docId: "b.3",
+    //   }, 
+    //   "important"
+    // );
+
+    const res$ = await Collection.tagged({id: "u1"}, "important");
+
+    // const res$ = await Collection.removeDoc({id: "u1"}, "d476e8ce-5875-4280-8a84-bdd7b7b19988");
+
+    // const res$ = await Collection.doc({id: "u1"}, "d-01");
+
+    console.log(JSON.stringify(res$, null, 2));
+
 
   })();
-// id1 
+// id1
 // id2 
 // at -
 // st -

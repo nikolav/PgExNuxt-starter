@@ -1,7 +1,10 @@
 const assign = require('lodash/assign');
 const clamp = require('lodash/clamp');
+const get = require('lodash/get');
 const identity = require('lodash/identity');
 const map = require('lodash/map');
+const omit = require('lodash/omit');
+const pick = require('lodash/pick');
 const range = require('lodash/range');
 
 const dateSortedBy = require('./date-sorted-by');
@@ -20,6 +23,7 @@ module.exports = {
   dateSortedBy,
   dateSortedDescBy,
   False,
+  get,
   groupByCount: require('./group-by-count'),
   gzip: require('./gzip'),
   hasOwn: require('./has-own'),
@@ -28,6 +32,8 @@ module.exports = {
   map,
   Next: require('./next-middleware'),
   Null,
+  omit,
+  pick,
   pickValues: require('./pick-values'),
   range,
   resolverContext: require('./resolver-context'),

@@ -39,6 +39,7 @@ module.exports = new Promise(async (resolve, reject) => {
           },
           CollectionId: {
             type: DataTypes.UUID,
+            index: true,
             references: {
               model: Collection,
               key: 'id'
@@ -46,6 +47,7 @@ module.exports = new Promise(async (resolve, reject) => {
           },
           TagId: {
             type: DataTypes.UUID,
+            index: true,
             references: {
               model: Tag,
               key: 'id'
@@ -117,8 +119,8 @@ module.exports = new Promise(async (resolve, reject) => {
 
     RoleUser.Role = Role;
     // Tag.CollectionTag = CollectionTag;
-    // Collection.CollectionTag = CollectionTag;
     Collection.Tag = Tag;
+    Collection.CollectionTag = CollectionTag;
 
     // collect all models in namespace
     const model = {
