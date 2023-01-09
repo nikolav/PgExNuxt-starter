@@ -25,6 +25,9 @@ const onClick = () => {
           <v-list-item>
             <NuxtLink to="/about">about</NuxtLink>
           </v-list-item>
+          <v-list-item>
+            <NuxtLink to="/docs">docs</NuxtLink>
+          </v-list-item>
         </v-list>
       </v-navigation-drawer>
       <v-app-bar>

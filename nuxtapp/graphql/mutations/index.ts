@@ -54,3 +54,22 @@ export const QM__COMMENTS_REMOVE = gql`
     }
   }
 `;
+
+export const QM__COLLECTION_PUT_DOC = gql`
+  mutation putDoc($d: InputDoc!) {
+    collectionPutDoc(d: $d) {
+      id
+      userId
+      data
+      docId
+      createdAt
+      updatedAt
+    }
+  }
+`;
+
+export const QM__COLLECTION_RM_DOC = gql`
+  mutation rmDoc($id: ID!) {
+    collectionRemoveDoc(id: $id)
+  }
+`;

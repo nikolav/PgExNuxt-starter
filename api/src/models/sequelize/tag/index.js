@@ -1,6 +1,23 @@
 const { DataTypes, Model } = require('sequelize');
 
-class Tag extends Model {}
+const { map } = require('../../../utils');
+
+class Tag extends Model {
+  static async getDocTags(id) {
+    return map(
+      await this.findAll({
+        include: {
+          model: this.Collection,
+          where: { id },
+          attributes: [],
+          through: { attributes: [] }
+        },
+        attributes: ["tag"]
+      }),
+      ({ tag }) => tag
+    );
+  }
+}
 
 module.exports = (client) => {
   Tag.init(

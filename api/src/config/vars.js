@@ -92,6 +92,7 @@ module.exports = {
   IOEVENT_STORAGE_CHANGE: "change:storage",
   IOEVENT_LIKES_CHANGE: "change::likes",
   IOEVENT_COMMENTS_CHANGE: "change:comments",
+  IOEVENT_COLLECTION_CHANGE: "change:collection",
 
   // @likes
   LIKES_PREFIX: 'like::',

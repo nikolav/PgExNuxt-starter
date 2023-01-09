@@ -7,6 +7,9 @@ const Mutation = {
   // @comments
   commentsAdd: require('./mutations/comments/add'),
   commentsRemove: require('./mutations/comments/rm'),
+  // @docs, collection
+  collectionPutDoc: require('./mutations/collection/put-doc'),
+  collectionRemoveDoc: require('./mutations/collection/rm-doc'),
 };
 
 module.exports = Mutation;

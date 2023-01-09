@@ -54,3 +54,16 @@ export const Q__COMMENTS_LIST_BY_TOPIC = gql`
     }
   }
 `;
+
+export const Q__COLLECTION_LIST_DOCS = gql`
+  query listDocs($topicID: String!) {
+    listDocsByTopic(topicID: $topicID) {
+      id
+      userId
+      data
+      docId
+      createdAt
+      updatedAt
+    }
+  }
+`;

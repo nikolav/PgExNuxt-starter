@@ -118,9 +118,10 @@ module.exports = new Promise(async (resolve, reject) => {
     // ..or, RoleUser.Role = client.models.Role
 
     RoleUser.Role = Role;
-    // Tag.CollectionTag = CollectionTag;
     Collection.Tag = Tag;
     Collection.CollectionTag = CollectionTag;
+    Tag.Collection = Collection;
+    // Tag.CollectionTag = CollectionTag;
 
     // collect all models in namespace
     const model = {

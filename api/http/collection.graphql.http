@@ -7,7 +7,29 @@ Content-Type: application/json
 Authorization: Bearer -
 
 {
-  "query": "query { listDocsByTopic(topicID: \"T2\") { id, userId, data, docId, createdAt, updatedAt } }"
+  "query": "query { listDocsByTopic(topicID: \"T2\") { id, docId, createdAt } }"
+}
+
+###
+
+POST http://localhost:3001/v1/graphql
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer -
+
+{
+  "query": "mutation { collectionPutDoc(d: { docId: \"@3\", jsonData: \"{x: 1.3}\", tag: \"T2\" }) { id, docId, createdAt } }"
+}
+
+###
+
+POST http://localhost:3001/v1/graphql
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer -
+
+{
+  "query": "mutation { collectionRemoveDoc(id: \"fc592255-76de-46c4-98fa-55186e3c6b7f\") }"
 }
 
 ###

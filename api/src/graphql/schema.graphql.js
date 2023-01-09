@@ -78,6 +78,13 @@ const typeDefs = `#graphql
     userName: String
   }
 
+  input InputDoc {
+    jsonData: String!
+    tag: String!
+    id: ID
+    docId: String
+  }
+
   type Query {
 
     # etc.
@@ -117,7 +124,10 @@ const typeDefs = `#graphql
     # comments
     commentsAdd(comment: InputComment!): Comment!
     commentsRemove(id: ID!): Comment
-    
+
+    # docs, collection
+    collectionPutDoc(d: InputDoc!): Doc!
+    collectionRemoveDoc(id: ID!): Int!
   }
 `;
 

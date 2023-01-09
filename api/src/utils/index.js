@@ -1,5 +1,6 @@
 const assign = require('lodash/assign');
 const clamp = require('lodash/clamp');
+const each = require('lodash/each');
 const get = require('lodash/get');
 const identity = require('lodash/identity');
 const map = require('lodash/map');
@@ -22,6 +23,7 @@ module.exports = {
   clamp,
   dateSortedBy,
   dateSortedDescBy,
+  each,
   False,
   get,
   groupByCount: require('./group-by-count'),

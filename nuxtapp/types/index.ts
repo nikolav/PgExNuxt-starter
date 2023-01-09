@@ -168,3 +168,27 @@ export interface IDataChartPie<TKey = string, TValue = number> {
   value: TValue;
   [field: string]: any;
 }
+
+export interface IDoc {
+  __typename?: string;
+  id: string;
+  userId: string;
+  data: string | IData;
+  docId: string;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface IUseApiCollectionFormatDocData<
+  TData = IDoc[],
+  TDataFormated = IDoc[]
+> {
+  (d: TData): TDataFormated;
+}
+
+export interface IInputDoc {
+  data: IData;
+  // tag: string;
+  id?: string;
+  docId?: string;
+}
