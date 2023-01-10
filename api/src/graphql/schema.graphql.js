@@ -128,6 +128,7 @@ const typeDefs = `#graphql
     # docs, collection
     collectionPutDoc(d: InputDoc!): Doc!
     collectionRemoveDoc(id: ID!): Int!
+    collectionUpsertDoc(docId: String!, jsonData: String!): Doc!
   }
 `;
 

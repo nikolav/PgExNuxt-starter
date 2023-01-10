@@ -10,6 +10,7 @@ const Mutation = {
   // @docs, collection
   collectionPutDoc: require('./mutations/collection/put-doc'),
   collectionRemoveDoc: require('./mutations/collection/rm-doc'),
+  collectionUpsertDoc: require('./mutations/collection/upsert-doc'),
 };
 
 module.exports = Mutation;

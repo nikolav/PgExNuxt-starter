@@ -100,9 +100,8 @@ class Collection extends Model {
         await doc$.save();
       }
       d$ = doc$;
-      console.log({ d$ })
     } catch (error) {
-      console.log(error);
+      logger.error(error);
     }
     return d$;
   }

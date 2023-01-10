@@ -4,7 +4,7 @@
 POST http://localhost:3001/v1/graphql
 Accept: application/json
 Content-Type: application/json
-Authorization: Bearer -
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2M2JjNjk1MTFjMjQyNDI3MjA0ZDk2ODAiLCJleHAiOjE2NzM5NzIxMDIsImlhdCI6MTY3MzM2NzMwMn0.F1hVAI8Bk1oY3WoxMDkDAhclJ-By2Ae5s52vgkdO5aQ
 
 {
   "query": "query { listDocsByTopic(topicID: \"T2\") { id, docId, createdAt } }"
@@ -37,10 +37,22 @@ Authorization: Bearer -
 POST http://localhost:3001/v1/graphql
 Accept: application/json
 Content-Type: application/json
-Authorization: Bearer -
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2M2JjNjk1MTFjMjQyNDI3MjA0ZDk2ODAiLCJleHAiOjE2NzM5NzIxMDIsImlhdCI6MTY3MzM2NzMwMn0.F1hVAI8Bk1oY3WoxMDkDAhclJ-By2Ae5s52vgkdO5aQ
 
 {
   "query": "query { collectionGetDoc(docId: \"d@1\") { id, docId, data, createdAt } }"
 }
 
 ###
+
+POST http://localhost:3001/v1/graphql
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2M2JjNjk1MTFjMjQyNDI3MjA0ZDk2ODAiLCJleHAiOjE2NzM5NzIxMDIsImlhdCI6MTY3MzM2NzMwMn0.F1hVAI8Bk1oY3WoxMDkDAhclJ-By2Ae5s52vgkdO5aQ
+
+{
+  "query": "mutation { collectionUpsertDoc(docId: \"d@1\", jsonData: \"1\") { id, docId, data, createdAt } }"
+}
+
+###
+
