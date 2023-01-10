@@ -20,6 +20,7 @@ const Query = {
 
   // @@docs, collection
   listDocsByTopic: require('./queries/collection/list-by-topicid'),
+  collectionGetDoc: require('./queries/collection/find-doc'),
 
 };
 

@@ -109,7 +109,7 @@ const typeDefs = `#graphql
 
     # docs, collection
     listDocsByTopic(topicID: String!): [Doc!]!
-    
+    collectionGetDoc(docId: String!): Doc
   }
 
   type Mutation {

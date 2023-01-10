@@ -33,3 +33,14 @@ Authorization: Bearer -
 }
 
 ###
+
+POST http://localhost:3001/v1/graphql
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer -
+
+{
+  "query": "query { collectionGetDoc(docId: \"d@1\") { id, docId, data, createdAt } }"
+}
+
+###

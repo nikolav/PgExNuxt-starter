@@ -100,13 +100,16 @@ const model = require('./src/models/sequelize')
     //   "T2"
     // );
 
-    const res$ = await Collection.tagged({id: "u1"}, "important");
+    // const res$ = await Collection.tagged({id: "u1"}, "important");
 
     // const res$ = await Collection.removeDoc({id: "u1"}, "d476e8ce-5875-4280-8a84-bdd7b7b19988");
 
     // const res$ = await Collection.doc({id: "u1"}, "d-01");
 
     // const res$ = await Tag.getDocTags("0bd537bc-5122-4cf2-84d0-08997854bd91");
+
+    const res$ = await Collection.upsertDoc({id: "63bc69511c242427204d9680"}, "d@1", JSON.stringify({x: 1}));
+    // const res$ = await Collection.doc({id: "u1"}, "docId-1");
 
     console.log(JSON.stringify({ res$ }, null, 2));
 

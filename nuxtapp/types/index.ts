@@ -192,3 +192,7 @@ export interface IInputDoc {
   id?: string;
   docId?: string;
 }
+
+export interface IDefaultUseApiDocData<T = IData> {
+  (): T | Promise<T>;
+}

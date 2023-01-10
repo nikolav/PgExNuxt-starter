@@ -88,6 +88,24 @@ class Collection extends Model {
     }
     return doc$;
   }
+
+  static async upsertDoc(user, docId, jsonData = JSON.stringify({})) {
+    let d$ = null;
+    try {
+      const { id: userId } = user;
+      const d = { data: jsonData };
+      const [doc$, docCreated] = await this.findOrCreate({ where: { userId, docId }, defaults: d });
+      if (!docCreated) {
+        assign(doc$, d);
+        await doc$.save();
+      }
+      d$ = doc$;
+      console.log({ d$ })
+    } catch (error) {
+      console.log(error);
+    }
+    return d$;
+  }
 }
 
 module.exports = (client) => {
