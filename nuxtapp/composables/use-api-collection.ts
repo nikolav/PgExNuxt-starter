@@ -1,4 +1,3 @@
-import { useStoreAuth } from "@/store";
 import {
   Q__COLLECTION_LIST_DOCS,
   QM__COLLECTION_PUT_DOC,
@@ -15,8 +14,6 @@ export const useApiCollection = (
   format: IUseApiCollectionFormatDocData = defaultFormatDocData
 ) => {
   const { $ISAUTH, $ISMOUNTED } = useAppConfig();
-  const auth = useStoreAuth();
-  const userId = computed(() => auth.user?.id || "");
 
   const {
     load: loadDocs,
@@ -40,7 +37,7 @@ export const useApiCollection = (
 
   const { IOEVENT_COLLECTION_CHANGE } = useAppConfig();
   const { $socket } = useNuxtApp();
-  const IOEVENT = `${IOEVENT_COLLECTION_CHANGE}:${userId.value}:${topicID}`;
+  const IOEVENT = `${IOEVENT_COLLECTION_CHANGE}:${topicID}`;
   $socket?.on(IOEVENT, reloadDocs);
   onUnmounted(() => $socket?.off(IOEVENT, reloadDocs));
 

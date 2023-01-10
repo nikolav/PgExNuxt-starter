@@ -59,7 +59,6 @@ export const QM__COLLECTION_PUT_DOC = gql`
   mutation putDoc($d: InputDoc!) {
     collectionPutDoc(d: $d) {
       id
-      userId
       data
       docId
       createdAt
@@ -71,5 +70,17 @@ export const QM__COLLECTION_PUT_DOC = gql`
 export const QM__COLLECTION_RM_DOC = gql`
   mutation rmDoc($id: ID!) {
     collectionRemoveDoc(id: $id)
+  }
+`;
+
+export const QM__COLLECTION_UPDATE_DOC = gql`
+  mutation updateDoc($docId: String!, $jsonData: String!) {
+    collectionUpsertDoc(docId: $docId, jsonData: $jsonData) {
+      id
+      data
+      docId
+      createdAt
+      updatedAt
+    }
   }
 `;

@@ -5,17 +5,15 @@ const { get, assign, pick } = require('../../../utils');
 
 class Collection extends Model {
 
-  static async tagged(user, tag) {
+  static async tagged(tag) {
     let data = [];
     if (tag) {
       try {
         const { Tag } = this;
-        const { id: userId } = user;
         // eager-loading-filtered-at-the-associated-model-level
         // https://sequelize.org/docs/v6/advanced-association-concepts/eager-loading/#eager-loading-filtered-at-the-associated-model-level
         // ..where clause in the include makes inner join. same as <required: true>
         data = await this.findAll({
-          where: { userId },
           include: {
             model: Tag,
             where: { tag },
@@ -32,12 +30,11 @@ class Collection extends Model {
     return data;
   }
 
-  static async doc(user, docId) {
+  static async doc(docId) {
     let d$ = null;
     if (docId) {
       try {
-        const { id: userId } = user;
-        d$ = await this.findOne({ where: { userId, docId } });
+        d$ = await this.findOne({ where: { docId } });
       } catch (error) {
         logger.error(error);
       }
@@ -45,12 +42,11 @@ class Collection extends Model {
     return d$;
   }
 
-  static async removeDoc(user, id) {
+  static async removeDoc(id) {
     let numDocsDeleted = 0;
     try {
-      const { id: userId } = user;
       const { CollectionTag } = this;
-      numDocsDeleted = await this.destroy({ where: { id, userId } });
+      numDocsDeleted = await this.destroy({ where: { id } });
       if (0 < numDocsDeleted) {
         await CollectionTag.destroy({ where: { CollectionId: id } });
       }
@@ -60,19 +56,18 @@ class Collection extends Model {
     return numDocsDeleted;
   }
 
-  static async setDoc(user, doc, tag) {
+  static async setDoc(doc, tag) {
     let doc$ = null;
     try {
       const { CollectionTag, Tag } = this;
-      const { id: userId } = user;
 
       const id = get(doc, "id");
-      const d = assign(pick(doc, ["data", "docId"]), { userId });
+      const d = pick(doc, ["data", "docId"]);
 
       if (!id) {
         doc$ = await this.create(d);
       } else {
-        const [d$, docCreated] = await this.findOrCreate({ where: { id, userId }, defaults: d });
+        const [d$, docCreated] = await this.findOrCreate({ where: { id }, defaults: d });
         if (!docCreated) {
           assign(d$, d);
           await d$.save();
@@ -89,12 +84,11 @@ class Collection extends Model {
     return doc$;
   }
 
-  static async upsertDoc(user, docId, jsonData = JSON.stringify({})) {
+  static async upsertDoc(docId, jsonData = JSON.stringify({})) {
     let d$ = null;
     try {
-      const { id: userId } = user;
       const d = { data: jsonData };
-      const [doc$, docCreated] = await this.findOrCreate({ where: { userId, docId }, defaults: d });
+      const [doc$, docCreated] = await this.findOrCreate({ where: { docId }, defaults: d });
       if (!docCreated) {
         assign(doc$, d);
         await doc$.save();
@@ -117,10 +111,9 @@ module.exports = (client) => {
         primaryKey: true,
       },
 
-      userId: {
+      docId: {
         type: DataTypes.STRING,
-        allowNull: false,
-        index: true,
+        unique: true,
       },
 
       // json, gzipped
@@ -134,19 +127,8 @@ module.exports = (client) => {
         },
       },
 
-      docId: {
-        type: DataTypes.STRING,
-        index: true,
-      },
-
     },
     {
-      indexes: [
-        {
-          unique: true,
-          fields: ["userId", "docId"]
-        }
-      ],
       tableName: 'collections',
       modelName: 'Collection',
       sequelize: client,
@@ -157,7 +139,6 @@ module.exports = (client) => {
 
 // @collection, model.Collection
 // .id
-// .userId
 // .data
 // .docId?
 // [timestamps]

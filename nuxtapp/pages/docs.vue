@@ -1,9 +1,8 @@
 <script setup lang="ts">
-
 const tag$ = ref("@A");
 const { docs, put: putDoc, rm: rmDoc } = useApiCollection(tag$.value);
 
-const radomData = () => ({
+const randomData = () => ({
   x0: Math.random(),
   y0: Math.random(),
   [Date.now()]: "--now",
@@ -11,17 +10,20 @@ const radomData = () => ({
 const docId = ref("");
 
 const addDoc = async () => {
-  await putDoc({ data: radomData() });
+  await putDoc({ data: randomData() });
 };
 const updateDoc = async () => {
   await putDoc({
     id: docId.value,
-    data: radomData(),
+    data: randomData(),
   });
 };
 const removeDoc = async () => {
   await rmDoc(docId.value);
 };
+
+const { doc: docNode, put: upsertDocNode } = useApiDoc("d@1");
+const upsertNode = async () => await upsertDocNode(randomData());
 </script>
 
 <template>
@@ -40,6 +42,15 @@ const removeDoc = async () => {
     label="doc.id, docId"
   ></v-text-field>
   <v-btn-group>
+    <v-btn
+      @click="upsertNode"
+      color="secondary"
+      size="small"
+      variant="outlined"
+      type="button"
+    >
+      doc.upsert
+    </v-btn>
     <v-btn @click="addDoc" size="small" variant="outlined" type="button">
       addDoc
     </v-btn>
@@ -52,7 +63,7 @@ const removeDoc = async () => {
   </v-btn-group>
   <v-sheet>
     <pre>
-      {{ JSON.stringify({ docs }, null, 2) }}
+      {{ JSON.stringify({ docNode, docs }, null, 2) }}
     </pre>
   </v-sheet>
 </template>

@@ -35,12 +35,12 @@ module.exports = withMiddleware(
   async (_source, args, context, _info) => {
     const { Collection } = await model;
     const { docId, jsonData } = args;
-    const { user, config } = context;
+    const { config } = context;
     const { IOEVENT_DOC_CHANGE } = config;
-    const doc$ = await Collection.upsertDoc(user, docId, jsonData);
+    const doc$ = await Collection.upsertDoc(docId, jsonData);
     if (doc$) {
       // IOEVENT_DOC_CHANGE: "change:doc"
-      useIO(io => io.emit(`${IOEVENT_DOC_CHANGE}:${user.id}:${docId}`));
+      useIO(io => io.emit(`${IOEVENT_DOC_CHANGE}:${docId}`));
     }
     return doc$;
   }

@@ -64,9 +64,8 @@ const typeDefs = `#graphql
 
   type Doc {
     id: ID!
-    userId: String!
-    data: String!
     docId: String
+    data: String!
     createdAt: String
     updatedAt: String
   }

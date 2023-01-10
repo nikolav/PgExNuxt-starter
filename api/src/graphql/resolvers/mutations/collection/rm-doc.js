@@ -33,13 +33,13 @@ module.exports = withMiddleware(
   // eslint-disable-next-line no-unused-vars
   async (_source, args, context, _info) => {
     const { Collection, Tag } = await model;
-    const { user, config } = context;
+    const { config } = context;
     const { IOEVENT_COLLECTION_CHANGE } = config;
     const { id } = args;
     const tags = await Tag.getDocTags(id);
-    const numRowsDeleted = await Collection.removeDoc(user, id);
+    const numRowsDeleted = await Collection.removeDoc(id);
     if (0 < numRowsDeleted) {
-      each(tags, tag => useIO(io => io.emit(`${IOEVENT_COLLECTION_CHANGE}:${user.id}:${tag}`)));
+      each(tags, tag => useIO(io => io.emit(`${IOEVENT_COLLECTION_CHANGE}:${tag}`)));
     }
     return numRowsDeleted;
   }

@@ -186,6 +186,13 @@ export interface IUseApiCollectionFormatDocData<
   (d: TData): TDataFormated;
 }
 
+export interface IUseApiDocFormatData<
+  TData = IDoc,
+  TDataFormated = IDoc
+> {
+  (d: TData): TDataFormated;
+}
+
 export interface IInputDoc {
   data: IData;
   // tag: string;

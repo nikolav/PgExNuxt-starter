@@ -31,10 +31,9 @@ module.exports = withMiddleware(
 
   // handle
   // eslint-disable-next-line no-unused-vars
-  async (_src, args, context) => {
+  async (_src, args, _context) => {
     const { Collection } = await model;
-    const { user } = context;
     const { topicID } = args;
-    return await Collection.tagged(user, topicID);
+    return await Collection.tagged(topicID);
   }
 );

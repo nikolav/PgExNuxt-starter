@@ -23,9 +23,8 @@ const model = require('../../../../models/sequelize');
  * @apiError  Unauthorized 401  Unauthorized -- Only authenticated users can access the data
  */
 // eslint-disable-next-line no-unused-vars
-module.exports = async (_source, args, context, _info) => {
+module.exports = async (_source, args, _context, _info) => {
   const { Collection } = await model;
-  const { user } = context;
   const { docId } = args;
-  return await Collection.doc(user, docId);
+  return await Collection.doc(docId);
 };

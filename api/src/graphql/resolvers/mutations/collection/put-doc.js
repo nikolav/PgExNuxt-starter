@@ -34,16 +34,16 @@ module.exports = withMiddleware(
   // eslint-disable-next-line no-unused-vars
   async (_source, args, context, _info) => {
     const { Collection } = await model;
-    const { res, user, httpStatus, config } = context;
+    const { res, httpStatus, config } = context;
     const { IOEVENT_COLLECTION_CHANGE } = config;
     const {
       d: { jsonData: data, tag, id, docId },
     } = args;
 
-    const doc$ = await Collection.setDoc(user, { id, data, docId }, tag);
+    const doc$ = await Collection.setDoc({ id, data, docId }, tag);
     if (doc$) {
       assign(res, { CODE: httpStatus.CREATED });
-      useIO(io => io.emit(`${IOEVENT_COLLECTION_CHANGE}:${user.id}:${tag}`));
+      useIO(io => io.emit(`${IOEVENT_COLLECTION_CHANGE}:${tag}`));
     }
 
     return doc$;

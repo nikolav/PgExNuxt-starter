@@ -59,7 +59,18 @@ export const Q__COLLECTION_LIST_DOCS = gql`
   query listDocs($topicID: String!) {
     listDocsByTopic(topicID: $topicID) {
       id
-      userId
+      data
+      docId
+      createdAt
+      updatedAt
+    }
+  }
+`;
+
+export const Q__COLLECTION_FIND_DOC = gql`
+  query getDoc($docId: String!) {
+    collectionGetDoc(docId: $docId) {
+      id
       data
       docId
       createdAt
