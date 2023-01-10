@@ -1,7 +1,6 @@
 __pycache__/
 __pypackages__/
 _.py
-!.env.example
 !.vscode/*.code-snippets
 !.vscode/extensions.json
 !.vscode/launch.json
@@ -24,13 +23,14 @@ _.py
 .DS_Store
 .dynamodb/
 .eggs/
+.env*
 .env.backup
 .env.development.local
 .env.local
 .env.production.local
 .env.test.local
-.env*
 .env*.local
+!.env.example
 .eslintcache
 .fuse_hidden*
 .fusebox/
