@@ -1,7 +1,7 @@
 import { Q__COLLECTION_FIND_DOC, QM__COLLECTION_UPDATE_DOC } from "@/graphql";
 import { OrNoValue, IData, IUseApiDocFormatData, IDoc } from "@/types";
 
-const defaultFormatDoc: IUseApiDocFormatData = (node) => ({
+export const defaultDocsFormatDocData: IUseApiDocFormatData = (node) => ({
   ...node,
   data: JSON.parse("string" === typeof node?.data ? node.data : "{}"),
 });
@@ -9,7 +9,7 @@ const defaultFormatDoc: IUseApiDocFormatData = (node) => ({
 // @@useApiDoc
 export const useApiDoc = (
   ID: string,
-  format: IUseApiDocFormatData = defaultFormatDoc
+  format: IUseApiDocFormatData = defaultDocsFormatDocData
 ) => {
   const { $ISAUTH, $ISMOUNTED, IOEVENT_DOC_CHANGE } = useAppConfig();
 

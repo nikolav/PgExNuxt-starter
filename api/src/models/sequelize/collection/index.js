@@ -1,4 +1,6 @@
+
 const { DataTypes, Model } = require('sequelize');
+
 const gzip = require('../../../utils/gzip');
 const logger = require('../../../config/logger');
 const { get, assign, pick } = require('../../../utils');
@@ -69,6 +71,7 @@ class Collection extends Model {
       } else {
         const [d$, docCreated] = await this.findOrCreate({ where: { id }, defaults: d });
         if (!docCreated) {
+          // update
           assign(d$, d);
           await d$.save();
         }
@@ -137,18 +140,18 @@ module.exports = (client) => {
   return Collection;
 };
 
-// @collection, model.Collection
+// @Collection
 // .id
-// .data
 // .docId?
+// .data
 // [timestamps]
 
-// @tags, model.Tag
+// @Tag
 // .id
 // .tag
 // [timestamps]
 
-// @ln_collection_tag, model.CollectionTag
+// @CollectionTag
 // .id
 // .collectionId
 // .tagId

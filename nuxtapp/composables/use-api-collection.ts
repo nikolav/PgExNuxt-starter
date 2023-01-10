@@ -6,12 +6,13 @@ import {
 import { IDoc, IUseApiCollectionFormatDocData, IInputDoc } from "@/types";
 import { map, pick } from "@/utils";
 
-const defaultFormatDocData: IUseApiCollectionFormatDocData = (data) =>
-  map(data, (node) => ({ ...node, data: JSON.parse(node.data as string) }));
+export const defaultCollectionFormatDocs: IUseApiCollectionFormatDocData = (
+  data
+) => map(data, (node) => ({ ...node, data: JSON.parse(node.data as string) }));
 
 export const useApiCollection = (
   topicID: string,
-  format: IUseApiCollectionFormatDocData = defaultFormatDocData
+  format: IUseApiCollectionFormatDocData = defaultCollectionFormatDocs
 ) => {
   const { $ISAUTH, $ISMOUNTED } = useAppConfig();
 
