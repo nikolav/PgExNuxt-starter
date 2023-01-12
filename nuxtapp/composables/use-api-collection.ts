@@ -14,7 +14,7 @@ export const useApiCollection = (
   topicID: string,
   format: IUseApiCollectionFormatDocData = defaultCollectionFormatDocs
 ) => {
-  const { $ISAUTH, $ISMOUNTED } = useAppConfig();
+  const { $ISAUTH, $ISMOUNTED, IOEVENT_COLLECTION_CHANGE } = useAppConfig();
 
   const {
     load: loadDocs,
@@ -36,7 +36,6 @@ export const useApiCollection = (
     if (isMounted.value && isAuth.value) loadDocs();
   });
 
-  const { IOEVENT_COLLECTION_CHANGE } = useAppConfig();
   const { $socket } = useNuxtApp();
   const IOEVENT = `${IOEVENT_COLLECTION_CHANGE}:${topicID}`;
   $socket?.on(IOEVENT, reloadDocs);

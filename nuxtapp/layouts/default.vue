@@ -1,19 +1,17 @@
 <script setup lang="ts">
 import { mdiWeatherSunny, mdiWeatherNight } from "@mdi/js";
 
-const theme = ref("light");
-const icon = computed(() =>
+const theme = useState("theme");
+const iconSwitchColorMode = computed(() =>
   theme.value === "light" ? mdiWeatherSunny : mdiWeatherNight
 );
-
-const onClick = () => {
+const themeSwitch = () => {
   theme.value = theme.value === "light" ? "dark" : "light";
 };
 </script>
 
 <template>
   <section class="ma-0 pa-0">
-    <v-app :theme="theme">
       <v-navigation-drawer width="92" color="grey-darken-2" permanent>
         <v-list>
           <v-list-item>
@@ -33,8 +31,8 @@ const onClick = () => {
       <v-app-bar>
         <v-spacer></v-spacer>
 
-        <v-btn @click="onClick">
-          <v-icon :icon="icon" />
+        <v-btn @click="themeSwitch">
+          <v-icon :icon="iconSwitchColorMode" />
         </v-btn>
       </v-app-bar>
       <v-main>
@@ -49,6 +47,5 @@ const onClick = () => {
           </slot>
         </v-container>
       </v-main>
-    </v-app>
   </section>
 </template>

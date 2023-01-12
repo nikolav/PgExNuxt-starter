@@ -13,7 +13,8 @@
     "postinstall": "nuxt prepare",
     "docs:serve": "serve -p 8889 docs/www ",
     "tinker": "node tinker.mjs ",
-    "prepare": "nuxi prepare"
+    "prepare": "nuxi prepare",
+    "typecheck": "nuxi typecheck",
   },
   "devDependencies": {
     "@faker-js/faker": "^7.6.0",

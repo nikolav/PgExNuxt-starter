@@ -8,10 +8,12 @@ const { OVERLAYS_ID_START, OVERLAYS_ID_END, $ISMOUNTED } = useAppConfig();
 onUnmounted(() => {
   useState($ISMOUNTED).value = false;
 });
+
+const theme = useState("theme", () => "dark");
 </script>
 
 <template>
-  <main class="ma-0 pa-0 border-0">
+  <v-app :theme="theme">
     <div :id="OVERLAYS_ID_START" />
 
     <!-- @@content -->
@@ -29,7 +31,7 @@ onUnmounted(() => {
     <div class="fixed top-0 inset-x-0 z-1">
       <NuxtLoadingIndicator color="red" :height="2" />
     </div>
-  </main>
+  </v-app>
 </template>
 
 <style>
