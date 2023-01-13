@@ -14,7 +14,7 @@
     "docs:serve": "serve -p 8889 docs/www ",
     "tinker": "node tinker.mjs ",
     "prepare": "nuxi prepare",
-    "typecheck": "nuxi typecheck",
+    "typecheck": "nuxi typecheck"
   },
   "devDependencies": {
     "@faker-js/faker": "^7.6.0",

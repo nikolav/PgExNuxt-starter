@@ -186,10 +186,7 @@ export interface IUseApiCollectionFormatDocData<
   (d: TData): TDataFormated;
 }
 
-export interface IUseApiDocFormatData<
-  TData = IDoc,
-  TDataFormated = IDoc
-> {
+export interface IUseApiDocFormatData<TData = IDoc, TDataFormated = IDoc> {
   (d: TData): TDataFormated;
 }
 
@@ -202,4 +199,10 @@ export interface IInputDoc {
 
 export interface IDefaultUseApiDocData<T = IData> {
   (): T | Promise<T>;
+}
+
+export interface IDataChartPlot<TKey = string, TValue = number> {
+  key: TKey;
+  value: TValue;
+  [field: string]: any;
 }

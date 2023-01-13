@@ -36,29 +36,28 @@ const gallery = () =>
       title: "tulips",
     },
   ]);
-
 const data = ref([
   {
-    key: "A",
+    key: "🥝",
     value: 20,
   },
   {
-    key: "B",
+    key: "🍋",
     value: 10,
   },
   {
-    key: "C",
+    key: "🍊",
     value: 40,
   },
   {
-    key: "D",
+    key: "🍎",
     value: 30,
   },
 ]);
 
 const config = {
   // color: "orange",
-  _canvasOutline: true,
+  // _canvasOutline: true,
 };
 
 // @chart
@@ -68,7 +67,7 @@ const i1$ = ref<any>(null);
 
 onMounted(() => {
   i1$.value = setInterval(() => {
-    data.value = (0.5 < Math.random() ? "A B C D" : "A B C D E")
+    data.value = (0.5 < Math.random() ? "🥝 🍋 🍊 🍎" : "🥝 🍋 🍊 🍎 🍇")
       .split(" ")
       .map((key) => ({ key, value: random(100) }));
   }, 2345);
@@ -170,7 +169,8 @@ onUnmounted(() => {
     <v-sheet>
       <!-- <div v-chartBarVertical="chart"></div> -->
       <!-- <div v-chartLine="chart"></div> -->
-      <div v-chartPie="chart"></div>
+      <!-- <div v-chartPie="chart"></div> -->
+      <div v-chartPlot="chart"></div>
     </v-sheet>
     <v-sheet>
       <pre>
