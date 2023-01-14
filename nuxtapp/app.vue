@@ -23,14 +23,11 @@ const theme = useState("theme", () => "dark");
 
     <div :id="OVERLAYS_ID_END"></div>
 
-    <!-- global lightbox -->
     <!-- https://github.com/XiongAmao/vue-easy-lightbox  -->
     <Lightbox />
 
-    <!-- loading indicator -->
-    <div class="fixed top-0 inset-x-0 z-1">
-      <NuxtLoadingIndicator color="red" :height="2" />
-    </div>
+    <!-- https://nuxt.com/docs/api/components/nuxt-loading-indicator -->
+    <NuxtLoadingIndicator color="red" :height="2" />
   </v-app>
 </template>
 

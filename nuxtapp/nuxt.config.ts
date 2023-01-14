@@ -7,7 +7,7 @@ import {
   ENDPOINT_GRAPHQL,
 } from "./config";
 
-// https://nuxt.com/docs/api/configuration/nuxt-config
+// https://nuxt.com/docs/api/configuration/nuxt-config#nuxt-configuration-reference
 export default defineNuxtConfig({
   // # client-side output
   // # use .generate command to produce html in .output/public
@@ -49,20 +49,26 @@ export default defineNuxtConfig({
     "@nuxtjs/apollo",
 
     // https://v1.image.nuxtjs.org/components/nuxt-img#usage
-    "@nuxt/image-edge"
+    "@nuxt/image-edge",
   ],
   app: {
     head: {
       // @useHead(); # https://nuxt.com/docs/getting-started/seo-meta#composable-usehead
-      charset: "utf-16",
-      viewport:
-        "width=device-width, initial-scale=1.0, shrink-to-fit=no, minimum-scale=1",
+      // charset: "utf-16",
+      // viewport:
+      //   "width=device-width, initial-scale=1.0, shrink-to-fit=no, minimum-scale=1",
       title: "nuxtapp",
       titleTemplate: "%s | Nuxt3",
       // https://www.geeksforgeeks.org/meta-tags-in-nuxt-js/
       meta: [
+        { charset: "utf-8" },
         { name: "description", content: "App" },
         { name: "theme-color", content: "#fafafa" },
+        {
+          name: "viewport",
+          content:
+            "width=device-width, initial-scale=1.0, shrink-to-fit=no, minimum-scale=1",
+        },
       ],
       link: [
         {
@@ -83,6 +89,10 @@ export default defineNuxtConfig({
           href: "https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap",
         },
       ],
+      noscript: [
+        // <noscript>JavaScript is required</noscript>
+        { children: "JavaScript is required" },
+      ],
       // bodyAttrs: {
       //   class: 'test'
       // },
@@ -98,7 +108,7 @@ export default defineNuxtConfig({
     "vuetify/lib/styles/main.sass",
     "@mdi/font/css/materialdesignicons.min.css",
     "vue-toastification/dist/index.css",
-    "vue-easy-lightbox/external-css/vue-easy-lightbox.css"
+    "vue-easy-lightbox/external-css/vue-easy-lightbox.css",
   ],
   build: {
     transpile: ["vuetify"],
@@ -161,8 +171,5 @@ export default defineNuxtConfig({
   },
 
   // https://v1.image.nuxtjs.org/get-started/#configuration
-  image: {
-    
-  }
-  
+  image: {},
 });
