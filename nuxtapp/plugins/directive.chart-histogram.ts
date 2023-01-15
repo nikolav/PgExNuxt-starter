@@ -110,7 +110,8 @@ export default defineNuxtPlugin((nuxtApp) => {
         .classed(_classAxisY, true)
         .attr("transform", `translate(${paddingLeft}, ${paddingTop})`);
 
-      const lbl = svg
+      // draw y-label <frequency>
+      svg
         .append("g")
         .classed(_classYLabel, true)
         .attr("transform", `translate(${paddingLeft}, 0)`)
@@ -126,12 +127,12 @@ export default defineNuxtPlugin((nuxtApp) => {
       // @data:updated
       watchEffect(() => {
         const data = format(data$.value || []);
+
         const bins = binsGen(data);
+        const firstBin = bins[0];
         const lastBin = bins[bins.length - 1];
 
-        console.log({ data });
-
-        x.domain([Number(bins[0].x0), Number(lastBin.x1)]);
+        x.domain([Number(firstBin.x0), Number(lastBin.x1)]);
         y.domain([0, <number>d3.max(bins.map((b) => b.length))]);
 
         const t1 = d3
@@ -163,6 +164,7 @@ export default defineNuxtPlugin((nuxtApp) => {
           // .to, from-current
           .attr("y", (b) => y(b.length))
           .attr("height", (b) => innerHeight - y(b.length));
+
         // [exit]
         B.exit()
           .attr("fill", "red")
@@ -173,7 +175,8 @@ export default defineNuxtPlugin((nuxtApp) => {
           .attr("fill", "transparent")
           .remove();
 
-        // axis
+        // draw axis
+
         xAxis.transition().call(
           d3
             .axisBottom(x)
@@ -181,7 +184,6 @@ export default defineNuxtPlugin((nuxtApp) => {
             .tickSizeOuter(0)
         );
 
-        // format y-axis, remove .domain, add horizontal guides
         yAxis.transition().call(
           d3
             .axisLeft(y)
