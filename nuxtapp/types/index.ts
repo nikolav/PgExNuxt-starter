@@ -206,3 +206,9 @@ export interface IDataChartPlot<TKey = string, TValue = number> {
   value: TValue;
   [field: string]: any;
 }
+
+export interface IDataChartBarHorizontal<TKey = string, TValue = number> {
+  key: TKey;
+  value: TValue;
+  [index: string]: any;
+}

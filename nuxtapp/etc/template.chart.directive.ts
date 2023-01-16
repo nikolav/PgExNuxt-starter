@@ -52,6 +52,12 @@ export default defineNuxtPlugin((nuxtApp) => {
           IDataChartPie<string, number>[],
           IDataChartPie<string, number>[]
         >(data$.value || []);
+
+        // [enter]
+        // [update]
+        // [exit]
+
+        // axis
       });
     },
 

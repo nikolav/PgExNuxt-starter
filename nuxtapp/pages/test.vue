@@ -36,34 +36,34 @@ const gallery = () =>
       title: "tulips",
     },
   ]);
-// const data = ref([
-//   {
-//     key: "🥝",
-//     value: 20,
-//   },
-//   {
-//     key: "🍋",
-//     value: 10,
-//   },
-//   {
-//     key: "🍊",
-//     value: 40,
-//   },
-//   {
-//     key: "🍎",
-//     value: 30,
-//   },
-// ]);
+const data = ref([
+  {
+    key: "🥝",
+    value: 20,
+  },
+  {
+    key: "🍋",
+    value: 10,
+  },
+  {
+    key: "🍊",
+    value: 40,
+  },
+  {
+    key: "🍎",
+    value: 30,
+  },
+]);
 
 const fakeData = () => Array.from("1".repeat(1024), () => random(100));
-const data = ref(fakeData());
+// const data = ref(fakeData());
 
 const config = {
-  // color: "orange",
+  color: "orange",
   // _canvasOutline: true,
-  thresholds: 32,
-  color: "steelblue",
-  _xDomain: [0, 100],
+  // thresholds: 32,
+  // color: "steelblue",
+  // _xDomain: [0, 100],
 };
 
 // @chart
@@ -73,10 +73,10 @@ const i1$ = ref<any>(null);
 
 onMounted(() => {
   i1$.value = setInterval(() => {
-    // data.value = (0.5 < Math.random() ? "🥝 🍋 🍊 🍎" : "🥝 🍋 🍊 🍎 🍇")
-    //   .split(" ")
-    //   .map((key) => ({ key, value: random(100) }));
-    data.value = fakeData();
+     data.value = (0.5 < Math.random() ? "🥝 🍋 🍊 🍎" : "🥝 🍋 🍊 🍎 🍇")
+      .split(" ")
+      .map((key) => ({ key, value: random(100) }));
+    // data.value = fakeData();
   }, 6789);
 
   // i1$.value = setInterval(() => {
@@ -174,20 +174,18 @@ onUnmounted(() => {
       toast
     </v-btn>
     <v-sheet>
-      <pre>
-        {{ data.join(",") }}
-      </pre>
       <!-- <div v-chartBarVertical="chart"></div> -->
       <!-- <div v-chartLine="chart"></div> -->
       <!-- <div v-chartPie="chart"></div> -->
       <!-- <div v-chartPlot="chart"></div> -->
-      <div v-chartHistogram="chart"></div>
+      <!-- <div v-chartHistogram="chart"></div> -->
+      <div v-chartBarHorizontal="chart"></div>
     </v-sheet>
     <v-sheet>
       <pre>
         {{
           JSON.stringify(
-            { error, errorDoc, docPath: path, doc, vars },
+            { data, error, errorDoc, docPath: path, doc, vars },
             null,
             2
           )
