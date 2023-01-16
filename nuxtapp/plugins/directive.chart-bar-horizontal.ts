@@ -125,12 +125,12 @@ export default defineNuxtPlugin((nuxtApp) => {
           .attr("fill-opacity", 1);
 
         // [update]
-        // .to, from current
+        // .to, from current, width only
         bars
-          .transition(t1)
-          .attr("width", (d) => x(value(d)) - <number>x(0))
+          .attr("y", (d) => <number>y(key(d)))
           .attr("height", y.bandwidth())
-          .attr("y", (d) => <number>y(key(d)));
+          .transition(t1)
+          .attr("width", (d) => x(value(d)) - <number>x(0));
 
         // [exit]
         bars
