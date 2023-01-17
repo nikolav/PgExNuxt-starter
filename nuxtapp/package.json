@@ -32,6 +32,7 @@
     "@types/d3": "^7.4.0",
     "@types/faker": "^6.6.9",
     "@types/file-saver": "^2.0.5",
+    "@types/gsap": "^3.0.0",
     "@types/http-status": "^1.1.2",
     "@types/jquery": "^3.5.16",
     "@types/lodash": "^4.14.191",
