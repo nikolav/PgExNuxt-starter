@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useStoreFlags } from "@/store";
 import { random } from "@/utils";
-import { useOn } from "../composables/use-on";
+import { Effect } from "@/components/ui";
 
 definePageMeta({
   middleware: ["log"],
@@ -73,7 +73,7 @@ const i1$ = ref<any>(null);
 
 onMounted(() => {
   i1$.value = setInterval(() => {
-     data.value = (0.5 < Math.random() ? "🥝 🍋 🍊 🍎" : "🥝 🍋 🍊 🍎 🍇")
+    data.value = (0.5 < Math.random() ? "🥝 🍋 🍊 🍎" : "🥝 🍋 🍊 🍎 🍇")
       .split(" ")
       .map((key) => ({ key, value: random(100) }));
     // data.value = fakeData();
@@ -128,19 +128,32 @@ onUnmounted(() => {
   unsubscribeDoc();
   clearInterval(i1$.value);
 });
+
+const toggleIsActive = useToggleFlag();
 </script>
 
 <template>
   <v-container>
-    <p>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Et doloremque
-      excepturi, ipsa deserunt nisi, eligendi ipsam eum iusto quaerat est sequi.
-      Debitis aliquam nihil neque voluptatum exercitationem fugiat quos iure.
-    </p>
+    <Effect :isActive="toggleIsActive.isActive">
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Et doloremque
+        excepturi, ipsa deserunt nisi, eligendi ipsam eum iusto quaerat est
+        sequi. Debitis aliquam nihil neque voluptatum exercitationem fugiat quos
+        iure.
+      </p>
+    </Effect>
     <v-sheet>
       <p>isSet_1: [{{ isSet_1 }}]</p>
       <p>isSet_processing: [{{ isSet_processing }}]</p>
     </v-sheet>
+    <v-btn
+      @click="toggleIsActive.on"
+      color="secondary"
+      size="small"
+      variant="outlined"
+    >
+      effect
+    </v-btn>
     <v-btn @click="updateDoc" color="primary" size="small" variant="outlined">
       updateDoc
     </v-btn>

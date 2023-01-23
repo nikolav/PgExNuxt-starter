@@ -212,3 +212,9 @@ export interface IDataChartBarHorizontal<TKey = string, TValue = number> {
   value: TValue;
   [index: string]: any;
 }
+
+export interface IEffectClasses {
+  [index: string]: boolean;
+}
+
+export type TEffectOnEnd = (...args: any[]) => void;
