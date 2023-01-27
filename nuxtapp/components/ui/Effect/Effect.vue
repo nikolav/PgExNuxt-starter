@@ -28,7 +28,7 @@ const transitionEnded = (...args: any[]) => {
   props.isActive.value = false;
   props.onEnd && props.onEnd(...args);
 };
-
+const ANIMATED_ = "animate__animated";
 const animatecss_ = (node: any, animation: string, duration: number) =>
   new Promise((resolve) => {
     const animation_ = `animate__${animation}`;
@@ -37,12 +37,12 @@ const animatecss_ = (node: any, animation: string, duration: number) =>
     node.style.setProperty("--animate-duration", `${duration / 1000}s`);
 
     // trigger animation
-    node.classList.add("animate__animated", animation_);
+    node.classList.add(ANIMATED_, animation_);
 
     // @cleanup
     function cleanup_(evt: any) {
       evt.stopPropagation();
-      node.classList.remove("animate__animated", animation_);
+      node.classList.remove(ANIMATED_, animation_);
       resolve(evt);
     }
   });

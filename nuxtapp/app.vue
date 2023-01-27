@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import "animate.css";
+
 import { Lightbox } from "@/components/ui";
 
 const { OVERLAYS_ID_START, OVERLAYS_ID_END, $ISMOUNTED } = useAppConfig();

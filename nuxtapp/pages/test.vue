@@ -130,6 +130,12 @@ onUnmounted(() => {
 });
 
 const toggleIsActive = useToggleFlag();
+
+ const divsWithId$ = useJQuery("div[id]");
+ watchEffect(() => {
+  if (!divsWithId$.value) return;
+  console.log({ divs: divsWithId$.value });
+ })
 </script>
 
 <template>

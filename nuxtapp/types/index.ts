@@ -218,3 +218,8 @@ export interface IEffectClasses {
 }
 
 export type TEffectOnEnd = (...args: any[]) => void;
+
+export interface IStoreMain {
+  [key: TPrimitive]: any;
+}
+export type TStoreMainPutCallback = (currentStore: IStoreMain) => IStoreMain;

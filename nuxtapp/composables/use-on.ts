@@ -14,8 +14,7 @@ export const useOn = (
   watchEffect(() => {
     if (!$jQuery?.value) return;
     const { $ } = $jQuery.value;
-    const on$ = unref(isActive);
-    if (on$) {
+    if (unref(isActive)) {
       $(target).on(events);
     } else {
       $(target).off(events);

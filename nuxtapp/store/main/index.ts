@@ -1,21 +1,18 @@
 import { defineStore } from "pinia";
-import { ref, Ref } from "vue";
-import { TPrimitive } from "@/types";
+import { ref } from "vue";
+import { TPrimitive, IStoreMain, TStoreMainPutCallback } from "@/types";
 import { assign, each } from "@/utils";
 
-interface IStoreMain {
-  [key: TPrimitive]: any;
-}
 const initialState: IStoreMain = {
   "app.name": "nuxtapp",
   test: "test",
 };
 
 export const useStoreMain = defineStore("main", () => {
-  const store: Ref<IStoreMain> = ref(initialState);
+  const store = ref(initialState);
   return {
     store,
-    put: (callback: (currentStore: IStoreMain) => IStoreMain) => {
+    put: (callback: TStoreMainPutCallback) => {
       assign(store.value, callback(store.value));
     },
     drop: (...paths: TPrimitive[]) => {
