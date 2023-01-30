@@ -6,6 +6,8 @@ import {
 import { md2 } from "vuetify/blueprints";
 import { aliases, mdi } from "vuetify/iconsets/mdi-svg";
 
+import { light2 } from "@/assets/themes";
+
 // const demoLightTheme: ThemeDefinition = {
 //   dark: false,
 //   colors: {
@@ -39,18 +41,19 @@ export default defineNuxtPlugin((nuxtApp) => {
 
     // https://next.vuetifyjs.com/en/features/theme/
     // https://next.vuetifyjs.com/en/features/theme/#theme-object-structure
-    // theme: {
-    //   // defaultTheme: "dark",
-    //   // defaultTheme: "demoLightTheme",
-    //   // themes: {
-    //   //   demoLightTheme,
-    //   // },
-    //   // variations: {
-    //   //   colors: ["primary", "secondary"],
-    //   //   lighten: 5,
-    //   //   darken: 5,
-    //   // },
-    // },
+    theme: {
+      //   // defaultTheme: "dark",
+      //   // defaultTheme: "demoLightTheme",
+      // defaultTheme: "light2",
+      themes: {
+        light2,
+      },
+      variations: {
+        colors: ["primary", "secondary"],
+        lighten: 5,
+        darken: 5,
+      },
+    },
 
     // @@ set component/alias props
     defaults: {

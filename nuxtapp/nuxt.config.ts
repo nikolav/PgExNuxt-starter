@@ -54,21 +54,21 @@ export default defineNuxtConfig({
   app: {
     head: {
       // @useHead(); # https://nuxt.com/docs/getting-started/seo-meta#composable-usehead
-      // charset: "utf-16",
-      // viewport:
-      //   "width=device-width, initial-scale=1.0, shrink-to-fit=no, minimum-scale=1",
+      charset: "utf-8",
+      viewport:
+        "width=device-width, initial-scale=1.0, shrink-to-fit=no, minimum-scale=1",
       title: "nuxtapp",
       titleTemplate: "%s | Nuxt3",
       // https://www.geeksforgeeks.org/meta-tags-in-nuxt-js/
       meta: [
-        { charset: "utf-8" },
+        // { charset: "utf-8" },
         { name: "description", content: "App" },
         { name: "theme-color", content: "#fafafa" },
-        {
-          name: "viewport",
-          content:
-            "width=device-width, initial-scale=1.0, shrink-to-fit=no, minimum-scale=1",
-        },
+        // {
+        //   name: "viewport",
+        //   content:
+        //     "width=device-width, initial-scale=1.0, shrink-to-fit=no, minimum-scale=1",
+        // },
       ],
       link: [
         {

@@ -55,6 +55,7 @@ export { default as hasOwn } from "./has-own";
 export { default as unpackBlob } from "./unpack-blob";
 export { default as pickValues } from "./pick-values";
 export { default as maxOfValue } from "./max-of-value";
+export { default as stripEndSlashes } from "./strip-end-slashes";
 
 export const False = () => false;
 export const True = () => true;

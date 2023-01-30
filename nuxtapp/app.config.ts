@@ -67,4 +67,7 @@ export default defineAppConfig({
   $ISMOUNTED: "FXwmEX5afoE",
   $ISAUTH: "aKviNu7ubPK",
   $ISPROCESSING,
+  // @theme
+  THEME_DARK: "dark",
+  THEME_LIGHT: "light2",
 });

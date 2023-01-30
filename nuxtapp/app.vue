@@ -3,14 +3,14 @@ import "animate.css";
 
 import { Lightbox } from "@/components/ui";
 
-const { OVERLAYS_ID_START, OVERLAYS_ID_END, $ISMOUNTED } = useAppConfig();
+const { OVERLAYS_ID_START, OVERLAYS_ID_END, $ISMOUNTED, THEME_DARK } = useAppConfig();
 
 // $ISMOUNTED set flag @plugins/mounted
 onUnmounted(() => {
   useState($ISMOUNTED).value = false;
 });
 
-const theme = useState("theme", () => "dark");
+ const theme = useState("theme", () => THEME_DARK);
 </script>
 
 <template>
