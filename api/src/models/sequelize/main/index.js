@@ -13,7 +13,7 @@ class Main extends Model {
 }
 
 module.exports = (client) => {
-  Model.init(
+  Main.init(
     {
       id: {
         type: DataTypes.UUID,
