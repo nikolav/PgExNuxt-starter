@@ -68,10 +68,7 @@ module.exports = (program) => {
       await Message.bulkCreate(
         map(range(c), () => ({
           content: `message --${testId()}`,
-        })),
-        {
-          validation: true,
-        }
+        }))
       );
 
       console.log(chalk.green(`@messages table seeded, [${c}] added`));

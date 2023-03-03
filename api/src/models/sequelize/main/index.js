@@ -54,6 +54,7 @@ module.exports = (client) => {
     {
 
       tableName: 'main',
+      // model available under `sequelize.models.[modelName]`
       modelName: 'Main',
       sequelize: client,
       timestamps: true,
