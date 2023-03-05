@@ -14,6 +14,7 @@ export default defineNuxtConfig({
   // # specify routes for nitro to prerender @nitro.prerender.routes<path[]>
   // ssr: false,
 
+  // # disable implicit auto imports
   // imports: {
   //   autoImport: false,
   // },
@@ -61,14 +62,8 @@ export default defineNuxtConfig({
       titleTemplate: "%s | Nuxt3",
       // https://www.geeksforgeeks.org/meta-tags-in-nuxt-js/
       meta: [
-        // { charset: "utf-8" },
         { name: "description", content: "App" },
         { name: "theme-color", content: "#fafafa" },
-        // {
-        //   name: "viewport",
-        //   content:
-        //     "width=device-width, initial-scale=1.0, shrink-to-fit=no, minimum-scale=1",
-        // },
       ],
       link: [
         {
