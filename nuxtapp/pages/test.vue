@@ -55,7 +55,7 @@ const data = ref([
   },
 ]);
 
-const fakeData = () => Array.from("1".repeat(1024), () => random(100));
+// const fakeData = () => Array.from("1".repeat(1024), () => random(100));
 // const data = ref(fakeData());
 
 const config = {

@@ -22,7 +22,7 @@
 // 
 // const { hashSync } = require('bcryptjs')
 
-// const { cached } = require('./src/utils');
+// const { get } = require('./src/utils');
 const model = require('./src/models/sequelize')
   ; (async () => {
     // db.connect();
@@ -88,7 +88,7 @@ const model = require('./src/models/sequelize')
     // const b = Buffer.from([65]);
     // createWriteStream(path.join(__dirname, 'out')).write(b);
 
-    const { Collection, Tag } = await model;
+    const { Main } = await model;
 
     // const res$ = await Collection.setDoc(
     //   { id: "63bbb5a2c92c0c36cc0efb71" },
@@ -100,7 +100,7 @@ const model = require('./src/models/sequelize')
     //   "T2"
     // );
 
-    // const res$ = await Collection.tagged({id: "u1"}, "important");
+    const res$ = await Main.findOne({ where: { name: 'admin.email' }, attributes: ['value'] });
 
     // const res$ = await Collection.removeDoc({id: "u1"}, "d476e8ce-5875-4280-8a84-bdd7b7b19988");
 
@@ -108,7 +108,6 @@ const model = require('./src/models/sequelize')
 
     // const res$ = await Tag.getDocTags("0bd537bc-5122-4cf2-84d0-08997854bd91");
 
-    const res$ = await Collection.upsertDoc({id: "63bc69511c242427204d9680"}, "d@1", JSON.stringify({x: 1}));
     // const res$ = await Collection.doc({id: "u1"}, "docId-1");
 
     console.log(JSON.stringify({ res$ }, null, 2));

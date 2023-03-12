@@ -58,6 +58,6 @@ module.exports = (client) => {
 
 // @ln_collection_tag, model.CollectionTag
 // .id
-// .collectionId
-// .tagId
+// .CollectionId
+// .TagId
 // [timestamps]

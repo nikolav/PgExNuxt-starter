@@ -13,6 +13,7 @@ class Main extends Model {
 }
 
 module.exports = (client) => {
+  // https://sequelize.org/docs/v6/core-concepts/model-basics/#column-options
   Main.init(
     {
       id: {
