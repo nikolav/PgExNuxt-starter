@@ -9,6 +9,6 @@
   - set host @/scp-config.sh, lines 2-5
 
 ## deploy
-  - . scp-config.sh
-  - . deploy-env.sh
-  - . deploy.sh
+  - @host: sudo git clone _repository_
+  - @home: . scp-config.sh
+  - @host: . deploy-env.sh; . deploy.sh
