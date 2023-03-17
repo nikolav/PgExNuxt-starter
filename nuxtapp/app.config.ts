@@ -36,7 +36,7 @@ export default defineAppConfig({
   // @@
   PDF_RENDER_ENDPOINT,
   PDF_CONFIG: {
-    defaultPdfFilename: "downloaded.pdf",
+    defaultPdfFilename: "download.pdf",
     defaultPdfTemplate: "test-doc",
     http: {
       headers: {},
