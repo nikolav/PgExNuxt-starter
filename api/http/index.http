@@ -4,3 +4,9 @@
 http://localhost:3001/v1/status
 
 ###
+
+http://localhost:3001/v1/testing/test
+Accept: application/json
+Authorization: Bearer -
+
+###
