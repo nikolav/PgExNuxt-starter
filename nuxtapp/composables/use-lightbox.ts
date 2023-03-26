@@ -1,9 +1,9 @@
 import { ILightboxImage, OrNoValue } from "@/types";
 
 export const useLightbox = (initialImages: ILightboxImage[] = []) => {
-  const images = useState("Lightbox:images", () => initialImages);
-  const index = useState("Lightbox:index", () => 0);
-  const isActive = useState("Lightbox:isActive", () => false);
+  const images = useState("Lightbox.images", () => initialImages);
+  const index = useState("Lightbox.index", () => 0);
+  const isActive = useState("Lightbox.isActive", () => false);
   const setImages = (ls: ILightboxImage[]) => {
     images.value = [...ls];
   };

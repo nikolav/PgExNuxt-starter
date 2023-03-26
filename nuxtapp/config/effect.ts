@@ -8,7 +8,7 @@ export const DEFAULT_DURATION: number = 1234;
   isActive={flag} 
   onEnd={callback} 
   duration={1122}>
-  <button onCkick={trigger}>ok</button>
+  <button onClick={trigger}>ok</button>
 </Effect> */
 // }
 //
