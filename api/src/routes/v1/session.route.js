@@ -30,8 +30,8 @@ router
    */
   .post(
     authorize(),
-    validation(checks.session.putSession),
     canAccessSession,
+    validation(checks.session.putSession),
     controller.put
   );
 

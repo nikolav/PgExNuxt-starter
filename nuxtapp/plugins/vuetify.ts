@@ -55,6 +55,11 @@ export default defineNuxtPlugin((nuxtApp) => {
       },
     },
 
+    // aliases: {
+    //   MyButton: VBtn,
+    //   MyButtonAlt: VBtn,
+    // },
+    
     // @@ set component/alias props
     defaults: {
       global: {
@@ -76,10 +81,6 @@ export default defineNuxtPlugin((nuxtApp) => {
       //   VBtn: { color: 'primary' },
       // },
     },
-    // aliases: {
-    //   MyButton: VBtn,
-    //   MyButtonAlt: VBtn,
-    // },
 
     icons: {
       defaultSet: "mdi",

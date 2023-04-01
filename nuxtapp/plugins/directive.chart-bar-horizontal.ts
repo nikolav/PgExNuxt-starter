@@ -107,7 +107,7 @@ export default defineNuxtPlugin((nuxtApp) => {
           .transition("t1@chartBarHotizontal")
           .duration(_transitionDuration);
 
-        // [enter]
+        // [1.enter]
         bars
           .enter()
           .append("rect")
@@ -124,7 +124,7 @@ export default defineNuxtPlugin((nuxtApp) => {
           .attr("width", (d) => x(value(d)) - x(0))
           .attr("fill-opacity", 1);
 
-        // [update]
+        // [2.update]
         // .to, from current, width only
         bars
           .attr("y", (d) => <number>y(key(d)))
@@ -132,7 +132,7 @@ export default defineNuxtPlugin((nuxtApp) => {
           .transition(t1)
           .attr("width", (d) => x(value(d)) - <number>x(0));
 
-        // [exit]
+        // [3.exit]
         bars
           .exit()
           .attr("fill", "red")
@@ -142,8 +142,7 @@ export default defineNuxtPlugin((nuxtApp) => {
           .attr("fill-opacity", 0)
           .remove();
 
-        // axis
-
+        // [axis]
         xAxis.transition().call(
           d3
             .axisBottom(x)
