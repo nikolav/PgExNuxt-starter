@@ -1,5 +1,5 @@
 <script setup lang="ts">
-// https://valgeirb.github.io/vue3-popper/guide/api.html#api
+// https://valgeirb.github.io/vue3-popper/guide/getting-started.html
 import Popper from "vue3-popper";
 
 </script>
