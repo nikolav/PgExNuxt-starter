@@ -99,6 +99,35 @@ const rmComment = async () => {
   await cmts$.remove(cmt$.value);
 };
 
+// @@firebase.storage
+const tempFiles$ = ref<any[]>([]);
+const tempUrls$ = ref<string[]>([]);
+const firebaseStorage = useFirebaseStorage("temp");
+watchEffect(async () => {
+  tempFiles$.value = await Promise.all(
+    firebaseStorage.nodes.value.map((ref$) => firebaseStorage.info(ref$))
+  );
+  tempUrls$.value = await Promise.all(
+    firebaseStorage.nodes.value.map((ref$) => firebaseStorage.url(ref$))
+  );
+});
+const firebaseFile$ = ref();
+const firebaseFileName$ = ref<string>("");
+const firebaseSetFile = ([file]: any[]) => {
+  firebaseFile$.value = file;
+};
+const onFirebaseUpload = async () => {
+  if (!firebaseFile$.value) return;
+  const resFirebaseUpload = await firebaseStorage.upload(
+    firebaseFile$.value,
+    firebaseFileName$.value || firebaseFile$.value.name
+  );
+  console.log({ resFirebaseUpload });
+};
+const firebaseRmFile = async () => {
+  if (!firebaseFileName$.value) return;
+  await firebaseStorage.rm(firebaseStorage.toRef(firebaseFileName$.value));
+};
 </script>
 
 <template>
@@ -173,6 +202,37 @@ const rmComment = async () => {
         ></v-text-field>
         <v-btn type="submit" block color="primary" variant="outlined">
           upload
+        </v-btn>
+      </form>
+    </v-sheet>
+    <!-- firebase.storage -->
+    <v-sheet>
+      <form @submit.prevent="onFirebaseUpload" noValidate>
+        <v-file-input
+          name="firebase-upload"
+          clearable
+          show-size
+          label="file"
+          @update:modelValue="firebaseSetFile"
+        ></v-file-input>
+        <v-text-field
+          autocomplete="off"
+          type="text"
+          clearable
+          label="filename"
+          v-model="firebaseFileName$"
+        ></v-text-field>
+        <v-btn
+          @click="firebaseRmFile"
+          type="button"
+          block
+          color="secondary"
+          variant="outlined"
+        >
+          firebase.rm
+        </v-btn>
+        <v-btn type="submit" block color="primary" variant="outlined">
+          firebase.upload
         </v-btn>
       </form>
     </v-sheet>
@@ -256,9 +316,7 @@ const rmComment = async () => {
               ></v-text-field>
             </v-col>
             <v-col cols="12" sm="3">
-              <p class="ma-1 pa-1">
-                likes# {{ likes.likeCount }}
-              </p>
+              <p class="ma-1 pa-1">likes# {{ likes.likeCount }}</p>
             </v-col>
             <v-col cols="12" sm="3" class="pa-1">
               <v-btn
@@ -326,6 +384,13 @@ const rmComment = async () => {
         {{
           JSON.stringify(
             {
+              "firebase/storage.error": firebaseStorage.error.value,
+              "firebase/storage.uploadProgress": Math.ceil(
+                firebaseStorage.uploadProgess.value * 100
+              ),
+              "firebase/storage.tempUrls": tempUrls$,
+              "firebase/storage.tempFiles": tempFiles$,
+              "firebase/storage.nodes": firebaseStorage.nodes.value,
               comments: cmts$.ls.value,
               files: storage.files.value,
               messages: messages.ls.value,
