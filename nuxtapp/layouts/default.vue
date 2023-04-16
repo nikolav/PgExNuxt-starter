@@ -10,23 +10,37 @@ const iconSwitchColorMode = computed(() =>
 const themeSwitch = () => {
   theme.value = theme.value !== THEME_DARK ? THEME_DARK : THEME_LIGHT;
 };
+// @links
+const links = [
+  {
+    to: "/",
+    title: "home",
+  },
+  {
+    to: "/test",
+    title: "test",
+  },
+  {
+    to: "/about",
+    title: "about",
+  },
+  {
+    to: "/docs",
+    title: "docs",
+  },
+  {
+    to: "/demo",
+    title: "demo",
+  },
+];
 </script>
 
 <template>
   <section class="ma-0 pa-0">
     <v-navigation-drawer width="92" color="grey-darken-2" permanent>
       <v-list>
-        <v-list-item>
-          <NuxtLink to="/">home</NuxtLink>
-        </v-list-item>
-        <v-list-item>
-          <NuxtLink to="/test">test</NuxtLink>
-        </v-list-item>
-        <v-list-item>
-          <NuxtLink to="/about">about</NuxtLink>
-        </v-list-item>
-        <v-list-item>
-          <NuxtLink to="/docs">docs</NuxtLink>
+        <v-list-item v-for="{ to, title } in links" :key="title">
+          <NuxtLink :to="to">{{ title }}</NuxtLink>
         </v-list-item>
       </v-list>
     </v-navigation-drawer>

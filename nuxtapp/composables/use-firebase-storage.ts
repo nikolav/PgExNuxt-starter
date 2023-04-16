@@ -8,8 +8,7 @@ import {
   StorageReference,
   getMetadata,
 } from "firebase/storage";
-
-export type TFirebaseStorageNode<T = any> = T;
+import { TFirebaseStorageNode } from "@/types";
 
 const { storage } = firebase;
 

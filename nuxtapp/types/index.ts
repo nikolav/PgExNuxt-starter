@@ -223,3 +223,5 @@ export interface IStoreMain {
   [key: TPrimitive]: any;
 }
 export type TStoreMainPutCallback = (currentStore: IStoreMain) => IStoreMain;
+
+export type TFirebaseStorageNode<T = any> = T;

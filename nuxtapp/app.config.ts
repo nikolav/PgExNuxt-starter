@@ -71,5 +71,5 @@ export default defineAppConfig({
   THEME_DARK: "dark",
   THEME_LIGHT: "light2",
   // @firebase
-  STORAGE_LIST_MAX_RESUTS: 122,
+  STORAGE_LIST_MAX_RESUTS: 20,
 });
