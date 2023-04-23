@@ -27,6 +27,7 @@ export default defineNuxtPlugin((nuxtApp) => {
     ssr: true,
     blueprint: md2,
 
+    // @useDisplay composable configuration options
     // https://next.vuetifyjs.com/en/features/display-and-platform/#interface
     // display: {
     //   mobileBreakpoint: "sm",

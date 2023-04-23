@@ -1,7 +1,7 @@
 <script setup lang="ts"></script>
 
 <template>
-  <v-container>
+  <v-container fluid>
     <div>
       <h1>@demo</h1>
     </div>

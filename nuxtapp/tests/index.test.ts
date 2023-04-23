@@ -11,6 +11,9 @@ import { FAKE_API_STATUS_URL } from "@/config/vars";
 // @@ testing-library vue
 //   https://testing-library.com/docs/vue-testing-library/api/
 //   https://testing-library.com/docs/user-event/intro/
+//   https://testing-library.com/docs/queries/about/#types-of-queries
+// @@ testing-library/jest-dom
+//   https://github.com/testing-library/jest-dom
 // @@ examples
 //   https://github.com/testing-library/vue-testing-library/tree/main/src/__tests__
 
