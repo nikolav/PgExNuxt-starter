@@ -81,18 +81,18 @@ export default defineNuxtConfig({
           type: "image/x-icon",
           href: "/favicon.ico",
         },
-        {
-          rel: "preconnect",
-          href: "https://fonts.googleapis.com",
-        },
-        {
-          rel: "stylesheet",
-          href: "https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap",
-        },
-        {
-          rel: "stylesheet",
-          href: "https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap",
-        },
+        // {
+        //   rel: "preconnect",
+        //   href: "https://fonts.googleapis.com",
+        // },
+        // {
+        //   rel: "stylesheet",
+        //   href: "https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap",
+        // },
+        // {
+        //   rel: "stylesheet",
+        //   href: "https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap",
+        // },
       ],
       noscript: [
         // <noscript>JavaScript is required</noscript>
@@ -118,6 +118,7 @@ export default defineNuxtConfig({
   build: {
     transpile: ["vuetify"],
   },
+  buildModules: ["@nuxtjs/google-fonts"],
   vite: {
     define: {
       "process.env.DEBUG": false,
@@ -178,4 +179,17 @@ export default defineNuxtConfig({
 
   // https://v1.image.nuxtjs.org/get-started/#configuration
   image: {},
+
+  // https://google-fonts.nuxtjs.org/
+  googleFonts: {
+    families: {
+      Roboto: true,
+      "Open+Sans": {
+        wght: [300, 400, 600, 700],
+        ital: [100],
+      },
+    },
+    useStylesheet: true,
+    download: false,
+  },
 });
