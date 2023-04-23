@@ -51,8 +51,8 @@ export default defineNuxtPlugin((nuxtApp) => {
       },
       variations: {
         colors: ["primary", "secondary"],
-        lighten: 5,
-        darken: 5,
+        lighten: 1,
+        darken: 1,
       },
     },
 
@@ -60,7 +60,7 @@ export default defineNuxtPlugin((nuxtApp) => {
     //   MyButton: VBtn,
     //   MyButtonAlt: VBtn,
     // },
-    
+
     // @@ set component/alias props
     defaults: {
       global: {
@@ -81,6 +81,9 @@ export default defineNuxtPlugin((nuxtApp) => {
       //   MyButton: { color: 'secondary' },
       //   VBtn: { color: 'primary' },
       // },
+      VCol: {
+        cols: 12,
+      },
     },
 
     icons: {

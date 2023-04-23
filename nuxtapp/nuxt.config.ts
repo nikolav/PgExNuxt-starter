@@ -1,4 +1,4 @@
-import vuetify from "vite-plugin-vuetify";
+import vitePluginVuetify from "vite-plugin-vuetify";
 
 import {
   REDIS_HOST,
@@ -40,9 +40,19 @@ export default defineNuxtConfig({
       },
     ],
 
+    // https://next.vuetifyjs.com/en/features/treeshaking/#automatic-treeshaking
     async (_options, nuxt) => {
       nuxt.hooks.hook("vite:extendConfig", (config) => {
-        config.plugins && config.plugins.push(vuetify());
+        try {
+          config.plugins &&
+            config.plugins.push(
+              vitePluginVuetify({
+                // styles: { configFile: "assets/vuetify-sass-variables.scss" },
+              })
+            );
+        } catch (error) {
+          // ignore
+        }
       });
     },
 
@@ -112,6 +122,7 @@ export default defineNuxtConfig({
     define: {
       "process.env.DEBUG": false,
     },
+    // ssr: { noExternal: ["vuetify"] },
   },
   nitro: {
     // https://nuxt.com/docs/guide/directory-structure/server#example-using-redis
