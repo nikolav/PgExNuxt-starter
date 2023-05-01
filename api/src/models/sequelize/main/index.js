@@ -72,6 +72,9 @@ module.exports = (client) => {
       //  # `.restore` method undeletes deleted row
       //  # include deleted rows in queries: `paranoid: false`
 
+      // # custom name for .deletedAt column
+      // deletedAt: 'destroyTime',
+
       // indexes: [
       //   {
       //     unique: true,

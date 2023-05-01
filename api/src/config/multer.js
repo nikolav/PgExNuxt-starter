@@ -4,6 +4,11 @@ const { idGen } = require('nikolav-q');
 const assign = require('lodash/assign');
 const { storagePath } = require('./vars');
 
+// For multipart forms, the max number of file fields
+const UPLOAD_MAX_FILES = 10;
+// 5M, For multipart forms, the max file size (in bytes)
+const UPLOAD_MAX_FILESIZE = 5242880;
+
 const mimeDefault = 'application/octet-stream';
 // eslint-disable-next-line no-unused-vars
 const fileFilter = (req, file, done) => {
@@ -37,10 +42,8 @@ const configureUpload = () =>
     fileFilter,
     storage: diskStorage,
     limits: {
-      // 5M, For multipart forms, the max file size (in bytes)
-      fileSize: 5242880,
-      // For multipart forms, the max number of file fields
-      files: 10,
+      fileSize: UPLOAD_MAX_FILESIZE,
+      files: UPLOAD_MAX_FILES,
     },
   }).any();
 

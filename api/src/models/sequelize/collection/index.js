@@ -153,6 +153,6 @@ module.exports = (client) => {
 
 // @CollectionTag
 // .id
-// .collectionId
-// .tagId
+// .CollectionId
+// .TagId
 // [timestamps]

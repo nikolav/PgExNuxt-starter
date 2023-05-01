@@ -4,12 +4,12 @@ import { mdiWeatherSunny, mdiWeatherNight } from "@mdi/js";
 const { THEME_DARK, THEME_LIGHT } = useAppConfig();
 
 const theme = useState("theme");
-const iconSwitchColorMode = computed(() =>
-  theme.value === THEME_LIGHT ? mdiWeatherSunny : mdiWeatherNight
-);
-const themeSwitch = () => {
+const themeToggle = () => {
   theme.value = theme.value !== THEME_DARK ? THEME_DARK : THEME_LIGHT;
 };
+const iconSwitchColorMode = computed(() =>
+  theme.value !== THEME_DARK ? mdiWeatherSunny : mdiWeatherNight
+);
 // @links
 const links = [
   {
@@ -47,7 +47,7 @@ const links = [
     <v-app-bar>
       <v-spacer></v-spacer>
 
-      <v-btn @click="themeSwitch">
+      <v-btn @click="themeToggle">
         <v-icon :icon="iconSwitchColorMode" />
       </v-btn>
     </v-app-bar>

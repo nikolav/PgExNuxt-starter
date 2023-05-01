@@ -88,7 +88,7 @@ const model = require('./src/models/sequelize')
     // const b = Buffer.from([65]);
     // createWriteStream(path.join(__dirname, 'out')).write(b);
 
-    const { Main } = await model;
+    const { Main, Collection, Tag } = await model;
 
     // const res$ = await Collection.setDoc(
     //   { id: "63bbb5a2c92c0c36cc0efb71" },
@@ -100,16 +100,19 @@ const model = require('./src/models/sequelize')
     //   "T2"
     // );
 
-    const res$ = await Main.findOne({ where: { name: 'admin.email' }, attributes: ['value'] });
-
+    // const res$ = await Main.byName("test");
+    
     // const res$ = await Collection.removeDoc({id: "u1"}, "d476e8ce-5875-4280-8a84-bdd7b7b19988");
 
-    // const res$ = await Collection.doc({id: "u1"}, "d-01");
-
-    // const res$ = await Tag.getDocTags("0bd537bc-5122-4cf2-84d0-08997854bd91");
+    // await Collection.setDoc({ id: "c2720833-5404-4382-8511-1401986705ef", data: "@1 --1.1" }, "@1");
+    
+    // const res$ = await Tag.getDocTags("f56a0551-691a-4e24-bc72-d6a5053c55e1");
 
     // const res$ = await Collection.doc({id: "u1"}, "docId-1");
+    // const res$ = await Collection.findAll();
 
+    const res$ = await Main.findOne({ where: { name: "app.name" } });
+    
     console.log(JSON.stringify({ res$ }, null, 2));
 
 
