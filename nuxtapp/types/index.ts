@@ -34,9 +34,9 @@ export interface IData {
   [key: ScalarAny]: any;
 }
 
-export interface IAppEvent {
+export interface IAppEvent<T = any> {
   type: string;
-  payload?: any;
+  payload?: T;
 }
 
 // @@auth
@@ -225,3 +225,8 @@ export interface IStoreMain {
 export type TStoreMainPutCallback = (currentStore: IStoreMain) => IStoreMain;
 
 export type TFirebaseStorageNode<T = any> = T;
+
+export type TPubSubPublisherFn = <TPayload = any>(
+  event: IAppEvent<TPayload>
+) => void;
+export type TPubSubHandleEvent = (handle: (event: IAppEvent) => void) => void;

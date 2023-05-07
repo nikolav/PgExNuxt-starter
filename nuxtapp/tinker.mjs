@@ -1,15 +1,25 @@
 
-import { Observable } from "rxjs";
+import { Subject } from "rxjs";
 
-; (async () => {
+  ; (async () => {
 
-  const stream = new Observable((sub) => {
-    setTimeout(() => {
-      sub.next(`122`);
-    });
+    const subj$ = new Subject();
+    const publish = subj$.next.bind(subj$);
+    const subscribe = subj$.subscribe.bind(subj$);
 
-  });
-  stream.subscribe((...args) => console.log({ args }));
+    subscribe((...args) => console.log({ args }));
 
-  console.log({ time: Date.now() })
-})();
+    setTimeout(() => publish({ type: "@1", payload: 122 }));
+
+    console.log({ time: Date.now() })
+  })();
+
+// import { Subject } from "rxjs";
+// import { IAppStreamEvent } from "@/types";
+// // $publish, $subscribe globals
+// export default defineNuxtPlugin((_nuxtApp) => {
+//   const subj$ = new Subject<IAppStreamEvent>();
+//   const publish = subj$.next.bind(subj$);
+//   const subscribe = subj$.subscribe.bind(subj$);
+//   return { provide: { publish, subscribe } };
+// });

@@ -63,6 +63,7 @@ export default defineAppConfig({
   STORAGE_POLLINTERVAL,
   $TOKEN: ".auth",
   $FIRESTORE: "app",
+  $EMITTEREVENT: "DFDHDoqnIGk",
   // flags
   $ISMOUNTED: "FXwmEX5afoE",
   $ISAUTH: "aKviNu7ubPK",

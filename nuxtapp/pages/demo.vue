@@ -1,10 +1,9 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+</script>
 
 <template>
   <v-container fluid>
-    <div>
-      <h1>@demo</h1>
-    </div>
+    <h1>@demo</h1>
   </v-container>
 </template>
 

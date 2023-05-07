@@ -6,9 +6,11 @@ import { Lightbox } from "@/components/ui";
 const { OVERLAYS_ID_START, OVERLAYS_ID_END, $ISMOUNTED, THEME_DARK } =
   useAppConfig();
 
+const mounted$ = useState($ISMOUNTED);
+
 // $ISMOUNTED set flag @plugins/mounted
 onUnmounted(() => {
-  useState($ISMOUNTED).value = false;
+  mounted$.value = false;
 });
 
 const theme = useState("theme", () => THEME_DARK);
