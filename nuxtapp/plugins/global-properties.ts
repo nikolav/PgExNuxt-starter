@@ -4,7 +4,8 @@ import { assign } from "@/utils";
 // https://nuxt.com/docs/guide/directory-structure/plugins#creating-plugins
 export default defineNuxtPlugin((nuxtApp) => {
   assign(nuxtApp.vueApp.config.globalProperties, {
-    "globalField--Akr5CmtzC5N": "value--Akr5CmtzC5N",
+    // #add globals
+    // [global.name: string]: any
   });
 });
 

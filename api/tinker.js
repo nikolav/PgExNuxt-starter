@@ -99,8 +99,6 @@ const model = require('./src/models/sequelize')
     //   }, 
     //   "T2"
     // );
-
-    // const res$ = await Main.byName("test");
     
     // const res$ = await Collection.removeDoc({id: "u1"}, "d476e8ce-5875-4280-8a84-bdd7b7b19988");
 
@@ -111,7 +109,7 @@ const model = require('./src/models/sequelize')
     // const res$ = await Collection.doc({id: "u1"}, "docId-1");
     // const res$ = await Collection.findAll();
 
-    const res$ = await Main.findOne({ where: { name: "app.name" } });
+    const res$ = await Main.byName("app.name");
     
     console.log(JSON.stringify({ res$ }, null, 2));
 

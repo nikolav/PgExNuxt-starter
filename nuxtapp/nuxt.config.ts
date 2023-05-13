@@ -160,6 +160,11 @@ export default defineNuxtConfig({
   // https://apollo.nuxtjs.org/getting-started/configuration#configuration
   // https://apollo.nuxtjs.org/getting-started/configuration#clients
   apollo: {
+    autoImports: true,
+    authType: "Bearer",
+    authHeader: "Authorization",
+    tokenStorage: "cookie",
+    proxyCookies: true,
     clients: {
       default: {
         httpEndpoint: ENDPOINT_GRAPHQL,
@@ -170,11 +175,6 @@ export default defineNuxtConfig({
         tokenName: "apollo:default.token",
       },
     },
-    autoImports: true,
-    authType: "Bearer",
-    authHeader: "Authorization",
-    tokenStorage: "cookie",
-    proxyCookies: true,
   },
 
   // https://v1.image.nuxtjs.org/get-started/#configuration

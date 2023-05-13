@@ -2,7 +2,7 @@ FROM node:18
 RUN apt update && apt-get update
 
 # mount-path in contanier
-RUN mkdir -p /home/app; mkdir -p /home/app/logs
+RUN mkdir -p /home/app/logs
 WORKDIR /home/app
 
 # install
