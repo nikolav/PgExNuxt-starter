@@ -230,3 +230,7 @@ export type TPubSubPublisherFn = <TPayload = any>(
   event: IAppEvent<TPayload>
 ) => void;
 export type TPubSubHandleEvent = (handle: (event: IAppEvent) => void) => void;
+
+export interface ITransitionNames {
+  [name: string]: string;
+}
