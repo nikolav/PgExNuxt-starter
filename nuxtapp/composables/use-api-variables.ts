@@ -6,8 +6,6 @@ export const useApiVariables = () => {
 
   const auth = useStoreAuth();
   const AT = computed(() => auth.token?.accessToken);
-  
-  const { $socket } = useNuxtApp();
 
   const { data: ls, refresh } = useLazyAsyncData<IVariable[]>(
     "variables@api",
@@ -20,6 +18,7 @@ export const useApiVariables = () => {
   );
   const reloadVariables = async () => await refresh();
 
+  const { $socket } = useNuxtApp();
   $socket?.on(IOEVENT_VARIABLES_CHANGE, reloadVariables);
   onUnmounted(() => $socket?.off(IOEVENT_VARIABLES_CHANGE, reloadVariables));
 

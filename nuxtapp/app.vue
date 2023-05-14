@@ -17,8 +17,8 @@ const theme = useState("theme", () => THEME_DARK);
 </script>
 
 <template>
-  <v-app :theme="theme">
-    <div :id="OVERLAYS_ID_START" />
+  <VApp :theme="theme">
+    <div :id="OVERLAYS_ID_START"></div>
 
     <!-- @@content -->
     <NuxtLayout>
@@ -32,7 +32,7 @@ const theme = useState("theme", () => THEME_DARK);
 
     <!-- https://nuxt.com/docs/api/components/nuxt-loading-indicator -->
     <NuxtLoadingIndicator color="red" :height="2" />
-  </v-app>
+  </VApp>
 </template>
 
 <style>

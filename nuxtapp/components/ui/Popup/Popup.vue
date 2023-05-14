@@ -39,7 +39,7 @@ const transitionName = computed<string>(
 .PopupTransitionPop-enter-from,
 .PopupTransitionPop-leave-to {
   opacity: 0;
-  transform: scale(1.122);
+  transform: scale(1.1);
 }
 .PopupTransitionPop-enter-active {
   transition: all 0.2s ease-out;

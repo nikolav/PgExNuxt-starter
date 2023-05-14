@@ -4,5 +4,5 @@ export default defineNuxtRouteMiddleware((to, from) => {
   //   return abortNavigation()
   // }
   // return navigateTo('/edit-post')
-  console.log(`@nuxt:route-middleware.log`);
+  console.log({ "@nuxt:route-middleware.log": Date.now() });
 });

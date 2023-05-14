@@ -37,31 +37,29 @@ const links = [
 
 <template>
   <section class="ma-0 pa-0">
-    <v-navigation-drawer width="92" color="grey-darken-2" permanent>
-      <v-list>
-        <v-list-item v-for="{ to, title } in links" :key="title">
+    <VNavigationDrawer width="92" color="grey-darken-2" permanent>
+      <VList>
+        <VListItem v-for="{ to, title } in links" :key="title">
           <NuxtLink :to="to">{{ title }}</NuxtLink>
-        </v-list-item>
-      </v-list>
-    </v-navigation-drawer>
-    <v-app-bar>
-      <v-spacer></v-spacer>
+        </VListItem>
+      </VList>
+    </VNavigationDrawer>
+    <VAppBar>
+      <VSpacer />
 
-      <v-btn @click="themeToggle">
-        <v-icon :icon="iconSwitchColorMode" />
-      </v-btn>
-    </v-app-bar>
-    <v-main>
-      <v-container>
-        <slot>
-          <p>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-            Praesentium numquam minima incidunt sapiente. Officia, maiores.
-            Deserunt sed, eos quis nostrum consequatur, aperiam tempora
-            molestias delectus temporibus voluptates iste repellat non.
-          </p>
-        </slot>
-      </v-container>
-    </v-main>
+      <VBtn @click="themeToggle">
+        <VIcon :icon="iconSwitchColorMode" />
+      </VBtn>
+    </VAppBar>
+    <VMain>
+      <slot>
+        <p>
+          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Praesentium
+          numquam minima incidunt sapiente. Officia, maiores. Deserunt sed, eos
+          quis nostrum consequatur, aperiam tempora molestias delectus
+          temporibus voluptates iste repellat non.
+        </p>
+      </slot>
+    </VMain>
   </section>
 </template>
