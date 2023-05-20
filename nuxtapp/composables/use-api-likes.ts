@@ -1,4 +1,5 @@
 import { Q__LIKES_COUNT } from "@/graphql";
+import { OrNoValue } from "@/types";
 
 export const useApiLikes = (topicID: string) => {
   const { LIKES_PREFIX, IOEVENT_LIKES_CHANGE, $ISMOUNTED, $ISAUTH } =
@@ -14,7 +15,7 @@ export const useApiLikes = (topicID: string) => {
   const reloadCount = async () => await refetch();
 
   const topicName = `${LIKES_PREFIX}${topicID}`;
-  const isLiked = useLocalStorage<number | null>(`.isLiked::${topicID}`, null);
+  const isLiked = useLocalStorage<OrNoValue<number>>(topicName, null);
 
   const { $socket } = useNuxtApp();
   const IOEVENT = `${IOEVENT_LIKES_CHANGE}:${topicID}`;

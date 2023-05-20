@@ -27,7 +27,8 @@ module.exports = async (_src, args, context) => {
   const { Main } = await model;
   const { topicID } = args;
   const { config: { LIKES_PREFIX } } = context;
-  const name = `${LIKES_PREFIX}${topicID}`;
-  const like$ = await Main.findOne({ where: { name }, attributes: ['value'] });
+  const topicName = `${LIKES_PREFIX}${topicID}`;
+  // const like$ = await Main.findOne({ where: { name: topicName }, attributes: ['value'] });
+  const like$ = await Main.byName(topicName);
   return like$ ? parseInt(like$.value, 10) : 0;
 };

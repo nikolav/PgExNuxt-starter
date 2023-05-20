@@ -7,21 +7,21 @@ import { IMessage } from "@/types";
 
 export const useApiMessages = () => {
   const { IOEVENT_MESSAGES_CHANGE, $ISMOUNTED, $ISAUTH } = useAppConfig();
-  
+
   // https://v4.apollo.vuejs.org/api/use-query.html#usequery
   const {
     load: loadMessages,
-    result: data,
+    result,
     refetch,
   } = useLazyQuery<{ messages: IMessage[] }>(Q__MESSAGES_LIST);
-  const ls = computed(() => data.value?.messages);
+  const ls = computed(() => result.value?.messages || []);
 
   // https://v4.apollo.vuejs.org/api/use-mutation.html#usemutation
   const { mutate: mutatePost } = useMutation(QM__MESSAGES_POST);
   const { mutate: mutateDelete } = useMutation(QM__MESSAGES_DELETE);
-  
+
   const reloadQuery = async () => await refetch();
-  
+
   const { $socket } = useNuxtApp();
   $socket?.on(IOEVENT_MESSAGES_CHANGE, reloadQuery);
   onUnmounted(() => $socket?.off(IOEVENT_MESSAGES_CHANGE, reloadQuery));

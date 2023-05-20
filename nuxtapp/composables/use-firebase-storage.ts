@@ -13,7 +13,7 @@ import { TFirebaseStorageNode } from "@/types";
 const { storage } = firebase;
 
 export const useFirebaseStorage = (pathOrId: string) => {
-  const { STORAGE_LIST_MAX_RESUTS, $ISMOUNTED } = useAppConfig();
+  const { STORAGE_LIST_MAX_RESULTS, $ISMOUNTED } = useAppConfig();
 
   const $mounted = useState($ISMOUNTED);
 
@@ -38,10 +38,10 @@ export const useFirebaseStorage = (pathOrId: string) => {
 
       nodes.value = [];
       for (
-        let page = await list(root$, { maxResults: STORAGE_LIST_MAX_RESUTS });
+        let page = await list(root$, { maxResults: STORAGE_LIST_MAX_RESULTS });
         ;
         page = await list(root$, {
-          maxResults: STORAGE_LIST_MAX_RESUTS,
+          maxResults: STORAGE_LIST_MAX_RESULTS,
           pageToken: page.nextPageToken,
         })
       ) {

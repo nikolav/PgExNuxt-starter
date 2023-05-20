@@ -20,7 +20,7 @@ export const useApiStorage = () => {
   } = useAppConfig();
 
   const auth = useStoreAuth();
-  const AT = computed(() => auth.token?.accessToken);
+  const AT = computed(() => auth.token?.accessToken || "");
 
   const {
     load: loadStorage,
@@ -35,7 +35,7 @@ export const useApiStorage = () => {
   );
   const { mutate: mutateRemoveFile } = useMutation(QM__STORAGE_REMOVE);
 
-  const files = computed(() => result.value?.storageListFiles);
+  const files = computed(() => result.value?.storageListFiles || []);
   const reloadFiles = async () => await refetch();
 
   const isMounted = useState($ISMOUNTED);

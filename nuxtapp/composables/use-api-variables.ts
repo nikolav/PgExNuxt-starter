@@ -5,7 +5,7 @@ export const useApiVariables = () => {
   const { URL_VARIABLES, IOEVENT_VARIABLES_CHANGE } = useAppConfig();
 
   const auth = useStoreAuth();
-  const AT = computed(() => auth.token?.accessToken);
+  const AT = computed(() => auth.token?.accessToken || "");
 
   const { data: ls, refresh } = useLazyAsyncData<IVariable[]>(
     "variables@api",

@@ -5,28 +5,28 @@ import { assign, omit } from "@/utils";
 
 const initialState: IStoreMain = {
   "app.name": "nuxtapp",
-  "test.0": "test",
+  test: "test",
 };
 
 export const useStoreMain = defineStore("main", () => {
-  const store = ref(initialState);
+  const state = ref(initialState);
   return {
     // access Ref<store{}>
-    store,
+    state,
 
     // set store to callback result
     set: (callback: TStoreMainPutCallback) => {
-      store.value = callback(store.value);
+      state.value = callback(state.value);
     },
 
     // set store values with callback result
     put: (callback: TStoreMainPutCallback) => {
-      assign(store.value, callback(store.value));
+      assign(state.value, callback(state.value));
     },
 
     // delete provided store keys
     drop: (...paths: TPrimitive[]) => {
-      store.value = omit(store.value, paths);
+      state.value = omit(state.value, paths);
     },
   };
 });

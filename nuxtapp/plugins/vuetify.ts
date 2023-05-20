@@ -87,7 +87,11 @@ export default defineNuxtPlugin((nuxtApp) => {
 
     icons: {
       defaultSet: "mdi",
-      aliases,
+      aliases: {
+        ...aliases,
+        // #<VIcon icon="$other">
+        // other,
+      },
       sets: {
         mdi,
       },
