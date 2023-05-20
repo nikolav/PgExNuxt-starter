@@ -25,10 +25,10 @@ const theme = useState("theme", () => THEME_DARK);
       <NuxtPage />
     </NuxtLayout>
 
-    <div :id="OVERLAYS_ID_END"></div>
-
     <!-- https://github.com/XiongAmao/vue-easy-lightbox  -->
     <Lightbox />
+
+    <div :id="OVERLAYS_ID_END"></div>
 
     <!-- https://nuxt.com/docs/api/components/nuxt-loading-indicator -->
     <NuxtLoadingIndicator color="red" :height="2" />
