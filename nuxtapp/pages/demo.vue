@@ -1,22 +1,17 @@
 <script setup lang="ts">
-import { Popup } from "@/components/ui";
-
+const btnLabel = ref("ok");
+const onclick = () => {
+  btnLabel.value = `${Date.now()}`;
+};
 // #eos
 </script>
 
 <template>
   <VContainer fluid>
     <h1>@demo</h1>
-    <Popup placement="right">
-      <VBtn>ok</VBtn>
-      <template #content>
-        <VSheet class="!bg-amber-200 p-4 w-64 rounded" elevation="4">
-          <p>
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laboriosam
-            totam accusamus non!
-          </p>
-        </VSheet>
-      </template>
-    </Popup>
+    <VBtn @click="onclick" color="secondary" variant="outlined">
+      <VIcon start icon="$icondial" size="18" />
+      {{ btnLabel }}
+    </VBtn>
   </VContainer>
 </template>

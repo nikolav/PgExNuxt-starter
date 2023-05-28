@@ -8,6 +8,8 @@ import { aliases, mdi } from "vuetify/iconsets/mdi-svg";
 
 import { light2 } from "@/assets/themes";
 
+import { IconDial } from "@/components/icons";
+
 // const demoLightTheme: ThemeDefinition = {
 //   dark: false,
 //   colors: {
@@ -50,8 +52,8 @@ export default defineNuxtPlugin((nuxtApp) => {
       },
       variations: {
         colors: ["primary", "secondary"],
-        lighten: 2,
-        darken: 2,
+        lighten: 1,
+        darken: 1,
       },
     },
 
@@ -91,6 +93,7 @@ export default defineNuxtPlugin((nuxtApp) => {
         ...aliases,
         // #<VIcon icon="$other">
         // other,
+        icondial: IconDial,
       },
       sets: {
         mdi,

@@ -22,6 +22,7 @@ export default defineNuxtConfig({
   // https://nuxt.com/docs/getting-started/configuration#environment-variables-and-private-tokens
   runtimeConfig: {
     // # server secrests, vars.. only available server-side
+    // # update runtime config values using a matching environment variable name prefixed with `NUXT_`
     // privateField: "value",
 
     // @ keys within runtimeConfig.public are available client-side
@@ -47,6 +48,7 @@ export default defineNuxtConfig({
           config.plugins &&
             config.plugins.push(
               vitePluginVuetify({
+                // # https://next.vuetifyjs.com/en/features/sass-variables/#component-specific-variables
                 // styles: { configFile: "assets/vuetify-sass-variables.scss" },
               })
             );
@@ -116,7 +118,12 @@ export default defineNuxtConfig({
     "vue-easy-lightbox/external-css/vue-easy-lightbox.css",
   ],
   build: {
-    transpile: ["vuetify"],
+    transpile: [
+      "vuetify",
+      // # https://greensock.com/docs/v3/Installation
+      // # If server side rendering add GSAP to transpile property
+      "gsap",
+    ],
   },
   buildModules: ["@nuxtjs/google-fonts"],
   vite: {

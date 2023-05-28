@@ -1,7 +1,8 @@
 import JQ from "jquery";
 
 import { OrNull } from "@/types";
-type TJQuery = typeof jQuery;
+
+type TJQuery = typeof JQ;
 
 // https://api.jquery.com/
 export default defineNuxtPlugin(() => {
