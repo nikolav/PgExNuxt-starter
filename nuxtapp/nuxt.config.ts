@@ -29,6 +29,11 @@ export default defineNuxtConfig({
     public: {},
   },
 
+  // alias: {
+  //   "@": resolve(__dirname, "assets"),
+  //   assets: "/<rootDir>/assets",
+  // },
+
   modules: [
     "@vueuse/nuxt",
 

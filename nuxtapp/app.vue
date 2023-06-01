@@ -18,17 +18,17 @@ const theme = useState("theme", () => THEME_DARK);
 
 <template>
   <VApp :theme="theme">
-    <div :id="OVERLAYS_ID_START"></div>
+    <div :id="OVERLAYS_ID_START" />
 
     <!-- @@content -->
     <NuxtLayout>
       <NuxtPage />
     </NuxtLayout>
 
+    <div :id="OVERLAYS_ID_END" />
+
     <!-- https://github.com/XiongAmao/vue-easy-lightbox  -->
     <Lightbox />
-
-    <div :id="OVERLAYS_ID_END"></div>
 
     <!-- https://nuxt.com/docs/api/components/nuxt-loading-indicator -->
     <NuxtLoadingIndicator color="red" :height="2" />
