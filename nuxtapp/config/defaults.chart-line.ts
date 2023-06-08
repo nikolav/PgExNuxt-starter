@@ -77,7 +77,7 @@ export const CONFIG: IConfig = {
   paddingBottom: 48,
   paddingLeft: 48,
   //
-  yLabel: "[y]",
+  yLabel: "[Y]",
   yLabelColor: "currentColor",
   yLabelOffsetX: -34,
   yLabelOffsetY: -28,

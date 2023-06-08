@@ -120,7 +120,7 @@ export default defineNuxtConfig({
     "vuetify/lib/styles/main.sass",
     "@mdi/font/css/materialdesignicons.min.css",
     "vue-toastification/dist/index.css",
-    "vue-easy-lightbox/external-css/vue-easy-lightbox.css",
+    "@fancyapps/ui/dist/fancybox/fancybox.css",
   ],
   build: {
     transpile: [

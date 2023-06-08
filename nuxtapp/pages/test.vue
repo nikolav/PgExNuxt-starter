@@ -3,6 +3,8 @@ import { useStoreFlags } from "@/store";
 import { random } from "@/utils";
 import { Effect } from "@/components/ui";
 
+import testGallerySlides from "@/assets/gallery--test.json";
+
 definePageMeta({
   middleware: ["log"],
 });
@@ -20,22 +22,10 @@ const setOff = () => flags.unset("$1");
 const { $toast } = useNuxtApp();
 const showToast = () => $toast(`message --${Date.now()}`);
 
-const { open: openGallery } = useLightbox();
-const gallery = () =>
-  openGallery([
-    {
-      src: "/local/Koala.jpg",
-      title: "koala",
-    },
-    {
-      src: "/local/Penguins.jpg",
-      title: "penguins",
-    },
-    {
-      src: "/local/Tulips.jpg",
-      title: "tulips",
-    },
-  ]);
+const {
+  $lightbox: { open: openGallery },
+} = useNuxtApp();
+const gallery = () => openGallery(testGallerySlides);
 const data = ref([
   {
     key: "🥝",
@@ -131,11 +121,11 @@ onUnmounted(() => {
 
 const toggleIsActive = useToggleFlag();
 
- const divsWithId$ = useJQuery("div[id]");
- watchEffect(() => {
+const divsWithId$ = useJQuery("div[id]");
+watchEffect(() => {
   if (!divsWithId$.value) return;
   console.log({ divs: divsWithId$.value });
- })
+});
 </script>
 
 <template>

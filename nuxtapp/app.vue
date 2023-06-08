@@ -1,8 +1,6 @@
 <script setup lang="ts">
 import "animate.css";
 
-import { Lightbox } from "@/components/ui";
-
 const { OVERLAYS_ID_START, OVERLAYS_ID_END, $ISMOUNTED, THEME_DARK } =
   useAppConfig();
 
@@ -26,9 +24,6 @@ const theme = useState("theme", () => THEME_DARK);
     </NuxtLayout>
 
     <div :id="OVERLAYS_ID_END" />
-
-    <!-- https://github.com/XiongAmao/vue-easy-lightbox  -->
-    <Lightbox />
 
     <!-- https://nuxt.com/docs/api/components/nuxt-loading-indicator -->
     <NuxtLoadingIndicator color="red" :height="2" />
