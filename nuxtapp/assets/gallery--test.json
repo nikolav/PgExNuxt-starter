@@ -8,9 +8,15 @@
     "caption": "penguins"
   },
   {
-    "src": "https://youtu.be/nTxyseoomgs",
+    "src": "/local/doc122.pdf",
+    "thumb": "/local/doc122.pdf.thumb.png",
+    "caption": "@pdf",
+    "type": "pdf"
+  },
+  {
+    "src": "https://youtu.be/u72H_zZzkcw",
     "type": "iframe",
-    "caption": "wine app"
+    "caption": "web dev @2023"
   },
   {
     "src": "/local/Tulips.jpg",
