@@ -1,17 +1,20 @@
 <script setup lang="ts">
-const btnLabel = ref("ok");
-const onclick = () => {
-  btnLabel.value = `${Date.now()}`;
-};
+import demoGallerySlides from "@/assets/gallery--test.json";
+
+const {
+  $lightbox: { open: openGallery },
+} = useNuxtApp();
+const gallery = () => openGallery(demoGallerySlides);
+
 // #eos
 </script>
 
 <template>
   <VContainer fluid>
-    <h1>@demo</h1>
-    <VBtn @click="onclick" color="secondary" variant="outlined">
-      <VIcon start icon="$icondial" size="18" />
-      {{ btnLabel }}
+    <h1 class="text-h1">@demo</h1>
+    <VBtn @click="gallery">
+      <VIcon start icon="$iconredeye" size="18" />
+      ok.gallery
     </VBtn>
   </VContainer>
 </template>
