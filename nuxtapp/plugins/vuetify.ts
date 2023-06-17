@@ -8,7 +8,7 @@ import { aliases, mdi } from "vuetify/iconsets/mdi-svg";
 
 import { light2 } from "@/assets/themes";
 
-import { IconDial, IconRedEye } from "@/components/icons";
+import { IconDial, IconRedEye, IconMenu } from "@/components/icons";
 
 // const demoLightTheme: ThemeDefinition = {
 //   dark: false,
@@ -91,8 +91,9 @@ export default defineNuxtPlugin((nuxtApp) => {
       defaultSet: "mdi",
       aliases: {
         ...aliases,
-        // #<VIcon icon="$other">
-        // other,
+        // # override
+        menu: IconMenu,
+        // # add: <VIcon icon="$other">
         icondial: IconDial,
         iconredeye: IconRedEye,
       },
