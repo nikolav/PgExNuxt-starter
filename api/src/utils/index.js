@@ -37,6 +37,7 @@ module.exports = {
   omit,
   pick,
   pickValues: require('./pick-values'),
+  pickValuesNamed: require('./pick-values-named'),
   range,
   resolverContext: require('./resolver-context'),
   resolverMiddlewares,
