@@ -1,6 +1,8 @@
 const { DataTypes, Model } = require('sequelize');
+const map = require('lodash/map');
 
 class Main extends Model {
+  // # get node by name
   static async byName(name) {
     let node = null;
     try {
@@ -9,6 +11,10 @@ class Main extends Model {
       // ignore
     }
     return node;
+  }
+  // # list * var names
+  static async names() {
+    return map(await this.findAll({ attributes: ["name"] }), node => node.name);
   }
 }
 
