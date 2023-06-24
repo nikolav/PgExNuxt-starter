@@ -480,6 +480,11 @@
     "@babel/helper-validator-identifier" "^7.19.1"
     to-fast-properties "^2.0.0"
 
+"@bitauth/libauth@^1.17.1":
+  version "1.19.1"
+  resolved "https://registry.yarnpkg.com/@bitauth/libauth/-/libauth-1.19.1.tgz#713751bbc09815b667f8fe00a1cc5b0f3bf45dd1"
+  integrity sha512-R524tD5VwOt3QRHr7N518nqTVR/HKgfWL4LypekcGuNQN8R4PWScvuRcRzrY39A28kLztMv+TJdiKuMNbkU1ug==
+
 "@cloudflare/kv-asset-handler@^0.2.0":
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/@cloudflare/kv-asset-handler/-/kv-asset-handler-0.2.0.tgz#c9959bbd7a1c40bd7c674adae98aa8c8d0e5ca68"
@@ -7357,6 +7362,13 @@ neo-async@^2.6.2:
   version "2.6.2"
   resolved "https://registry.yarnpkg.com/neo-async/-/neo-async-2.6.2.tgz#b4aafb93e3aeb2d8174ca53cf163ab7d7308305f"
   integrity sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==
+
+nikolav-treets@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/nikolav-treets/-/nikolav-treets-1.0.4.tgz#cb897dc5959cbae401360c7e2cadf0630850dc7d"
+  integrity sha512-tjJQ/ms6iTzkgbgr4M+kSDQT+oEWmBoGq4qcADxtCXyp/OYqPjqhPKLUuE2c2byzCjujQoPaj7AzmF21nA3Saw==
+  dependencies:
+    "@bitauth/libauth" "^1.17.1"
 
 nitropack@^0.6.1:
   version "0.6.1"
