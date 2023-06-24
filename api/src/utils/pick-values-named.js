@@ -1,13 +1,9 @@
 const get = require('lodash/get');
-const forOwn = require('lodash/forOwn');
+const transform = require('lodash/transform');
 
-module.exports = (node, filedsMap) => {
-  const res = {};
-  forOwn(filedsMap, pick_.bind({ node, res }));
-  return res;
-};
+module.exports = (node, filedsMap) => transform(filedsMap, get_.bind(node), {});
 
-function pick_(value, filedName) {
-  const { node, res } = this;
+function get_(res, value, filedName) {
+  const node = this;
   res[filedName] = get(node, value);
 }

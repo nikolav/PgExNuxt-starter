@@ -112,7 +112,7 @@ const model = require('./src/models/sequelize')
     // const res$ = await Collection.doc({id: "u1"}, "docId-1");
     // const res$ = await Collection.findAll();
 
-    const d$ = await Main.names();
+    const d$ = await Collection.tagged("@1");
     console.log(JSON.stringify({ d$ }, null, 2));
 
     // console.log(pickValuesNamed({a: 1, b: { b1: "q", b2: "w" }, ls: [1,22,333]}, { x: "b.b1", y: "ls[1]" }));
