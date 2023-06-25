@@ -1,6 +1,8 @@
-import { Fancybox } from "@fancyapps/ui";
+import * as fancyappsui from "@fancyapps/ui";
 import { userSlideType } from "@fancyapps/ui/types/Carousel/types";
 import { OptionsType } from "@fancyapps/ui/types/Fancybox/options";
+
+const { Fancybox } = fancyappsui;
 
 export default defineNuxtPlugin((_nuxtApp) => {
   const close = (closeAll: boolean = true): void => Fancybox.close(closeAll);
