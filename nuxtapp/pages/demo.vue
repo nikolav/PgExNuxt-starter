@@ -1,12 +1,18 @@
 <script setup lang="ts">
-import { A } from "nikolav-treets";
+import { tree } from "nikolav-treets";
 import demoGallerySlides from "@/assets/gallery--test.json";
 
 const {
   $lightbox: { open: openGallery },
 } = useNuxtApp();
 const gallery = () => openGallery(demoGallerySlides);
-const res = JSON.stringify({ a: new A() });
+
+const t1 = new tree();
+t1.json({
+  a: "#root",
+  children: [{ a: 1 }, { a: 2, children: [{ a: 21 }, { a: 22 }] }],
+});
+const res = JSON.stringify({ t1: t1.first().ls().map(node$ => node$.value()) });
 
 // #eos
 </script>
