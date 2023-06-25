@@ -7363,10 +7363,10 @@ neo-async@^2.6.2:
   resolved "https://registry.yarnpkg.com/neo-async/-/neo-async-2.6.2.tgz#b4aafb93e3aeb2d8174ca53cf163ab7d7308305f"
   integrity sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==
 
-nikolav-treets@^1.1.3:
-  version "1.1.3"
-  resolved "https://registry.yarnpkg.com/nikolav-treets/-/nikolav-treets-1.1.3.tgz#d7b9f7973fffee7cab2869673143ad1c298ee951"
-  integrity sha512-2k/biNSReUKlTwJOFq3c4zlKacX1rcQu4o3ZWeRo+C4tk6nd3yhgmwocPDbiTa/bMxVSKtZ2UjhoiyD6sAnHVA==
+nikolav-treets@^1.1.4:
+  version "1.1.4"
+  resolved "https://registry.yarnpkg.com/nikolav-treets/-/nikolav-treets-1.1.4.tgz#531ab025e8cb66d5890981be59ef05ff8e9b5a9a"
+  integrity sha512-bVkSYXv7JhzwOPLzrBzLawEWXYghdt0HC7jfH3oybcRltX7u93fq5wUJ6fjz1qCCYx87MBwpXyYKORg6GxVbSg==
   dependencies:
     "@bitauth/libauth" "^1.17.1"
 
