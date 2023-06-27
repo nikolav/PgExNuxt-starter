@@ -75,7 +75,7 @@
     "http-status": "^1.5.3",
     "jquery": "^3.6.3",
     "lodash": "^4.17.21",
-    "nikolav-treets": "^1.1.4",
+    "nikolav-treets": "^1.2.4",
     "pinia": "^2.0.23",
     "qs": "^6.11.0",
     "socket.io-client": "^4.5.3",
