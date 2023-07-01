@@ -12,7 +12,7 @@ export default defineNuxtConfig({
   // # client-side output
   // # use .generate command to produce html in .output/public
   // # specify routes for nitro to prerender @nitro.prerender.routes<path[]>
-  // ssr: false,
+  ssr: false,
 
   // # disable implicit auto imports
   // imports: {

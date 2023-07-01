@@ -1,7 +1,9 @@
 #!/bin/bash
 
-. ./api/install.sh
-. ./nuxtapp/install.sh
+git checkout nikolavrs
 
-docker-compose up -d --build
+. ./api/install.sh
+# . ./nuxtapp/install.sh
+
+docker-compose up -d api --build
 docker exec -it api yarn run db:upsert
