@@ -23,8 +23,8 @@
 // const { hashSync } = require('bcryptjs')
 
 // const { get } = require('./src/utils');
-const { pickValuesNamed } = require('./src/utils');
-const map = require('lodash/map');
+// const { pickValuesNamed } = require('./src/utils');
+// const map = require('lodash/map');
 
 const model = require('./src/models/sequelize')
   ; (async () => {
@@ -112,8 +112,33 @@ const model = require('./src/models/sequelize')
     // const res$ = await Collection.doc({id: "u1"}, "docId-1");
     // const res$ = await Collection.findAll();
 
-    const d$ = await Collection.tagged("@1");
-    console.log(JSON.stringify({ d$ }, null, 2));
+    // await Collection.setDoc({
+    //   docId: "#D.11",
+    //   data: JSON.stringify({ a: 11 })
+    // }, "@t.1");
+    // // 
+    const res$ = await Collection.findAll({
+
+      where: {
+        "$Tags.tag$": "@1",
+      },
+
+      include: {
+        model: Tag,
+        required: true,
+        attributes: [],
+        through: {
+          attributes: []
+        }
+      }
+    });
+
+    // const res$ = map(
+    //   await Tag.findAll({ attributes: ["tag"] }),
+    //   node => node.tag
+    // );
+    console.log(JSON.stringify({ res$ }, null, 2));
+
 
     // console.log(pickValuesNamed({a: 1, b: { b1: "q", b2: "w" }, ls: [1,22,333]}, { x: "b.b1", y: "ls[1]" }));
 

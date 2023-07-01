@@ -1,9 +1,11 @@
 
 const { DataTypes, Model } = require('sequelize');
+const get = require('lodash/get');
+const assign = require('lodash/assign');
+const pick = require('lodash/pick');
 
 const gzip = require('../../../utils/gzip');
 const logger = require('../../../config/logger');
-const { get, assign, pick } = require('../../../utils');
 
 class Collection extends Model {
 
