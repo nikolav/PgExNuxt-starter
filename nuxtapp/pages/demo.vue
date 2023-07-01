@@ -1,11 +1,13 @@
 <script setup lang="ts">
-import { tree } from "nikolav-treets";
+import * as tree$ from "nikolav-treets";
 import demoGallerySlides from "@/assets/gallery--test.json";
 
 const {
   $lightbox: { open: openGallery },
 } = useNuxtApp();
 const gallery = () => openGallery(demoGallerySlides);
+
+const { tree } = tree$;
 
 const t1 = new tree();
 t1.json({

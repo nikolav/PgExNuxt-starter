@@ -1,5 +1,5 @@
 import { DocumentData, serverTimestamp } from "firebase/firestore";
-import { assign } from "lodash";
+import assign from "lodash/assign";
 
 export const withFirestoreTimestamp = (field: string) => (d: DocumentData) =>
   assign(d, { [field]: serverTimestamp() });

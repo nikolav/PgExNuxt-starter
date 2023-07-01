@@ -2,7 +2,7 @@ import { ZodType } from "zod";
 import { H3Event, readBody, getQuery, getRouterParams, createError } from "h3";
 import httpStatus from "http-status";
 
-import { assign } from "./index";
+import assign from "lodash/assign";
 
 type TBQP = "body" | "query" | "params";
 type TValidationResult = {
