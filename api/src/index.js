@@ -1,6 +1,9 @@
 // eslint-disable-next-line no-global-assign
 Promise = require('bluebird');
+const path = require('path');
+const fs = require('fs');
 const http = require('http');
+const https = require('https');
 
 const { port, env, runScheduler } = require('./config/vars');
 const app = require('./config/express');
@@ -10,14 +13,19 @@ const { IO } = require('./config/io');
 
 mongoose.connect();
 
-const server = http
-  .createServer(app)
-  .listen(port, () =>
-    logger.info(`server started on port ${port} (${env})`)
-  );
-// const serverSelfSignedCert =
-//   https.createServer({ key, cert }, app)
-//     .listen(port, () => logger.info(`server started on port ${port} (${env})`));
+// const server = http
+//   .createServer(app)
+//   .listen(port, () =>
+//     logger.info(`server started on port ${port} (${env})`)
+//   );
+
+// # self signed ssl certificate
+const server =
+  https.createServer({
+    key: fs.readFileSync('/home/app/cert/ca-key.pem'),
+    cert: fs.readFileSync('/home/app/cert/cert.pem')
+  }, app)
+    .listen(port, () => logger.info(`server started on port ${port} (${env})`));
 
 (async () => await IO(server))();
 
