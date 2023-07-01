@@ -51,10 +51,10 @@ alias ll='ls -AlFht --color=auto --group-directories-first '
 alias gs='git status '
 
 # generate ssl certificate
-mkdir -p ./api/cert
-openssl genrsa -out ./api/cert/key.pem
-openssl req -new -key ./api/cert/key.pem -out ./api/cert/csr.pem
-openssl x509 -req -days 3456 -in ./api/cert/csr.pem -signkey ./api/cert/key.pem -out ./api/cert/cert.pem
+# mkdir -p ./api/cert
+# openssl genrsa -out key.pem
+# openssl req -new -key key.pem -out csr.pem
+# openssl x509 -req -days 365 -in csr.pem -signkey key.pem -out cert.pem
 
 # status check
 echo '== status'
