@@ -7370,6 +7370,13 @@ nikolav-treets@^1.2.4:
   dependencies:
     "@bitauth/libauth" "^1.17.1"
 
+nikolav-utils@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/nikolav-utils/-/nikolav-utils-1.0.0.tgz#a12ab91c826e312d731ab036eb30a3fc5eb66c96"
+  integrity sha512-uh7PO7poyCviTE9qCx+f8I0SE3QKllUakxr9EpBDirVeAzva7Nz+u98pOu2EBtNQz8wyHlhqjwEshOTX2nEQKA==
+  dependencies:
+    "@bitauth/libauth" "^1.17.1"
+
 nitropack@^0.6.1:
   version "0.6.1"
   resolved "https://registry.yarnpkg.com/nitropack/-/nitropack-0.6.1.tgz#882afaff93747df8df4edf86b807470b7cc2704c"
