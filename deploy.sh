@@ -2,8 +2,8 @@
 
 git checkout nikolavrs
 
-. ./api/install.sh
+# . ./api/install.sh
 # . ./nuxtapp/install.sh
 
-docker-compose up -d --build api
-docker exec -it api yarn run db:upsert
+docker-compose up -d --build pg
+# docker exec -it api yarn run db:upsert

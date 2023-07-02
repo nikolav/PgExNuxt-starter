@@ -41,7 +41,7 @@ ufw allow OpenSSH
 ufw allow 6879
 ufw allow 5544
 ufw allow 8081
-# ufw allow 8082
+ufw allow 8082
 ufw enable
 
 # net-tools, ifconfig
