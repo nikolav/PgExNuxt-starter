@@ -1,4 +1,8 @@
 <script setup lang="ts">
+useHead({
+  title: "Kontakt",
+});
+
 const tag$ = ref("@A");
 const { docs, put: putDoc, rm: rmDoc } = useApiCollection(tag$.value);
 

@@ -39,11 +39,11 @@ const links = [
   <section class="ma-0 pa-0">
     <VNavigationDrawer
       location="right"
-      min-width="122"
       color="grey-darken-2"
       permanent
+      max-width="96"
     >
-      <VList>
+      <VList class="ps-2 mt-1">
         <VListItem v-for="{ to, title } in links" :key="title">
           <NuxtLink :to="to">{{ title }}</NuxtLink>
         </VListItem>
@@ -56,7 +56,7 @@ const links = [
         <VIcon :icon="iconSwitchColorMode" />
       </VBtn>
     </VAppBar>
-    <VMain class="mt-2">
+    <VMain class="mt-1 ps-2">
       <slot>
         <p>
           Lorem ipsum dolor sit amet consectetur, adipisicing elit. Praesentium

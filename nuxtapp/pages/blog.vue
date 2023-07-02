@@ -1,10 +1,13 @@
 <script setup lang="ts">
+useHead({
+  title: "Blog",
+});
 
 </script>
 
 <template>
   <v-container>
-    <h1>@about</h1>
+    <h1>@Blog</h1>
     <p>
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita nam
       assumenda tempora quidem nulla facere soluta neque quaerat, corrupti

@@ -12,6 +12,10 @@ onUnmounted(() => {
 });
 
 const theme = useState("theme", () => THEME_LIGHT);
+
+useHead({
+  titleTemplate: (title) => `${title ? title + " | " : ""}Nikola Vuković`,
+});
 </script>
 
 <template>

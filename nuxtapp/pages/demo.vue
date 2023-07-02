@@ -2,6 +2,10 @@
 import * as tree$ from "nikolav-treets";
 import demoGallerySlides from "@/assets/gallery--test.json";
 
+useHead({
+  title: ".Demo",
+});
+
 const {
   $lightbox: { open: openGallery },
 } = useNuxtApp();
@@ -14,7 +18,12 @@ t1.json({
   a: "#root",
   children: [{ a: 1 }, { a: 2, children: [{ a: 21 }, { a: 22 }] }],
 });
-const res = JSON.stringify({ t1: t1.first().ls().map(node$ => node$.value()) });
+const res = JSON.stringify({
+  t1: t1
+    .first()
+    .ls()
+    .map((node$) => node$.value()),
+});
 
 // #eos
 </script>

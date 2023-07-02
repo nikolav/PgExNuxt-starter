@@ -5,6 +5,10 @@ import { useStoreAuth } from "@/store";
 import { find, get } from "@/utils";
 import { IVariable } from "@/types";
 
+useHead({
+  title: "",
+});
+
 // @@
 const { name: screenSizeName } = useDisplay();
 const icon = ref(mdiAccount);
@@ -131,51 +135,16 @@ const firebaseRmFile = async () => {
 </script>
 
 <template>
-  <v-container class="bg-stone-200 p-1 min-h-[256px]">
+  <v-container class="p-2 min-h-[256px]">
     <h4>{{ screenSizeName }}</h4>
-    <v-btn-group>
-      <v-btn
-        size="small"
-        :prepend-icon="icon"
-        color="primary"
-        variant="outlined"
-        @click="login"
-      >
-        login
-      </v-btn>
-      <v-btn size="small" color="secondary" variant="outlined" @click="logout">
-        logout
-      </v-btn>
-      <v-btn size="small" color="secondary" variant="outlined" @click="putVar">
-        put var
-      </v-btn>
-      <v-btn size="small" color="secondary" variant="outlined" @click="dropVar">
-        drop var
-      </v-btn>
-      <v-btn
-        size="small"
-        color="secondary"
-        variant="outlined"
-        @click="putSession"
-      >
-        sess.put
-      </v-btn>
-      <v-btn
-        size="small"
-        color="secondary"
-        variant="outlined"
-        @click="clearSession"
-      >
-        sess clear
-      </v-btn>
-      <v-btn
-        size="small"
-        color="secondary"
-        variant="outlined"
-        @click="messageAdd"
-      >
-        message add
-      </v-btn>
+    <v-btn-group size="small" color="secondary" variant="outlined">
+      <v-btn :prepend-icon="icon" color="primary" @click="login"> login </v-btn>
+      <v-btn @click="logout"> logout </v-btn>
+      <v-btn @click="putVar"> put var </v-btn>
+      <v-btn @click="dropVar"> drop var </v-btn>
+      <v-btn @click="putSession"> sess.put </v-btn>
+      <v-btn @click="clearSession"> sess clear </v-btn>
+      <v-btn @click="messageAdd"> message add </v-btn>
     </v-btn-group>
     <v-sheet>
       <form @submit.prevent="onStorage" noValidate>
@@ -240,7 +209,7 @@ const firebaseRmFile = async () => {
       <form noValidate @submit.prevent="onStorageDowload">
         <v-container fluid>
           <v-row no-gutters>
-            <v-col cols="12" sm="8">
+            <v-col sm="8">
               <v-text-field
                 autocomplete="off"
                 type="text"
@@ -249,7 +218,7 @@ const firebaseRmFile = async () => {
                 v-model="dlFileID"
               ></v-text-field>
             </v-col>
-            <v-col cols="12" sm="4" class="pa-1">
+            <v-col sm="4" class="pa-1">
               <v-btn type="submit" block color="primary" variant="outlined"
                 >download</v-btn
               >
@@ -262,7 +231,7 @@ const firebaseRmFile = async () => {
       <form noValidate @submit.prevent="onStorageRemove">
         <v-container fluid>
           <v-row no-gutters>
-            <v-col cols="12" sm="8">
+            <v-col sm="8">
               <v-text-field
                 autocomplete="off"
                 type="text"
@@ -271,7 +240,7 @@ const firebaseRmFile = async () => {
                 v-model="rmFileID"
               ></v-text-field>
             </v-col>
-            <v-col cols="12" sm="4" class="pa-1">
+            <v-col sm="4" class="pa-1">
               <v-btn type="submit" block color="primary" variant="outlined"
                 >delete</v-btn
               >
@@ -284,7 +253,7 @@ const firebaseRmFile = async () => {
       <form noValidate @submit.prevent="onStoragePublicUrl">
         <v-container fluid>
           <v-row no-gutters>
-            <v-col cols="12" sm="8">
+            <v-col sm="8">
               <v-text-field
                 autocomplete="off"
                 type="text"
@@ -293,7 +262,7 @@ const firebaseRmFile = async () => {
                 v-model="fileIdUrl"
               ></v-text-field>
             </v-col>
-            <v-col cols="12" sm="4" class="pa-1">
+            <v-col sm="4" class="pa-1">
               <v-btn type="submit" block color="primary" variant="outlined"
                 >url</v-btn
               >
@@ -306,7 +275,7 @@ const firebaseRmFile = async () => {
       <form noValidate @submit.prevent>
         <v-container fluid>
           <v-row no-gutters>
-            <v-col cols="12" sm="3">
+            <v-col sm="3">
               <v-text-field
                 autocomplete="off"
                 type="text"
@@ -315,10 +284,10 @@ const firebaseRmFile = async () => {
                 v-model="likeTopicID"
               ></v-text-field>
             </v-col>
-            <v-col cols="12" sm="3">
+            <v-col sm="3">
               <p class="ma-1 pa-1">likes# {{ likes.likeCount }}</p>
             </v-col>
-            <v-col cols="12" sm="3" class="pa-1">
+            <v-col sm="3" class="pa-1">
               <v-btn
                 @click="onLike"
                 type="button"
@@ -328,7 +297,7 @@ const firebaseRmFile = async () => {
                 >like</v-btn
               >
             </v-col>
-            <v-col cols="12" sm="3" class="pa-1">
+            <v-col sm="3" class="pa-1">
               <v-btn
                 @click="onUnlike"
                 type="button"
@@ -346,7 +315,7 @@ const firebaseRmFile = async () => {
       <form noValidate @submit.prevent>
         <v-container fluid>
           <v-row no-gutters>
-            <v-col cols="12" sm="6">
+            <v-col sm="6">
               <v-text-field
                 autocomplete="off"
                 type="text"
@@ -355,7 +324,7 @@ const firebaseRmFile = async () => {
                 v-model="cmt$"
               ></v-text-field>
             </v-col>
-            <v-col cols="12" sm="3" class="pa-1">
+            <v-col sm="3" class="pa-1">
               <v-btn
                 @click="addComment"
                 type="button"
@@ -365,7 +334,7 @@ const firebaseRmFile = async () => {
                 >cmt add</v-btn
               >
             </v-col>
-            <v-col cols="12" sm="3" class="pa-1">
+            <v-col sm="3" class="pa-1">
               <v-btn
                 @click="rmComment"
                 type="button"

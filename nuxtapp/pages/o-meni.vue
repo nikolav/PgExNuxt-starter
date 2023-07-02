@@ -9,6 +9,10 @@ definePageMeta({
   middleware: ["log"],
 });
 
+useHead({
+  title: "O meni",
+});
+
 const { $ISPROCESSING } = useAppConfig();
 const flags = useStoreFlags();
 const isSet_1 = computed(() => (flags.isSet("$1") ? "yes" : "no"));
