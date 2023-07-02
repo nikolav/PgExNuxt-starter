@@ -14,30 +14,30 @@ const iconSwitchColorMode = computed(() =>
 const links = [
   {
     to: "/",
-    title: "home",
+    title: "🏡Početak",
   },
   {
-    to: "/test",
-    title: "test",
+    to: "/o-meni",
+    title: "🧑🏻 O meni",
   },
   {
-    to: "/about",
-    title: "about",
+    to: "/kontakt",
+    title: "💬 Kontakt",
   },
   {
-    to: "/docs",
-    title: "docs",
+    to: "/blog",
+    title: "🧾 Blog",
   },
   {
     to: "/demo",
-    title: "demo",
+    title: "🚧🛠 demo",
   },
 ];
 </script>
 
 <template>
   <section class="ma-0 pa-0">
-    <VNavigationDrawer width="92" color="grey-darken-2" permanent>
+    <VNavigationDrawer min-width="196" color="grey-darken-2" permanent>
       <VList>
         <VListItem v-for="{ to, title } in links" :key="title">
           <NuxtLink :to="to">{{ title }}</NuxtLink>
