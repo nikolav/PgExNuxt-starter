@@ -1,22 +1,17 @@
 [
   {
-    "src": "/local/Koala.jpg",
-    "caption": "koala"
-  },
-  {
     "src": "/local/Penguins.jpg",
     "caption": "penguins"
+  },
+  {
+    "src": "/local/Koala.jpg",
+    "caption": "koala"
   },
   {
     "src": "/local/doc122.pdf",
     "thumb": "/local/doc122.pdf.thumb.png",
     "caption": "@pdf",
     "type": "pdf"
-  },
-  {
-    "src": "https://youtu.be/u72H_zZzkcw",
-    "type": "iframe",
-    "caption": "web dev @2023"
   },
   {
     "src": "/local/Tulips.jpg",

@@ -14,7 +14,7 @@ const iconSwitchColorMode = computed(() =>
 const links = [
   {
     to: "/",
-    title: "🏡Početak",
+    title: "🏡 Početak",
   },
   {
     to: "/o-meni",
@@ -30,14 +30,19 @@ const links = [
   },
   {
     to: "/demo",
-    title: "🚧🛠 demo",
+    title: "🚧 .Demo",
   },
 ];
 </script>
 
 <template>
   <section class="ma-0 pa-0">
-    <VNavigationDrawer min-width="196" color="grey-darken-2" permanent>
+    <VNavigationDrawer
+      location="right"
+      min-width="155"
+      color="grey-darken-2"
+      permanent
+    >
       <VList>
         <VListItem v-for="{ to, title } in links" :key="title">
           <NuxtLink :to="to">{{ title }}</NuxtLink>
@@ -47,11 +52,11 @@ const links = [
     <VAppBar>
       <VSpacer />
 
-      <VBtn @click="themeToggle">
+      <VBtn @click="themeToggle" icon>
         <VIcon :icon="iconSwitchColorMode" />
       </VBtn>
     </VAppBar>
-    <VMain>
+    <VMain class="mt-2">
       <slot>
         <p>
           Lorem ipsum dolor sit amet consectetur, adipisicing elit. Praesentium

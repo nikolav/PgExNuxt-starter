@@ -52,8 +52,8 @@ export default defineNuxtPlugin((nuxtApp) => {
       },
       variations: {
         colors: ["primary", "secondary"],
-        lighten: 1,
-        darken: 1,
+        lighten: 2,
+        darken: 2,
       },
     },
 

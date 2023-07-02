@@ -75,8 +75,8 @@ export default defineNuxtConfig({
       charset: "utf-8",
       viewport:
         "width=device-width, initial-scale=1.0, shrink-to-fit=no, minimum-scale=1",
-      title: "nuxtapp",
-      titleTemplate: "%s | Nuxt3",
+      title: "Nikola Vuković",
+      titleTemplate: "%s | nikolav.rs",
       // https://www.geeksforgeeks.org/meta-tags-in-nuxt-js/
       meta: [
         { name: "description", content: "App" },
