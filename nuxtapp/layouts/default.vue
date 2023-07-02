@@ -39,7 +39,7 @@ const links = [
   <section class="ma-0 pa-0">
     <VNavigationDrawer
       location="right"
-      min-width="155"
+      min-width="122"
       color="grey-darken-2"
       permanent
     >

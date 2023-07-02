@@ -1,0 +1,29 @@
+/*
+https://codepen.io/devstreak/pen/dMYgeO
+*/
+
+$scrollbar-thin-width: .2rem;
+$scrollbar-thin-color: #0f172a;
+$scrollbar-thin-light-color: #aaaaaa;
+
+.scrollbar-thin::-webkit-scrollbar-track,
+.scrollbar-thin-light::-webkit-scrollbar-track
+{
+  background: transparent;
+}
+
+.scrollbar-thin::-webkit-scrollbar,
+.scrollbar-thin-light::-webkit-scrollbar
+{
+  width: $scrollbar-thin-width;
+  background: transparent;
+}
+
+.scrollbar-thin::-webkit-scrollbar-thumb
+{
+  background-color: $scrollbar-thin-color;
+}
+.scrollbar-thin-light::-webkit-scrollbar-thumb
+{
+  background-color: $scrollbar-thin-light-color;
+}

@@ -105,9 +105,9 @@ export default defineNuxtConfig({
         // <noscript>JavaScript is required</noscript>
         { children: "JavaScript is required" },
       ],
-      // bodyAttrs: {
-      //   class: 'test'
-      // },
+      bodyAttrs: {
+        class: "scrollbar-thin"
+      },
     },
     // css-transition all pages
     pageTransition: { name: "PAGE", mode: "in-out" },
@@ -115,6 +115,7 @@ export default defineNuxtConfig({
     layoutTransition: { name: "PAGE", mode: "in-out" },
   },
   css: [
+    "@/assets/style/scrollbar-thin.scss",
     "@/assets/style/reset.css",
     "@/assets/style/main.scss",
     "vuetify/lib/styles/main.sass",
