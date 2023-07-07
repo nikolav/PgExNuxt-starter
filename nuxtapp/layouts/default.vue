@@ -43,7 +43,7 @@ const links = [
       permanent
       max-width="96"
     >
-      <VList class="ps-2 mt-1">
+      <VList class="ps-2 mt-1" nav>
         <VListItem v-for="{ to, title } in links" :key="title">
           <NuxtLink :to="to">{{ title }}</NuxtLink>
         </VListItem>

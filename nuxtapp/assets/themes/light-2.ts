@@ -1,4 +1,5 @@
 import { ThemeDefinition } from "vuetify";
+// import colors from 'vuetify/lib/util/colors'
 
 const light2: ThemeDefinition = {
   dark: false,
