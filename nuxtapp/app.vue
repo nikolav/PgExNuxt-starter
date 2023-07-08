@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import "animate.css";
 
-const { OVERLAYS_ID_START, OVERLAYS_ID_END, $ISMOUNTED, THEME_LIGHT } =
+const { OVERLAYS_ID_START, OVERLAYS_ID_END, $ISMOUNTED, THEME_DARK } =
   useAppConfig();
 
 const mounted$ = useState($ISMOUNTED);
@@ -11,7 +11,7 @@ onUnmounted(() => {
   mounted$.value = false;
 });
 
-const theme = useState("theme", () => THEME_LIGHT);
+const theme = useState("theme", () => THEME_DARK);
 
 useHead({
   titleTemplate: (title) => `${title ? title + " | " : ""}Nikola Vuković`,

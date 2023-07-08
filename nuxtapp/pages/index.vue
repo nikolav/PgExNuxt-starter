@@ -13,9 +13,9 @@ const adminEmail$ = getVarByName("admin:email");
 <template>
   <VContainer class="p-2 min-h-[256px]">
     <VContainer fluid>
-      <VRow align="center">
+      <VRow>
         <VCol class="text-center">
-          <VAvatar size="64" color="warning">
+          <VAvatar size="52" color="warning" class="me-2 me-md-4">
             <strong class="text-xl">👷🏻‍♂️</strong>
           </VAvatar>
           <span> Sajt je trenutno u izradi.</span>
