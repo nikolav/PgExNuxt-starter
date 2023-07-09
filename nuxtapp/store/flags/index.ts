@@ -15,6 +15,9 @@ export const useStoreFlags = defineStore("flags", () => {
   const unsetFlag = (name: string) => {
     flag.value[name] = false;
   };
+  const toggle = (name: string) => {
+    flag.value[name] = !flag.value[name];
+  };
   const isSet = (name: string) => {
     return true === flag.value[name];
   };
@@ -24,5 +27,6 @@ export const useStoreFlags = defineStore("flags", () => {
     isSet,
     set: setFlag,
     unset: unsetFlag,
+    toggle,
   };
 });

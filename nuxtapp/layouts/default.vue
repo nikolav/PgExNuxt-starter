@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { mdiWeatherSunny, mdiWeatherNight } from "@mdi/js";
 
+import pageLinks from "@/assets/page-links.json";
+
 const { THEME_DARK, THEME_LIGHT } = useAppConfig();
 
 const theme = useState("theme");
@@ -10,34 +12,6 @@ const themeToggle = () => {
 const iconSwitchColorMode = computed(() =>
   theme.value !== THEME_DARK ? mdiWeatherNight : mdiWeatherSunny
 );
-// @links
-const links = [
-  {
-    to: "/",
-    title: "Početak",
-    avatar: "🏡",
-  },
-  {
-    to: "/o-meni",
-    title: "O meni",
-    avatar: "🧑🏻",
-  },
-  {
-    to: "/kontakt",
-    title: "Kontakt",
-    avatar: "💬",
-  },
-  {
-    to: "/blog",
-    title: "Blog",
-    avatar: "🧾",
-  },
-  {
-    to: "/demo",
-    title: ".Demo",
-    avatar: "🚧",
-  },
-];
 
 const toggleRail = useToggleFlag(true);
 const toggleDrawerNav = useToggleFlag();
@@ -73,7 +47,7 @@ const iconDrawerToggle = computed(
       </VListItem>
       <VList class="ms-n1 mt-1">
         <VListItem
-          v-for="{ to, title, avatar } in links"
+          v-for="{ to, title, avatar } in pageLinks"
           :key="to"
           :to="to"
           class="group/li"

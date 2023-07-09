@@ -30,12 +30,12 @@ const lightboxMe = () => openGallery([{ src: "/nikolav.me.0.jpg" }]);
         <p>
           Pozdrav 👋🏻! Ja sam Nikola Vuković, veb programer iz Mladenovca,
           Srbije. Imam više od 5 godina iskustva
-          <em class="font-italic"> fullstack web </em>
+          <em class="!italic"> fullstack web </em>
           razvoja, fokus na korisnički interfejs, interakciju i modeliranje
           podataka. U slobodno vreme bavim se gimnastikom, modernim
           tehnologijama, stranim jezicima, vinom i alkoholnim pićima, istorijom,
-          umetnošću, putovanjima, pozitivnim životnim navikama, planiranjem
-          resursa, knjigovodstvom, logistikom i dizajnom.
+          umetnošću, putovanjima, pozitivnim životnim navikama, knjigovodstvom,
+          logistikom i dizajnom.
         </p>
       </section>
     </VSheet>

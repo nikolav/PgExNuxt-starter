@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import "animate.css";
 
+import { AppProcessing } from "@/components/ui";
+
 const { OVERLAYS_ID_START, OVERLAYS_ID_END, $ISMOUNTED, THEME_DARK } =
   useAppConfig();
 
@@ -28,6 +30,9 @@ useHead({
     </NuxtLayout>
 
     <div :id="OVERLAYS_ID_END" />
+
+    <!-- global spinner -->
+    <AppProcessing />
 
     <!-- https://nuxt.com/docs/api/components/nuxt-loading-indicator -->
     <NuxtLoadingIndicator color="red" :height="2" />

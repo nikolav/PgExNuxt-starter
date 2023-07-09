@@ -1,0 +1,27 @@
+[
+  {
+    "to": "/",
+    "title": "Početak",
+    "avatar": "🏡"
+  },
+  {
+    "to": "/o-meni",
+    "title": "O meni",
+    "avatar": "🧑🏻"
+  },
+  {
+    "to": "/kontakt",
+    "title": "Kontakt",
+    "avatar": "💬"
+  },
+  {
+    "to": "/blog",
+    "title": "Blog",
+    "avatar": "🧾"
+  },
+  {
+    "to": "/demo",
+    "title": ".Demo",
+    "avatar": "🚧"
+  }
+]
