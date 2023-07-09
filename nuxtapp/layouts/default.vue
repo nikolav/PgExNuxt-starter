@@ -65,6 +65,15 @@ const iconDrawerToggle = computed(
     <VAppBar>
       <VSpacer />
 
+      <NuxtLink
+        external
+        to="https://github.com/nikolav/PgExNuxt-starter/tree/nikolavrs/nuxtapp"
+        target="_blank"
+      >
+        <VBtn variant="plain" icon color="secondary">
+          <VIcon icon="$iconGithub" />
+        </VBtn>
+      </NuxtLink>
       <VBtn @click="themeToggle" icon variant="text">
         <VIcon :icon="iconSwitchColorMode" />
       </VBtn>
