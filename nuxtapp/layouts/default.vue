@@ -8,52 +8,94 @@ const themeToggle = () => {
   theme.value = theme.value !== THEME_DARK ? THEME_DARK : THEME_LIGHT;
 };
 const iconSwitchColorMode = computed(() =>
-  theme.value !== THEME_DARK ? mdiWeatherSunny : mdiWeatherNight
+  theme.value !== THEME_DARK ? mdiWeatherNight : mdiWeatherSunny
 );
 // @links
 const links = [
   {
     to: "/",
-    title: "🏡 Početak",
+    title: "Početak",
+    avatar: "🏡",
   },
   {
     to: "/o-meni",
-    title: "🧑🏻 O meni",
+    title: "O meni",
+    avatar: "🧑🏻",
   },
   {
     to: "/kontakt",
-    title: "💬 Kontakt",
+    title: "Kontakt",
+    avatar: "💬",
   },
   {
     to: "/blog",
-    title: "🧾 Blog",
+    title: "Blog",
+    avatar: "🧾",
   },
   {
     to: "/demo",
-    title: "🚧 .Demo",
+    title: ".Demo",
+    avatar: "🚧",
   },
 ];
+
+const toggleRail = useToggleFlag(true);
+const toggleDrawerNav = useToggleFlag();
+const iconDrawerToggle = computed(
+  () => `$${toggleRail.isActive.value ? "iconChevronLeft" : "iconChevronRight"}`
+);
+
+// @eos
 </script>
 
 <template>
   <section class="ma-0 pa-0">
     <VNavigationDrawer
+      :rail="toggleRail.isActive.value"
+      v-model="toggleDrawerNav.isActive.value"
       location="right"
-      color="grey-darken-2"
-      permanent
-      max-width="96"
+      color="surface-darken-2"
+      temporary
     >
-      <VList class="ps-2 mt-1" nav>
-        <VListItem v-for="{ to, title } in links" :key="title">
-          <NuxtLink :to="to">{{ title }}</NuxtLink>
+      <VListItem class="ps-1 pt-2">
+        <template #prepend>
+          <div class="fill-height d-flex justify-center align-center">
+            <VBtn
+              icon
+              variant="text"
+              color="text-primary"
+              @click.stop="toggleRail"
+            >
+              <VIcon :icon="iconDrawerToggle" />
+            </VBtn>
+          </div>
+        </template>
+      </VListItem>
+      <VList class="ms-n1 mt-1">
+        <VListItem
+          v-for="{ to, title, avatar } in links"
+          :key="to"
+          :to="to"
+          class="group/li"
+        >
+          <template #prepend>
+            <strong
+              class="opacity-70 group-hover/li:opacity-100 text-[1.33rem] d-flex fill-height justify-center align-center"
+              >{{ avatar }}</strong
+            >
+          </template>
+          <VListItemTitle class="ms-6">{{ title }}</VListItemTitle>
         </VListItem>
       </VList>
     </VNavigationDrawer>
     <VAppBar>
       <VSpacer />
 
-      <VBtn @click="themeToggle" icon>
+      <VBtn @click="themeToggle" icon variant="text">
         <VIcon :icon="iconSwitchColorMode" />
+      </VBtn>
+      <VBtn @click="toggleDrawerNav.on" icon variant="text">
+        <VIcon icon="$menu" />
       </VBtn>
     </VAppBar>
     <VMain class="mt-1 ps-2">

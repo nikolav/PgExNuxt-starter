@@ -1,0 +1,122 @@
+import { ThemeDefinition } from "vuetify";
+// import colors from 'vuetify/lib/util/colors'
+
+const dark2: ThemeDefinition = {
+  dark: true,
+  colors: {
+    background: "#121212",
+    surface: "#212121",
+    primary: "#fff",
+    secondary: "#aaa",
+    error: "#CF6679",
+    info: "#2196F3",
+    success: "#4CAF50",
+    warning: "#FB8C00",
+  },
+};
+
+export default dark2;
+
+// background
+// : 
+// "#121212"
+// error
+// : 
+// "#CF6679"
+// info
+// : 
+// "#2196F3"
+// on-background
+// : 
+// "#fff"
+// on-error
+// : 
+// "#fff"
+// on-info
+// : 
+// "#fff"
+// on-primary
+// : 
+// "#fff"
+// on-primary-darken-1
+// : 
+// "#fff"
+// on-primary-darken-2
+// : 
+// "#fff"
+// on-primary-lighten-1
+// : 
+// "#000"
+// on-primary-lighten-2
+// : 
+// "#000"
+// on-secondary
+// : 
+// "#000"
+// on-secondary-darken-1
+// : 
+// "#fff"
+// on-secondary-darken-2
+// : 
+// "#fff"
+// on-secondary-lighten-1
+// : 
+// "#000"
+// on-secondary-lighten-2
+// : 
+// "#000"
+// on-success
+// : 
+// "#fff"
+// on-surface
+// : 
+// "#fff"
+// on-surface-variant
+// : 
+// "#424242"
+// on-warning
+// : 
+// "#fff"
+// primary
+// : 
+// "#BB86FC"
+// primary-darken-1
+// : 
+// "#9F6CDF"
+// primary-darken-2
+// : 
+// "#8353C3"
+// primary-lighten-1
+// : 
+// "#D8A1FF"
+// primary-lighten-2
+// : 
+// "#F5BCFF"
+// secondary
+// : 
+// "#03DAC5"
+// secondary-darken-1
+// : 
+// "#00BEAA"
+// secondary-darken-2
+// : 
+// "#00A28F"
+// secondary-lighten-1
+// : 
+// "#47F7E1"
+// secondary-lighten-2
+// : 
+// "#6DFFFE"
+// success
+// : 
+// "#4CAF50"
+// surface
+// : 
+// "#212121"
+// surface-variant
+// : 
+// "#BDBDBD"
+// warning
+// : 
+// "#FB8C00"
+

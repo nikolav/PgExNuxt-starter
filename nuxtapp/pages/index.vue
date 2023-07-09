@@ -7,6 +7,7 @@ useHead({
 
 const { byName: getVarByName } = useApiVariables();
 const adminEmail$ = getVarByName("admin:email");
+
 // @@
 </script>
 
@@ -15,7 +16,7 @@ const adminEmail$ = getVarByName("admin:email");
     <VContainer fluid>
       <VRow>
         <VCol class="text-center">
-          <VAvatar size="52" color="warning" class="me-2 me-md-4">
+          <VAvatar size="52" color="secondary" class="me-2 me-md-4">
             <strong class="text-xl">👷🏻‍♂️</strong>
           </VAvatar>
           <span> Sajt je trenutno u izradi.</span>

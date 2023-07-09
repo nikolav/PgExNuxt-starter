@@ -6,9 +6,15 @@ import {
 import { md2 } from "vuetify/blueprints";
 import { aliases, mdi } from "vuetify/iconsets/mdi-svg";
 
-import { light2 } from "@/assets/themes";
+import { light2, dark2 } from "@/assets/themes";
 
-import { IconDial, IconRedEye, IconMenu } from "@/components/icons";
+import {
+  IconChevronLeft,
+  IconChevronRight,
+  IconDial,
+  IconMenu,
+  IconRedEye,
+} from "@/components/icons";
 
 // const demoLightTheme: ThemeDefinition = {
 //   dark: false,
@@ -45,9 +51,10 @@ export default defineNuxtPlugin((nuxtApp) => {
     // https://next.vuetifyjs.com/en/features/theme/
     // https://next.vuetifyjs.com/en/features/theme/#theme-object-structure
     theme: {
-      // defaultTheme: "dark",
+      defaultTheme: "dark2",
       // defaultTheme: "light2",
       themes: {
+        dark2,
         light2,
       },
       variations: {
@@ -96,6 +103,8 @@ export default defineNuxtPlugin((nuxtApp) => {
         // # add: <VIcon icon="$other">
         icondial: IconDial,
         iconredeye: IconRedEye,
+        iconChevronLeft: IconChevronLeft,
+        iconChevronRight: IconChevronRight,
       },
       sets: {
         mdi,

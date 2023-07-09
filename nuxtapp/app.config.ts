@@ -69,7 +69,7 @@ export default defineAppConfig({
   $ISAUTH: "aKviNu7ubPK",
   $ISPROCESSING,
   // @theme
-  THEME_DARK: "dark",
+  THEME_DARK: "dark2",
   THEME_LIGHT: "light2",
   // @firebase
   STORAGE_LIST_MAX_RESULTS: 20,
