@@ -12,6 +12,7 @@ import {
   IconChevronLeft,
   IconChevronRight,
   IconDial,
+  IconMagnifyingGlass,
   IconMenu,
   IconRedEye,
 } from "@/components/icons";
@@ -101,10 +102,11 @@ export default defineNuxtPlugin((nuxtApp) => {
         // # override
         menu: IconMenu,
         // # add: <VIcon icon="$other">
-        icondial: IconDial,
-        iconredeye: IconRedEye,
         iconChevronLeft: IconChevronLeft,
         iconChevronRight: IconChevronRight,
+        icondial: IconDial,
+        iconredeye: IconRedEye,
+        iconSearch: IconMagnifyingGlass,
       },
       sets: {
         mdi,
@@ -120,3 +122,39 @@ export default defineNuxtPlugin((nuxtApp) => {
   // @@
   nuxtApp.vueApp.use(vuetify);
 });
+
+// #aliases
+// cancel: '...',
+// checkboxIndeterminate: '...',
+// checkboxOff: '...',
+// checkboxOn: '...',
+// clear: '...',
+// close: '...',
+// collapse: '...',
+// complete: '...',
+// delete: '...',
+// delimiter: '...',
+// dropdown: '...',
+// edit: '...',
+// error: '...',
+// expand: '...',
+// file: '...',
+// first: '...',
+// info: '...',
+// last: '...',
+// loading: '...',
+// menu: '...',
+// minus: '...',
+// next: '...',
+// plus: '...',
+// prev: '...',
+// radioOff: '...',
+// radioOn: '...',
+// ratingEmpty: '...',
+// ratingFull: '...',
+// ratingHalf: '...',
+// sort: '...',
+// subgroup: '...',
+// success: '...',
+// unfold: '...',
+// warning: '...',
