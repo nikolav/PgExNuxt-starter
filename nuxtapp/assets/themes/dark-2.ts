@@ -7,7 +7,7 @@ const dark2: ThemeDefinition = {
     background: "#121212",
     surface: "#212121",
     primary: "#fff",
-    secondary: "#aaa",
+    secondary: "#c2c2c2",
     error: "#CF6679",
     info: "#2196F3",
     success: "#4CAF50",

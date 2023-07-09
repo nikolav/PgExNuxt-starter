@@ -7,7 +7,7 @@ const light2: ThemeDefinition = {
     background: "#FFFFFF",
     surface: "#FFFFFF",
     primary: "#000",
-    secondary: "#666",
+    secondary: "#333",
     error: "#B00020",
     info: "#2196F3",
     success: "#4CAF50",

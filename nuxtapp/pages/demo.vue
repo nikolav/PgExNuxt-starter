@@ -2,8 +2,6 @@
 import * as tree$ from "nikolav-treets";
 import demoGallerySlides from "@/assets/gallery--test.json";
 
-import { useStoreFlags } from "@/store";
-
 useHead({
   title: ".Demo",
 });
@@ -27,9 +25,7 @@ const res = JSON.stringify({
     .map((node$) => node$.value()),
 });
 
-const { $ISPROCESSING } = useAppConfig();
-const { toggle: toggleFlag } = useStoreFlags();
-const toggleAppProccessing = () => toggleFlag($ISPROCESSING);
+const appProcessing = useAppProcessing();
 
 // #eos
 </script>
@@ -46,8 +42,8 @@ const toggleAppProccessing = () => toggleFlag($ISPROCESSING);
       <VIcon start icon="$iconredeye" size="18" />
       ok.gallery
     </VBtn>
-    <VBtn @click="toggleAppProccessing" color="secondary">
-      app.processing
+    <VBtn @click="appProcessing.toggle" color="secondary">
+      test: processing [{{ appProcessing.status }}]
     </VBtn>
   </VContainer>
 </template>

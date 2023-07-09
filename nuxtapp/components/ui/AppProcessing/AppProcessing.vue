@@ -1,22 +1,17 @@
 <script setup lang="ts">
-import { useStoreFlags } from "@/store";
-
-const { isSet } = useStoreFlags();
-const { $ISPROCESSING } = useAppConfig();
-const processing$ = computed(() => isSet($ISPROCESSING));
-
-watch(processing$, (processing$) => console.log({ processing$ }));
+import { SpinnerDots } from "@/components/spinners";
+const appProcessing = useAppProcessing();
 // #eos
 </script>
 
 <template>
   <VSlideYReverseTransition>
     <section
-      v-if="processing$"
-      class="!fixed bottom-1 right-1 **bg-info **z-10"
+      v-if="appProcessing.status.value"
+      class="!fixed bottom-0 right-4 **bg-info **z-10"
     >
       <slot>
-        <p>@TODO: component.AppProcessing</p>
+        <SpinnerDots size="64" v-bind="$attrs" />
       </slot>
     </section>
   </VSlideYReverseTransition>
