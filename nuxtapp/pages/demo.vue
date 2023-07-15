@@ -1,31 +1,11 @@
 <script setup lang="ts">
-import * as tree$ from "nikolav-treets";
-import demoGallerySlides from "@/assets/gallery--test.json";
+// import * as tree$ from "nikolav-treets";
 
 useHead({
   title: ".Demo",
 });
 
-const {
-  $lightbox: { open: openGallery },
-} = useNuxtApp();
-const gallery = () => openGallery(demoGallerySlides);
-
-const { tree } = tree$;
-
-const t1 = new tree();
-t1.json({
-  a: "#root",
-  children: [{ a: 1 }, { a: 2, children: [{ a: 21 }, { a: 22 }] }],
-});
-const res = JSON.stringify({
-  t1: t1
-    .first()
-    .ls()
-    .map((node$) => node$.value()),
-});
-
-const appProcessing = useAppProcessing();
+const field1$ = ref("");
 
 // #eos
 </script>
@@ -34,16 +14,14 @@ const appProcessing = useAppProcessing();
   <VContainer fluid>
     <h1 class="text-h1">@demo</h1>
     <VSheet class="ma-2 pa-4" max-width="550px">
-      <p>
-        {{ res }}
-      </p>
+      <VTextField
+        center-affix
+        append-icon="$menu"
+        model-value="field1$"
+        name="field1"
+        label="Field_1"
+        id="_1"
+      ></VTextField>
     </VSheet>
-    <VBtn @click="gallery">
-      <VIcon start icon="$iconredeye" size="18" />
-      ok.gallery
-    </VBtn>
-    <VBtn @click="appProcessing.toggle" color="secondary">
-      test: processing [{{ appProcessing.status }}]
-    </VBtn>
   </VContainer>
 </template>

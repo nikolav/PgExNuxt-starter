@@ -36,6 +36,8 @@ useHead({
 
     <!-- https://nuxt.com/docs/api/components/nuxt-loading-indicator -->
     <NuxtLoadingIndicator color="red" :height="2" />
+
+    <VFooter app class="pa-2 pa-md-4"> </VFooter>
   </VApp>
 </template>
 

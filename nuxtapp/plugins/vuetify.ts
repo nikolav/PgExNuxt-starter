@@ -76,9 +76,6 @@ export default defineNuxtPlugin((nuxtApp) => {
       global: {
         ripple: true,
       },
-      VSheet: {
-        elevation: 2,
-      },
       // MyButton: {
       //   color: 'primary',
       //   variant: 'tonal',
@@ -91,8 +88,14 @@ export default defineNuxtPlugin((nuxtApp) => {
       //   MyButton: { color: 'secondary' },
       //   VBtn: { color: 'primary' },
       // },
+      VSheet: {
+        elevation: 2,
+      },
       VCol: {
         cols: 12,
+      },
+      VTextField: {
+        "center-affix": true,
       },
     },
 

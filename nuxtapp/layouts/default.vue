@@ -24,28 +24,6 @@ const iconDrawerToggle = computed(
 
 <template>
   <section class="ma-0 pa-0">
-    <VAppBar>
-      <VSpacer />
-
-      <NuxtLink
-        external
-        to="https://github.com/nikolav/PgExNuxt-starter/tree/nikolavrs/nuxtapp"
-        target="_blank"
-      >
-        <VBtn variant="plain" icon color="secondary">
-          <VIcon icon="$iconGithub" />
-        </VBtn>
-      </NuxtLink>
-      <VBtn @click="themeToggle" icon variant="text">
-        <VIcon :icon="iconSwitchColorMode" />
-      </VBtn>
-      <VBtn @click="toggleDrawerNav.on" icon variant="text">
-        <VIcon icon="$menu" />
-      </VBtn>
-    </VAppBar>
-
-    <VFooter app class="pa-2 pa-md-4"> </VFooter>
-
     <VNavigationDrawer
       :rail="toggleRail.isActive.value"
       v-model="toggleDrawerNav.isActive.value"
@@ -84,6 +62,26 @@ const iconDrawerToggle = computed(
         </VListItem>
       </VList>
     </VNavigationDrawer>
+
+    <VAppBar>
+      <VSpacer />
+
+      <NuxtLink
+        external
+        to="https://github.com/nikolav/PgExNuxt-starter/tree/nikolavrs/nuxtapp"
+        target="_blank"
+      >
+        <VBtn variant="plain" icon color="secondary">
+          <VIcon icon="$iconGithub" />
+        </VBtn>
+      </NuxtLink>
+      <VBtn @click="themeToggle" icon variant="text">
+        <VIcon :icon="iconSwitchColorMode" />
+      </VBtn>
+      <VBtn @click="toggleDrawerNav.on" icon variant="text">
+        <VIcon icon="$menu" />
+      </VBtn>
+    </VAppBar>
 
     <VMain class="mt-1 ps-2">
       <slot>

@@ -33,8 +33,8 @@ const lightboxMe = () => openGallery([{ src: "/nikolav.me.0.jpg" }]);
           <em class="!italic"> fullstack web </em>
           razvoja, fokus na korisnički interfejs, interakciju i modeliranje
           podataka. U slobodno vreme bavim se gimnastikom, modernim
-          tehnologijama, stranim jezicima, vinom i alkoholnim pićima, istorijom,
-          umetnošću, putovanjima, knjigovodstvom, logistikom i dizajnom.
+          tehnologijama, stranim jezicima, knjigovodstvom, logistikom i
+          dizajnom.
         </p>
       </section>
     </VSheet>
