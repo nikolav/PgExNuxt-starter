@@ -83,6 +83,8 @@ const iconDrawerToggle = computed(
       </VBtn>
     </VAppBar>
 
+    <VFooter app class="pa-2 pa-md-4"> </VFooter>
+
     <VMain class="mt-1 ps-2">
       <slot>
         <p>

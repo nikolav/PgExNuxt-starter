@@ -13,6 +13,11 @@ export default defineNuxtPlugin(() => {
     emitter.on($EMITTEREVENT, (event, ...rest) => handle(event));
 
   return {
-    provide: { emitter, publish, subscribe },
+    provide: {
+      emitter: {
+        publish,
+        subscribe,
+      },
+    },
   };
 });
