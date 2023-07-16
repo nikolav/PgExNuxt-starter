@@ -30,8 +30,8 @@ export type WithouFieldId<T> = {
 };
 export type ObjectEmpty = typeof objectEmpty;
 
-export interface IData {
-  [key: ScalarAny]: any;
+export interface IData<T = any> {
+  [key: ScalarAny]: T;
 }
 
 export interface IAppEvent<T = any> {

@@ -9,6 +9,7 @@ import { aliases, mdi } from "vuetify/iconsets/mdi-svg";
 import { light2, dark2 } from "@/assets/themes";
 
 import {
+  IconBookOpenText,
   IconChevronLeft,
   IconChevronRight,
   IconDial,
@@ -106,6 +107,7 @@ export default defineNuxtPlugin((nuxtApp) => {
         // # override
         menu: IconMenu,
         // # add: <VIcon icon="$other">
+        iconBookOpenText: IconBookOpenText,
         iconChevronLeft: IconChevronLeft,
         iconChevronRight: IconChevronRight,
         icondial: IconDial,

@@ -71,6 +71,11 @@ export default defineAppConfig({
   // @theme
   THEME_DARK: "dark2",
   THEME_LIGHT: "light2",
+  DARK_THEMES: {
+    dark: true,
+    dark2: true,
+  },
+  CLASSNAME_DARK: "dark",
   // @firebase
   STORAGE_LIST_MAX_RESULTS: 20,
 });
