@@ -16,6 +16,7 @@ import {
   IconGithub,
   IconMagnifyingGlass,
   IconMenu,
+  IconMoon,
   IconRedEye,
 } from "@/components/icons";
 
@@ -112,6 +113,7 @@ export default defineNuxtPlugin((nuxtApp) => {
         iconChevronRight: IconChevronRight,
         icondial: IconDial,
         iconGithub: IconGithub,
+        iconMoon: IconMoon,
         iconredeye: IconRedEye,
         iconSearch: IconMagnifyingGlass,
       },
