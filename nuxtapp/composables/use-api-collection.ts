@@ -36,10 +36,8 @@ export const useApiCollection = (
     if (isMounted.value && isAuth.value) loadDocs();
   });
 
-  const { $socket } = useNuxtApp();
   const IOEVENT = `${IOEVENT_COLLECTION_CHANGE}:${topicID}`;
-  $socket?.on(IOEVENT, reloadDocs);
-  onUnmounted(() => $socket?.off(IOEVENT, reloadDocs));
+  useOnIOEvent(IOEVENT, reloadDocs);
 
   // jsonData: String!
   // tag: String!

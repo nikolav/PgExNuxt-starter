@@ -17,10 +17,8 @@ export const useApiLikes = (topicID: string) => {
   const topicName = `${LIKES_PREFIX}${topicID}`;
   const isLiked = useLocalStorage<OrNoValue<number>>(topicName, null);
 
-  const { $socket } = useNuxtApp();
   const IOEVENT = `${IOEVENT_LIKES_CHANGE}:${topicID}`;
-  $socket?.on(IOEVENT, reloadCount);
-  onUnmounted(() => $socket?.off(IOEVENT, reloadCount));
+  useOnIOEvent(IOEVENT, reloadCount);
 
   const isMounted = useState($ISMOUNTED);
   const isAuth = useState($ISAUTH);

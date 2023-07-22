@@ -36,10 +36,8 @@ export const useApiDoc = (
     if (isMounted.value && isAuth.value) readDoc();
   });
 
-  const { $socket } = useNuxtApp();
   const IOEVENT = `${IOEVENT_DOC_CHANGE}:${ID}`;
-  $socket?.on(IOEVENT, reloadDoc);
-  onUnmounted(() => $socket?.off(IOEVENT, reloadDoc));
+  useOnIOEvent(IOEVENT, reloadDoc);
 
   const put = async (data: IData) =>
     await mutateUpsertDoc({

@@ -22,9 +22,7 @@ export const useApiMessages = () => {
 
   const reloadQuery = async () => await refetch();
 
-  const { $socket } = useNuxtApp();
-  $socket?.on(IOEVENT_MESSAGES_CHANGE, reloadQuery);
-  onUnmounted(() => $socket?.off(IOEVENT_MESSAGES_CHANGE, reloadQuery));
+  useOnIOEvent(IOEVENT_MESSAGES_CHANGE, reloadQuery);
 
   const isMounted = useState($ISMOUNTED);
   const isAuth = useState($ISAUTH);

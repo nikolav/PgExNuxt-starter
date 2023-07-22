@@ -32,10 +32,8 @@ export const useApiComments = (topicID: string) => {
   });
 
   const { IOEVENT_COMMENTS_CHANGE } = useAppConfig();
-  const { $socket } = useNuxtApp();
   const IOEVENT = `${IOEVENT_COMMENTS_CHANGE}:${topicID}`;
-  $socket?.on(IOEVENT, reloadComments);
-  onUnmounted(() => $socket?.off(IOEVENT, reloadComments));
+  useOnIOEvent(IOEVENT, reloadComments);
 
   const add = async (comment: ICommentInput) => {
     const newComment = {

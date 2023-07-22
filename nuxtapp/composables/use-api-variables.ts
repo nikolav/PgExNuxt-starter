@@ -42,9 +42,7 @@ export const useApiVariables = () => {
 
   const reloadVariables = async () => await refresh();
 
-  const { $socket } = useNuxtApp();
-  $socket?.on(IOEVENT_VARIABLES_CHANGE, reloadVariables);
-  onUnmounted(() => $socket?.off(IOEVENT_VARIABLES_CHANGE, reloadVariables));
+  useOnIOEvent(IOEVENT_VARIABLES_CHANGE, reloadVariables);
 
   watchEffect(() => {
     if (AT.value) reloadVariables();
