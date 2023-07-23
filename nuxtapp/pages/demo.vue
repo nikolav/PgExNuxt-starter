@@ -13,13 +13,15 @@ const field1$ = ref("");
 <template>
   <VContainer fluid>
     <h1 class="text-h1">@demo</h1>
-    <VSheet class="ma-2 pa-4" max-width="550px">
-      <VTextField
-        model-value="field1$"
-        name="field1"
-        label="Field_1"
-        id="_1"
-      ></VTextField>
-    </VSheet>
+    <VRow justify="center" no-gutters>
+      <VCol sm="8" md="6" class="!max-w-lg">
+        <VSheet class="ma-2 pa-4">
+          <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maxime
+            nostrum temporibus delectus!
+          </p>
+        </VSheet>
+      </VCol>
+    </VRow>
   </VContainer>
 </template>

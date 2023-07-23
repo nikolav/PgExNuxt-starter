@@ -22,18 +22,21 @@ useHead({
 
 <template>
   <VApp :theme="theme">
-    <div :id="OVERLAYS_ID_START" />
+    <!-- @prepend -->
+    <section :id="OVERLAYS_ID_START" />
 
-    <!-- @@content -->
+    <!-- @content -->
     <NuxtLayout>
       <NuxtPage />
     </NuxtLayout>
 
-    <div :id="OVERLAYS_ID_END" />
+    <!-- @append -->
+    <section :id="OVERLAYS_ID_END" />
 
-    <!-- global spinner -->
+    <!-- @spinner-be -->
     <AppProcessing />
 
+    <!-- @loading-t -->
     <!-- https://nuxt.com/docs/api/components/nuxt-loading-indicator -->
     <NuxtLoadingIndicator color="red" :height="2" />
   </VApp>

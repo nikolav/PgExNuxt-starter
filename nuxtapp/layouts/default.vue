@@ -1,7 +1,5 @@
 <script setup lang="ts">
-import { mdiWeatherSunny } from "@mdi/js";
-
-import { IconMoon } from "@/components/icons";
+import { IconMoon, IconSunOutlined } from "@/components/icons";
 import pageLinks from "@/assets/page-links.json";
 
 const { THEME_DARK, THEME_LIGHT } = useAppConfig();
@@ -11,7 +9,7 @@ const themeToggle = () => {
   theme.value = theme.value !== THEME_DARK ? THEME_DARK : THEME_LIGHT;
 };
 const iconSwitchColorMode = computed(() =>
-  theme.value !== THEME_DARK ? IconMoon : mdiWeatherSunny
+  theme.value !== THEME_DARK ? IconMoon : IconSunOutlined
 );
 
 const toggleRail = useToggleFlag(true);

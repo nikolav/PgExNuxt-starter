@@ -18,6 +18,7 @@ import {
   IconMenu,
   IconMoon,
   IconRedEye,
+  IconSunOutlined,
 } from "@/components/icons";
 
 // const demoLightTheme: ThemeDefinition = {
@@ -116,6 +117,7 @@ export default defineNuxtPlugin((nuxtApp) => {
         iconMoon: IconMoon,
         iconredeye: IconRedEye,
         iconSearch: IconMagnifyingGlass,
+        iconSunOutlined: IconSunOutlined,
       },
       sets: {
         mdi,
