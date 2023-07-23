@@ -5,7 +5,26 @@ useHead({
   title: ".Demo",
 });
 
-const field1$ = ref("");
+const data = ref([
+  {
+    key: 0,
+    value: 12,
+  },
+  {
+    key: 2,
+    value: 22,
+  },
+  {
+    key: 3,
+    value: 5,
+  },
+  {
+    key: 4,
+    value: 11,
+  },
+]);
+const config = {};
+const chart = { data, config };
 
 // #eos
 </script>
@@ -14,14 +33,9 @@ const field1$ = ref("");
   <VContainer fluid>
     <h1 class="text-h1">@demo</h1>
     <VRow justify="center" no-gutters>
-      <VCol sm="8" md="6" class="!max-w-lg">
-        <VSheet class="ma-2 pa-4">
-          <p>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maxime
-            nostrum temporibus delectus!
-          </p>
-        </VSheet>
-      </VCol>
+      <VSheet class="ma-2 pa-4">
+        <section v-chartArea="chart" />
+      </VSheet>
     </VRow>
   </VContainer>
 </template>

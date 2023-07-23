@@ -234,3 +234,7 @@ export type TPubSubHandleEvent = (handle: (event: IAppEvent) => void) => void;
 export interface ITransitionNames {
   [name: string]: string;
 }
+
+export interface IDataChartArea {
+  [name: string]: number;
+}
