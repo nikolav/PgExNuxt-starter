@@ -5,26 +5,7 @@ useHead({
   title: ".Demo",
 });
 
-const data = ref([
-  {
-    key: 0,
-    value: 12,
-  },
-  {
-    key: 2,
-    value: 22,
-  },
-  {
-    key: 3,
-    value: 5,
-  },
-  {
-    key: 4,
-    value: 11,
-  },
-]);
-const config = {};
-const chart = { data, config };
+const { toggle } = useToggleAutoOff(2233);
 
 // #eos
 </script>
@@ -32,9 +13,14 @@ const chart = { data, config };
 <template>
   <VContainer fluid>
     <h1 class="text-h1">@demo</h1>
+    <VBtn color="secondary" @click="toggle.on"> ok </VBtn>
+
     <VRow justify="center" no-gutters>
-      <VSheet class="ma-2 pa-4">
-        <section v-chartArea="chart" />
+      <VSheet v-if="toggle.isActive.value" class="ma-2 pa-4">
+        <p>
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dicta
+          reprehenderit aut minus?
+        </p>
       </VSheet>
     </VRow>
   </VContainer>
