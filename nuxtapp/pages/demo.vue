@@ -17,6 +17,9 @@ const { toggle } = useToggleAutoOff(2233);
 
     <VRow justify="center" no-gutters>
       <VSheet v-if="toggle.isActive.value" class="ma-2 pa-4">
+        <VAvatar icon size="64" color="secondary">
+          <VIcon icon="$iconCart" size="32" />
+        </VAvatar>
         <p>
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dicta
           reprehenderit aut minus?

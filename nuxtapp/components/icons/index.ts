@@ -8,3 +8,4 @@ export { default as IconMenu } from "./IconMenu.vue";
 export { default as IconMoon } from "./IconMoon.vue";
 export { default as IconRedEye } from "./IconRedEye.vue";
 export { default as IconSunOutlined } from "./IconSunOutlined.vue";
+export { default as IconCart } from "./IconCart.vue";

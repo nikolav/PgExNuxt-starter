@@ -10,6 +10,7 @@ import { light2, dark2 } from "@/assets/themes";
 
 import {
   IconBookOpenText,
+  IconCart,
   IconChevronLeft,
   IconChevronRight,
   IconDial,
@@ -110,6 +111,7 @@ export default defineNuxtPlugin((nuxtApp) => {
         menu: IconMenu,
         // # add: <VIcon icon="$other">
         iconBookOpenText: IconBookOpenText,
+        iconCart: IconCart,
         iconChevronLeft: IconChevronLeft,
         iconChevronRight: IconChevronRight,
         icondial: IconDial,
