@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import "animate.css";
+// metadata components
+// <Title>, <Base>, <NoScript>, <Style>, <Meta>, <Link>, <Body>, <Html> and <Head>
 
 import { AppProcessing } from "@/components/ui";
 

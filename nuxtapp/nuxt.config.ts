@@ -118,6 +118,7 @@ export default defineNuxtConfig({
   css: [
     "@/assets/style/reset.css",
     "@/assets/style/scrollbar-thin.scss",
+    "animate.css",
     "@/assets/style/main.scss",
     "vuetify/lib/styles/main.sass",
     "@mdi/font/css/materialdesignicons.min.css",
