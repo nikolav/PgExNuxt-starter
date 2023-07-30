@@ -16,15 +16,30 @@ const { toggle } = useToggleAutoOff(2233);
     <VBtn color="secondary" @click="toggle.on"> ok </VBtn>
 
     <VRow justify="center" no-gutters>
-      <VSheet v-if="toggle.isActive.value" class="ma-2 pa-4">
-        <VAvatar icon size="64" color="secondary">
+      <VAlert
+        elevation="2"
+        v-if="toggle.isActive.value"
+        border="end"
+        prominent
+        rounded
+        max-width="640"
+      >
+        <template #prepend>
           <VIcon icon="$iconCart" size="32" />
-        </VAvatar>
+        </template>
         <p>
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dicta
           reprehenderit aut minus?
         </p>
-      </VSheet>
+        <p>
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dicta
+          reprehenderit aut minus?
+        </p>
+        <p>
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dicta
+          reprehenderit aut minus?
+        </p>
+      </VAlert>
     </VRow>
   </VContainer>
 </template>

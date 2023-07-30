@@ -245,3 +245,4 @@ yarn-error.log
 yarn-error.log*
 api/storage/
 scp-config.sh
+data.sqlite

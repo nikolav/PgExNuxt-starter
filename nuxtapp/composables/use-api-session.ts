@@ -9,16 +9,22 @@ export const useApiSession = () => {
   const ST = computed(() => auth.token?.sessionToken);
   const ID = computed(() => auth.user?.id);
 
-  const { data, refresh } = useLazyAsyncData<IData>("auth-session@api", () =>
-    $fetch(`${URL_AUTH_SESSION}/${ID.value}`, {
-      method: "post",
-      body: {
-        sessionToken: ST.value,
-      },
-      headers: {
-        Authorization: `Bearer ${AT.value}`,
-      },
-    })
+  // const { data, refresh } = useLazyAsyncData<IData>("auth-session@api", () =>
+  const { data, refresh } = useAsyncData<IData>(
+    "auth-session@api",
+    () =>
+      $fetch(`${URL_AUTH_SESSION}/${ID.value}`, {
+        method: "post",
+        body: {
+          sessionToken: ST.value,
+        },
+        headers: {
+          Authorization: `Bearer ${AT.value}`,
+        },
+      }),
+    {
+      lazy: true,
+    }
   );
 
   watchEffect(() => {
