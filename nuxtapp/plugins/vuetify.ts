@@ -19,6 +19,7 @@ import {
   IconMenu,
   IconMoon,
   IconRedEye,
+  IconSettingsBarsOutline,
   IconSunOutlined,
 } from "@/components/icons";
 
@@ -119,6 +120,7 @@ export default defineNuxtPlugin((nuxtApp) => {
         iconMoon: IconMoon,
         iconredeye: IconRedEye,
         iconSearch: IconMagnifyingGlass,
+        iconSettingsBarsOutline: IconSettingsBarsOutline,
         iconSunOutlined: IconSunOutlined,
       },
       sets: {
