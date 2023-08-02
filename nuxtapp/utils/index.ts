@@ -49,16 +49,16 @@ export {
   set,
   transform,
 };
+
+export { isNumeric, forEach, has as hasOwn } from "nikolav-utils";
+
 export * from "./request-validation-schema-check";
 export * from "./with-firestore-timestamps";
 
-export { default as forEach } from "./for-each";
-export { default as hasOwn } from "./has-own";
 export { default as unpackBlob } from "./unpack-blob";
 export { default as pickValues } from "./pick-values";
 export { default as maxOfValue } from "./max-of-value";
 export { default as stripEndSlashes } from "./strip-end-slashes";
-export { default as isNumeric } from "./is-numeric";
 
 export const False = () => false;
 export const True = () => true;

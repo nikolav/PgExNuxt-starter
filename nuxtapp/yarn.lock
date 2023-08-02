@@ -7385,10 +7385,10 @@ nikolav-treets@^1.2.4:
   dependencies:
     "@bitauth/libauth" "^1.17.1"
 
-nikolav-utils@^1.1.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/nikolav-utils/-/nikolav-utils-1.1.0.tgz#304dd20e06b721e9f16262fdf333d508246c80ca"
-  integrity sha512-mar6yJ+ZQWZGR0CqnIe2YgzIw6x6voK7rqY/IPiohApKBLjLebkhL39AHioyy+Q19toS9s7ktJZ5WCsRxQob+A==
+nikolav-utils@1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/nikolav-utils/-/nikolav-utils-1.2.0.tgz#dad704c4886ab15032e4b18474970bef81821d9a"
+  integrity sha512-fWESe2n2RiVZ+c0aJkwJsk7BTn5yyoNIP7PjnxnMZjzSNFoD3OQx+BGMETf/Qmlg9nSaQvGf7Ho6UIqaFueJpA==
   dependencies:
     "@bitauth/libauth" "^1.17.1"
 
