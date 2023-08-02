@@ -238,3 +238,5 @@ export interface ITransitionNames {
 export interface IDataChartArea {
   [name: string]: number;
 }
+
+export type StringOrNumber = string | number;
