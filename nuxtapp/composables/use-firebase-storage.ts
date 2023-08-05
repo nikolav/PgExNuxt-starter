@@ -28,7 +28,7 @@ export const useFirebaseStorage = (pathOrId: string) => {
   const uploadProgess = ref(0);
 
   // get ref{} for file
-  const toRef = (filename: string) => storageRef(storageRefRoot, filename);
+  const mkFileRef = (filename: string) => storageRef(storageRefRoot, filename);
 
   // list nodes @ref
   const refresh = async () => {
@@ -60,7 +60,7 @@ export const useFirebaseStorage = (pathOrId: string) => {
         clearError();
         uploadProgess.value = 0;
 
-        const path$ = toRef(filename);
+        const path$ = mkFileRef(filename);
         const uploadTask = uploadBytesResumable(path$, file);
         uploadTask.on(
           "state_changed",
@@ -135,7 +135,7 @@ export const useFirebaseStorage = (pathOrId: string) => {
     rm,
     url,
     info,
-    toRef,
+    mkFileRef,
     refresh,
     clearError,
   };
