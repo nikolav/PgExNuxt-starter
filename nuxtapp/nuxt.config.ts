@@ -107,7 +107,7 @@ export default defineNuxtConfig({
         { children: "JavaScript is required" },
       ],
       bodyAttrs: {
-        class: "scrollbar-thin overflow-y-auto",
+        class: "scrollbar-thin **overflow-y-auto dark:selection:bg-white/20",
       },
     },
     // css-transition all pages
@@ -116,8 +116,8 @@ export default defineNuxtConfig({
     layoutTransition: { name: "PAGE", mode: "in-out" },
   },
   css: [
-    "@/assets/style/reset.css",
     "@/assets/style/scrollbar-thin.scss",
+    "@/assets/style/reset.css",
     "animate.css",
     "@/assets/style/main.scss",
     "vuetify/lib/styles/main.sass",

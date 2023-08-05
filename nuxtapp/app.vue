@@ -26,9 +26,6 @@ const darkHtmlClass$ = computed(() =>
 );
 useHead({
   titleTemplate: (title) => `${title ? title + " | " : ""}Nikola Vuković`,
-  bodyAttrs: {
-    class: "dark:selection:bg-white/20",
-  },
   htmlAttrs: {
     class: darkHtmlClass$,
   },
