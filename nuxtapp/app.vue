@@ -4,8 +4,13 @@
 
 import { AppProcessing } from "@/components/ui";
 
-const { OVERLAYS_ID_START, OVERLAYS_ID_END, $ISMOUNTED, THEME_DARK } =
-  useAppConfig();
+const {
+  $ISMOUNTED,
+  CLASSNAME_DARK,
+  OVERLAYS_ID_END,
+  OVERLAYS_ID_START,
+  THEME_DARK,
+} = useAppConfig();
 
 const mounted$ = useState($ISMOUNTED);
 
@@ -16,10 +21,16 @@ onUnmounted(() => {
 
 const theme = useState("theme", () => THEME_DARK);
 
+const darkHtmlClass$ = computed(() =>
+  useThemeIsDark().value ? CLASSNAME_DARK : ""
+);
 useHead({
   titleTemplate: (title) => `${title ? title + " | " : ""}Nikola Vuković`,
   bodyAttrs: {
     class: "dark:selection:bg-white/20",
+  },
+  htmlAttrs: {
+    class: darkHtmlClass$,
   },
 });
 
