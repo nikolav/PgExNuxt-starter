@@ -15,6 +15,7 @@ module.exports = {
     "../content/**/*.md",
     "../docs/**/*.html",
     "../nuxt.config.{js,ts}",
+    "../app.config.{js,ts}",
   ],
   darkMode: "class",
   theme: {

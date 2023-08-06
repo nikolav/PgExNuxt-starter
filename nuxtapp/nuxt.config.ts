@@ -106,9 +106,9 @@ export default defineNuxtConfig({
         // <noscript>JavaScript is required</noscript>
         { children: "JavaScript is required" },
       ],
-      bodyAttrs: {
-        class: "scrollbar-thin **overflow-y-auto dark:selection:bg-white/20",
-      },
+      // bodyAttrs: {
+      //   class: "scrollbar-thin !dark:selection:bg-white/20",
+      // },
     },
     // css-transition all pages
     pageTransition: { name: "PAGE", mode: "in-out" },
