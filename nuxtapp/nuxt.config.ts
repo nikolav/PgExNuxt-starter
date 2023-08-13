@@ -55,7 +55,9 @@ export default defineNuxtConfig({
             config.plugins.push(
               vitePluginVuetify({
                 // # https://next.vuetifyjs.com/en/features/sass-variables/#component-specific-variables
-                // styles: { configFile: "assets/vuetify-sass-variables.scss" },
+                styles: {
+                  configFile: "assets/vuetify-sass-variables/settings.scss",
+                },
               })
             );
         } catch (error) {
