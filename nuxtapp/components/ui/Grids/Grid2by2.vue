@@ -17,11 +17,11 @@ const props = withDefaults(
   }
 );
 
-const px = (val: StringOrNumber) => (isNumeric(val) ? `${val}px` : val);
+const px = (val: StringOrNumber) => <string>(isNumeric(val) ? `${val}px` : val);
 // #eos
 </script>
 <template>
-  <VSheet v-bind="$attrs" class="grid2x2 grid2x2-layout">
+  <VSheet v-bind="$attrs" class="grid2x2 grid2x2--layout">
     <div class="cell-tl">
       <slot name="cell-tl" />
     </div>
@@ -40,7 +40,7 @@ const px = (val: StringOrNumber) => (isNumeric(val) ? `${val}px` : val);
 <style scoped lang="scss">
 .grid2x2 {
   display: grid;
-  &-layout {
+  &--layout {
     grid-template-columns: v-bind("px(props.leftWidth)") v-bind(
         "px(props.rightWidth)"
       );
