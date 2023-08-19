@@ -50,7 +50,7 @@ export {
   transform,
 };
 
-export { isNumeric, forEach, has as hasOwn } from "nikolav-utils";
+export { isNumeric, forEach, has as hasOwn, idGen } from "nikolav-utils";
 
 export * from "./request-validation-schema-check";
 export * from "./with-firestore-timestamps";

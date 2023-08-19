@@ -2,6 +2,7 @@
 // d=monsterid|wavatar|robohash
 
 import md5 from "md5";
+import { idGen } from "@/utils";
 import { OrNull } from "@/types";
 
 const BASE_URL = "https://www.gravatar.com/avatar";
@@ -16,7 +17,7 @@ export const useGravatar = (
   const cached$ = useLocalStorage(G_STORAGE_KEY, () => "");
   const toggleGravatarLoading = useToggleFlag();
 
-  const email_ = () => `g${Date.now()}@gravatar.com`;
+  const email_ = () => `g${idGen()}@gravatar.com`;
   const gravatarUrl_ = (email: string) =>
     `${BASE_URL}/${md5(email.toLocaleLowerCase())}?d=${
       ["monsterid", "wavatar", "robohash"][Math.floor(Math.random() * 3)]
